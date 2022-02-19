@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:glance/core/glance_core.dart';
 
-class CalendarPage extends StatelessWidget {
-  const CalendarPage({
+class OverviewPage extends StatelessWidget {
+  const OverviewPage({
     Key? key,
   }) : super(key: key);
 
@@ -12,9 +12,11 @@ class CalendarPage extends StatelessWidget {
 
     return Container(
       color: theme.colors.lighBackground,
-      child: AppText.title3(
-        "Title",
-        color: theme.colors.accent,
+      child: Center(
+        child: AppText.title1(
+          "Title",
+          color: theme.colors.secondary,
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:glance/core/presentation/widgets/drawer_menu_widget.dart';
 import 'package:glance/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:glance/core/glance_core.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,9 +16,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return AdvancedDrawer(
       controller: _drawerController,
-      backdropColor: Colors.deepPurpleAccent,
+      backdropColor: theme.colors.background,
       openRatio: 0.7,
       // animationCurve: Curves.easeInOut,
       // animationDuration: const Duration(milliseconds: 300),
