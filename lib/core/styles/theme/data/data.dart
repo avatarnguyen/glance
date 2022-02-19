@@ -8,12 +8,14 @@ import 'images.dart';
 import 'radius.dart';
 import 'shadows.dart';
 import 'spacing.dart';
+import 'typography.dart';
+import 'icons.dart';
 
 class AppThemeData extends Equatable {
   const AppThemeData({
-    // required this.icons,
+    required this.icons,
     required this.colors,
-    // required this.typography,
+    required this.typography,
     required this.radius,
     required this.spacing,
     required this.shadow,
@@ -28,8 +30,8 @@ class AppThemeData extends Equatable {
   }) =>
       AppThemeData(
         // formFactor: AppFormFactor.medium,
-        // icons: AppconsData.regular(),
-        // typography: AppTypographyData.regular(),
+        icons: AppIconsData.regular(),
+        typography: AppTypographyData.regular(),
         colors: AppColorsData.light(),
         radius: const AppRadiusData.regular(),
         spacing: AppSpacingData.regular(),
@@ -40,9 +42,9 @@ class AppThemeData extends Equatable {
         ),
       );
 
-  // final AppIconsData icons;
+  final AppIconsData icons;
   final AppColorsData colors;
-  // final AppTypographyData typography;
+  final AppTypographyData typography;
   final AppRadiusData radius;
   final AppSpacingData spacing;
   final AppShadowsData shadow;
@@ -55,9 +57,9 @@ class AppThemeData extends Equatable {
   @override
   List<Object?> get props => [
         platform,
-        // icons,
+        icons,
         colors,
-        // typography,
+        typography,
         radius,
         spacing,
         shadow,
@@ -71,12 +73,12 @@ class AppThemeData extends Equatable {
       // formFactor: formFactor,
       colors: colors,
       durations: durations,
-      // icons: icons,
+      icons: icons,
       images: images,
       radius: radius,
       shadow: shadow,
       spacing: spacing,
-      // typography: typography,
+      typography: typography,
     );
   }
 
@@ -86,12 +88,11 @@ class AppThemeData extends Equatable {
       // formFactor: formFactor,
       colors: colors,
       durations: durations,
-      // icons: icons,
-      images: images,
+      icons: icons, images: images,
       radius: radius,
       shadow: shadow,
       spacing: spacing,
-      // typography: typography,
+      typography: typography,
     );
   }
 
@@ -109,19 +110,19 @@ class AppThemeData extends Equatable {
   // typography: typography,
   // );
   // }
-  //
-  // AppThemeData withTypography(AppTypographyData typography) {
-  //   return AppThemeData(
-  //     platform: platform,
-  //     formFactor: formFactor,
-  //     colors: colors,
-  //     durations: durations,
-  //     icons: icons,
-  //     images: images,
-  //     radius: radius,
-  //     shadow: shadow,
-  //     spacing: spacing,
-  //     typography: typography,
-  //   );
-  // }
+
+  AppThemeData withTypography(AppTypographyData typography) {
+    return AppThemeData(
+      platform: platform,
+      // formFactor: formFactor,
+      colors: colors,
+      durations: durations,
+      icons: icons,
+      images: images,
+      radius: radius,
+      shadow: shadow,
+      spacing: spacing,
+      typography: typography,
+    );
+  }
 }
