@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:glance/core/styles/styles.dart';
 
@@ -49,28 +50,23 @@ class AppIcon extends StatelessWidget {
   })  : size = AppIconSize.big,
         super(key: key);
 
-  final String data;
+  final IconData data;
   final Color? color;
   final AppIconSize size;
 
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final color = this.color ?? theme.colors.foreground;
-    return Text(
+    final color = this.color ?? theme.colors.primary4;
+    return Icon(
       data,
-      style: TextStyle(
-        fontFamily: theme.icons.fontFamily,
-        package: theme.icons.fontPackage,
-        color: color,
-        fontSize: theme.icons.sizes.resolve(size),
-        decoration: TextDecoration.none,
-      ),
+      color: color,
+      size: theme.icons.sizes.resolve(size),
     );
   }
 }
 
-class AppAnimatedIcon extends StatelessWidget {
+/* class AppAnimatedIcon extends StatelessWidget {
   const AppAnimatedIcon(
     this.data, {
     Key? key,
@@ -79,7 +75,7 @@ class AppAnimatedIcon extends StatelessWidget {
     this.duration = const Duration(milliseconds: 200),
   }) : super(key: key);
 
-  final String data;
+  final IconData data;
   final Color? color;
   final AppIconSize size;
   final Duration duration;
@@ -89,7 +85,7 @@ class AppAnimatedIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final color = this.color ?? theme.colors.foreground;
+    final color = this.color ?? theme.colors.primary3;
     if (!isAnimated) {
       return AppIcon(
         data,
@@ -98,18 +94,14 @@ class AppAnimatedIcon extends StatelessWidget {
         size: size,
       );
     }
-    return AnimatedDefaultTextStyle(
-      child: Text(
+    return AnimatedIcon(
+      icon:Icon(
         data,
-      ),
-      style: TextStyle(
-        fontFamily: theme.icons.fontFamily,
-        package: theme.icons.fontPackage,
         color: color,
-        fontSize: theme.icons.sizes.resolve(size),
-        decoration: TextDecoration.none,
+        size: theme.icons.sizes.resolve(size),
       ),
-      duration: duration,
+,
+      // child:       // duration: duration,
     );
   }
-}
+} */

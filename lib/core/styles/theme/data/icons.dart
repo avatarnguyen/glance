@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:glance/core/utils/named.dart';
 
+//TODO; remove unnecessary props
 class AppIconsData extends Equatable {
   const AppIconsData({
     required this.fontFamily,
@@ -80,7 +81,7 @@ class AppIconSizesData extends Equatable {
 
   factory AppIconSizesData.regular() => const AppIconSizesData(
         small: 16.0,
-        regular: 22.0,
+        regular: 24.0,
         big: 32.0,
       );
 

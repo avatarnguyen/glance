@@ -52,7 +52,7 @@ class AppThemeData extends Equatable {
   final AppImagesData images;
   // final AppFormFactor formFactor;
   final TargetPlatform? _platform;
-  TargetPlatform get platform => defaultTargetPlatform;
+  TargetPlatform get platform => _platform ?? defaultTargetPlatform;
 
   @override
   List<Object?> get props => [
