@@ -102,7 +102,6 @@ class CalendarCellWidget extends HookWidget {
       pageAnimationEnabled: false,
       selectedDayPredicate: (day) => isSameDay(_selectedDay.value, day),
       onDaySelected: (selectedDay, focusedDay) {
-        print(selectedDay);
         _selectedDay.value = selectedDay;
         onDaySelected?.call(selectedDay, focusedDay);
       },
