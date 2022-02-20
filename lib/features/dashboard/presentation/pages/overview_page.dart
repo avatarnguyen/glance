@@ -45,7 +45,7 @@ class OverviewPage extends StatelessWidget {
             color: Colors.purple,
             time: DateTime.now(),
             text: 'Coding Side Project',
-            subtitle: '> 1h',
+            subtitle: '1h 30m',
             isEvent: false,
           ),
           const AppGap.small(),
