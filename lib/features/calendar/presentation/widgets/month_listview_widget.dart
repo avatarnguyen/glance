@@ -30,16 +30,18 @@ class _MonthListWidget extends HookWidget {
                   "$month ${today.year.toString()}",
                   color: theme.colors.primary1,
                 ),
-                GestureDetector(
-                  onTap: monthIconPressed,
-                  child: const AppIcon.regular(
+                IconButton(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  visualDensity: VisualDensity.compact,
+                  onPressed: monthIconPressed,
+                  icon: const AppIcon.regular(
                     Icons.close,
                   ),
                 ),
               ],
             ),
           ),
-          const AppGap.large(),
+          const AppGap.regular(),
           Expanded(
             child: SizedBox(
               child: ListView(

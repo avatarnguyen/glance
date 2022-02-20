@@ -21,7 +21,7 @@ class AppColorsData extends Equatable {
         primary4: Color(0xFFF2E8D0), // #f2e8d0
         secondary: Color(0xFF19869C), // #19869c
         accent: Color(0xFF3d5066), // #3d5066
-        lighBackground: Color(0xFFFBFCFE), // #FBFCFE
+        lighBackground: Color(0xFFFDFCF8), // #FBFCFE #FDFCF8
         background: Color(0xFF011640), // #011640
       );
 

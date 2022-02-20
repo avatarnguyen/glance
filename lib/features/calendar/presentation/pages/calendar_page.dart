@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/calendar/presentation/widgets/calendar_cell_widget.dart';
+import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
+import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
 
 part '../widgets/month_listview_widget.dart';
 part '../widgets/single_month_widget.dart';

@@ -31,16 +31,18 @@ class _SingleMonthWidget extends StatelessWidget {
                     "$month ${today.year.toString()}",
                     color: theme.colors.primary1,
                   ),
-                  GestureDetector(
-                    onTap: monthIconPressed,
-                    child: const AppIcon.regular(
+                  IconButton(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    visualDensity: VisualDensity.compact,
+                    onPressed: monthIconPressed,
+                    icon: const AppIcon.regular(
                       Icons.calendar_view_month,
                     ),
                   ),
                 ],
               ),
             ),
-            const AppGap.large(),
+            const AppGap.regular(),
             const CalendarCellWidget(),
           ],
         ),

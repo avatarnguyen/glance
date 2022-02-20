@@ -16,6 +16,7 @@ class AppText extends StatelessWidget {
     Key? key,
     this.color,
     this.fontSize,
+    this.overflow,
     this.maxLines,
     this.level = AppTextLevel.paragraph1,
   }) : super(key: key);
@@ -25,6 +26,7 @@ class AppText extends StatelessWidget {
     Key? key,
     this.color,
     this.fontSize,
+    this.overflow,
     this.maxLines,
   })  : level = AppTextLevel.paragraph1,
         super(key: key);
@@ -35,6 +37,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.fontSize,
     this.maxLines,
+    this.overflow,
   })  : level = AppTextLevel.paragraph2,
         super(key: key);
 
@@ -44,6 +47,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.fontSize,
     this.maxLines,
+    this.overflow,
   })  : level = AppTextLevel.title1,
         super(key: key);
 
@@ -53,6 +57,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.fontSize,
     this.maxLines,
+    this.overflow,
   })  : level = AppTextLevel.title2,
         super(key: key);
 
@@ -62,6 +67,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.fontSize,
     this.maxLines,
+    this.overflow,
   })  : level = AppTextLevel.title3,
         super(key: key);
 
@@ -71,6 +77,7 @@ class AppText extends StatelessWidget {
     this.color,
     this.fontSize,
     this.maxLines,
+    this.overflow,
   })  : level = AppTextLevel.title4,
         super(key: key);
 
@@ -79,11 +86,12 @@ class AppText extends StatelessWidget {
   final Color? color;
   final double? fontSize;
   final int? maxLines;
+  final TextOverflow? overflow;
 
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final color = this.color ?? theme.colors.primary3;
+    final color = this.color ?? theme.colors.accent;
     final style = () {
       switch (level) {
         case AppTextLevel.paragraph1:
@@ -106,7 +114,9 @@ class AppText extends StatelessWidget {
         color: color,
         fontSize: fontSize,
       ),
+      // softWrap: false,
       maxLines: maxLines,
+      overflow: overflow ?? TextOverflow.clip,
     );
   }
 }

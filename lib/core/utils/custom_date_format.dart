@@ -1,3 +1,4 @@
+import 'package:dartx/dartx.dart';
 import 'package:intl/intl.dart';
 
 class CustomDateUtils {
@@ -21,6 +22,16 @@ class CustomDateUtils {
 
   static String returnDateWithDay(DateTime date) {
     return DateFormat.yMEd().format(date);
+  }
+
+  static String getDayTitle(DateTime date) {
+    if (date.isToday) {
+      return "Today";
+    } else if (date.isTomorrow) {
+      return "Tomorrow";
+    } else {
+      return returnDateAndMonth(date);
+    }
   }
 
   /// The last day of a given month

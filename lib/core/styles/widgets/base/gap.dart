@@ -66,7 +66,7 @@ class AppGap extends StatelessWidget {
 
   const AppGap.large({
     Key? key,
-  })  : size = AppGapSize.big,
+  })  : size = AppGapSize.large,
         super(key: key);
 
   final AppGapSize size;

@@ -88,7 +88,7 @@ class AppPadding extends StatelessWidget {
   const AppPadding.small({
     Key? key,
     this.child,
-  })  : padding = const AppEdgeInsets.all(AppGapSize.none),
+  })  : padding = const AppEdgeInsets.all(AppGapSize.small),
         super(key: key);
 
   const AppPadding.semiSmall({
@@ -113,6 +113,12 @@ class AppPadding extends StatelessWidget {
     Key? key,
     this.child,
   })  : padding = const AppEdgeInsets.all(AppGapSize.big),
+        super(key: key);
+
+  const AppPadding.vertiSmall({
+    Key? key,
+    this.child,
+  })  : padding = const AppEdgeInsets.symmetric(vertical: AppGapSize.small),
         super(key: key);
 
   final AppEdgeInsets padding;
