@@ -31,7 +31,7 @@ class DrawerMenuWidget extends StatelessWidget {
       ListTile(
         title: AppText.title2(
           text,
-          color: theme.colors.primary,
+          color: theme.colors.primary1,
         ),
       );
 }

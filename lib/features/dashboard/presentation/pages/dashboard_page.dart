@@ -23,15 +23,15 @@ class DashboardPage extends HookWidget {
         children: [
           FloatingActionButton.small(
             heroTag: null,
-            foregroundColor: theme.colors.foreground,
-            backgroundColor: theme.colors.secondary,
+            foregroundColor: theme.colors.primary3,
+            backgroundColor: theme.colors.accent,
             child: const Icon(Icons.menu),
             onPressed: openDrawer,
           ),
           const AppGap.small(),
           FloatingActionButton.small(
-            foregroundColor: theme.colors.foreground,
-            backgroundColor: theme.colors.secondary,
+            foregroundColor: theme.colors.primary3,
+            backgroundColor: theme.colors.accent,
             child: const Icon(Icons.add),
             onPressed: () {},
           ),
@@ -39,6 +39,7 @@ class DashboardPage extends HookWidget {
         ],
       ),
       body: PageView(
+        physics: const ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
         controller: _pageControler,
         children: const [
