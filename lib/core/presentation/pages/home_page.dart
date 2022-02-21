@@ -3,6 +3,7 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:glance/core/presentation/widgets/drawer_menu_widget.dart';
 import 'package:glance/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/features/project/presentation/pages/project_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _drawerController = AdvancedDrawerController();
+  int viewIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +32,31 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       rtlOpening: true,
-      drawer: const DrawerMenuWidget(),
-      child: DashboardPage(
-        openDrawer: _handleMenuButtonPressed,
+      drawer: DrawerMenuWidget(
+        onItemSelected: _handleItemSelected,
       ),
+      child: _getCurreentView(),
     );
+  }
+
+  Widget _getCurreentView() {
+    switch (viewIndex) {
+      case 0:
+        return DashboardPage(
+          openDrawer: _handleMenuButtonPressed,
+        );
+      case 1:
+        return const ProjectPage();
+      default:
+        return Container(color: Colors.blue);
+    }
+  }
+
+  void _handleItemSelected(int index) {
+    setState(() {
+      viewIndex = index;
+    });
+    _drawerController.hideDrawer();
   }
 
   void _handleMenuButtonPressed() {

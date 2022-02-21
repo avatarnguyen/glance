@@ -48,7 +48,7 @@ class TimeEventWidget extends StatelessWidget {
                 AppText.paragraph2(
                   subtitle!,
                   maxLines: 1,
-                  color: theme.colors.primary2,
+                  color: theme.colors.accent2,
                 ),
             ],
           ),

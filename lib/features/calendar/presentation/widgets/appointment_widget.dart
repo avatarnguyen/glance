@@ -27,7 +27,7 @@ class _AppointmentSheetWidget extends StatelessWidget {
           children: [
             AppText.title1(
               CustomDateUtils.getDayTitle(today),
-              color: theme.colors.accent,
+              color: theme.colors.primary1,
             ),
             Flexible(
               child: PageView(

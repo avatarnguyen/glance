@@ -12,61 +12,61 @@ class OverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final query = MediaQuery.of(context);
     final today = DateTime.now();
 
-    return Container(
-      padding: EdgeInsets.all(theme.spacing.big),
-      width: query.size.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppText.title1(
-            _getCurrentGreeting(today),
-            color: theme.colors.accent,
-          ),
-          const AppGap.regular(),
-          AppText.title2(
-            CustomDateUtils.returnDateWithDay(today),
-            color: theme.colors.accent,
-          ),
-          const AppGap.large(),
-          const AlldayEventWidget(),
-          TimeEventWidget(
-            color: Colors.orange,
-            time: DateTime(2022, 2, 20, 10, 30),
-            text: 'Finishing Project',
-            subtitle: '30min',
-            isEvent: true,
-          ),
-          const AppGap.small(),
-          TimeEventWidget(
-            color: Colors.purple,
-            time: DateTime.now(),
-            text: 'Coding Side Project',
-            subtitle: '1h 30m',
-            isEvent: false,
-          ),
-          const AppGap.small(),
-          TimeEventWidget(
-            color: Colors.purple,
-            time: DateTime.now(),
-            text: 'Coding Side Project',
-            subtitle: '2h',
-            isEvent: false,
-          ),
-          const AppGap.small(),
-          TimeEventWidget(
-            color: Colors.green,
-            time: DateTime.now(),
-            text: 'Get some shit done, without distraction',
-            subtitle: '4h',
-            isEvent: false,
-          ),
-        ],
-      ),
-    ).safeArea();
+    return Scaffold(
+      key: const Key("OverviewPage"),
+      body: AppPadding.big(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppText.title1(
+              _getCurrentGreeting(today),
+              color: theme.colors.primary1,
+            ),
+            const AppGap.regular(),
+            AppText.title2(
+              CustomDateUtils.returnDateWithDay(today),
+              color: theme.colors.primary1,
+            ),
+            const AppGap.large(),
+            const AlldayEventWidget(),
+            TimeEventWidget(
+              color: Colors.orange,
+              time: DateTime(2022, 2, 20, 10, 30),
+              text: 'Finishing Project',
+              subtitle: '30min',
+              isEvent: true,
+            ),
+            const AppGap.small(),
+            TimeEventWidget(
+              color: Colors.purple,
+              time: DateTime.now(),
+              text: 'Coding Side Project',
+              subtitle: '1h 30m',
+              isEvent: false,
+            ),
+            const AppGap.small(),
+            TimeEventWidget(
+              color: Colors.purple,
+              time: DateTime.now(),
+              text: 'Coding Side Project',
+              subtitle: '2h',
+              isEvent: false,
+            ),
+            const AppGap.small(),
+            TimeEventWidget(
+              color: Colors.green,
+              time: DateTime.now(),
+              text: 'Get some shit done, without distraction',
+              subtitle: '4h',
+              isEvent: false,
+            ),
+          ],
+        ),
+      ).safeArea(),
+    );
   }
 
   String _getCurrentGreeting(DateTime date) {

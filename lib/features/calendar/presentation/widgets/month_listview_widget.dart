@@ -28,7 +28,7 @@ class _MonthListWidget extends HookWidget {
               children: [
                 AppText.title1(
                   "$month ${today.year.toString()}",
-                  color: theme.colors.primary1,
+                  color: theme.colors.accent1,
                 ),
                 IconButton(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -57,6 +57,7 @@ class _MonthListWidget extends HookWidget {
                         AppPadding.regular(
                           child: AppText.title2(
                             CustomDateUtils.returnMonth(_startDay),
+                            color: theme.colors.accent4,
                           ),
                         ),
                         const AppGap.small(),

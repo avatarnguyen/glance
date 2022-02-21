@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/features/calendar/presentation/pages/calendar_page.dart';
+import 'package:glance/features/create/presentation/pages/create_page.dart';
 import 'package:glance/features/dashboard/presentation/pages/overview_page.dart';
 
 class DashboardPage extends HookWidget {
@@ -23,17 +24,20 @@ class DashboardPage extends HookWidget {
         children: [
           FloatingActionButton.small(
             heroTag: null,
-            foregroundColor: theme.colors.primary3,
-            backgroundColor: theme.colors.accent,
+            foregroundColor: theme.colors.accent3,
+            backgroundColor: theme.colors.primary1,
             child: const Icon(Icons.menu),
             onPressed: openDrawer,
           ),
           const AppGap.small(),
           FloatingActionButton.small(
-            foregroundColor: theme.colors.primary3,
-            backgroundColor: theme.colors.accent,
+            // heroTag: CreatePage.heroTag(),
+            foregroundColor: theme.colors.accent3,
+            backgroundColor: theme.colors.primary1,
             child: const Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(kRouteCreate);
+            },
           ),
           const AppGap.small(),
         ],

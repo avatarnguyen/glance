@@ -24,7 +24,7 @@ class EventItemWidget extends StatelessWidget {
         const Gap(16.0),
         AppText.title4(
           text,
-          color: theme.colors.accent,
+          color: theme.colors.primary1,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ).flexible(),

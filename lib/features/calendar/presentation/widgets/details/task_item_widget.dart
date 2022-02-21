@@ -29,7 +29,7 @@ class TaskItemWidget extends HookWidget {
         Material(
           color: Colors.transparent,
           child: Checkbox(
-            checkColor: theme.colors.primary4,
+            checkColor: theme.colors.accent4,
             fillColor: MaterialStateProperty.resolveWith(getColor),
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             visualDensity: const VisualDensity(
@@ -48,7 +48,6 @@ class TaskItemWidget extends HookWidget {
         const AppGap.small(),
         AppText.title4(
           text,
-          color: theme.colors.accent,
           overflow: TextOverflow.ellipsis,
           maxLines: 2,
         ).flexible(),

@@ -25,6 +25,7 @@ class CalendarCellWidget extends HookWidget {
     final lastDay = endDay ?? today.endOfMonth;
 
     final _selectedDay = useState(today);
+    final _accent4 = theme.colors.accent4;
 
     return TableCalendar(
       key: const Key('Single_Calender'),
@@ -37,7 +38,7 @@ class CalendarCellWidget extends HookWidget {
           return Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: theme.colors.primary1,
+                color: theme.colors.accent3,
                 width: 1.5,
               ),
               shape: BoxShape.circle,
@@ -45,7 +46,7 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.title4(
               date.day.toString(),
-              color: theme.colors.primary1,
+              color: theme.colors.accent3,
             ),
           );
         },
@@ -54,7 +55,7 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.paragraph1(
               date.day.toString(),
-              color: theme.colors.primary4,
+              color: theme.colors.accent4,
             ),
           );
         },
@@ -63,7 +64,7 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.title4(
               date.day.toString(),
-              color: theme.colors.primary1,
+              color: theme.colors.accent1,
             ),
           );
         },
@@ -72,7 +73,7 @@ class CalendarCellWidget extends HookWidget {
           return Center(
             child: AppText.paragraph2(
               text,
-              color: theme.colors.primary2,
+              color: theme.colors.accent2,
             ),
           );
         },
@@ -85,16 +86,16 @@ class CalendarCellWidget extends HookWidget {
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         defaultTextStyle: theme.typography.paragraph1.copyWith(
-          color: theme.colors.primary4,
+          color: _accent4,
         ),
         weekendTextStyle: theme.typography.paragraph1.copyWith(
-          color: theme.colors.primary4,
+          color: _accent4,
         ),
         todayTextStyle: theme.typography.paragraph1.copyWith(
-          color: theme.colors.primary4,
+          color: _accent4,
         ),
         selectedTextStyle: theme.typography.paragraph1.copyWith(
-          color: theme.colors.primary4,
+          color: _accent4,
         ),
         // todayDecoration: BoxDecoration(),
         outsideDaysVisible: false,
