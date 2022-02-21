@@ -91,7 +91,7 @@ class AppText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final color = this.color ?? theme.colors.accent;
+    final color = this.color ?? theme.colors.primary1;
     final style = () {
       switch (level) {
         case AppTextLevel.paragraph1:

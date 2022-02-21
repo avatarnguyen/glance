@@ -10,6 +10,7 @@ class AppSpacingData extends Equatable {
     required this.semiBig,
     required this.big,
     required this.large,
+    required this.massive,
   });
 
   factory AppSpacingData.regular() => const AppSpacingData(
@@ -19,6 +20,7 @@ class AppSpacingData extends Equatable {
         semiBig: 24,
         big: 32,
         large: 40,
+        massive: 64,
       );
 
   final double small;
@@ -27,6 +29,7 @@ class AppSpacingData extends Equatable {
   final double semiBig;
   final double big;
   final double large;
+  final double massive;
 
   AppEdgeInsetsSpacingData asInsets() => AppEdgeInsetsSpacingData(this);
 
@@ -38,6 +41,7 @@ class AppSpacingData extends Equatable {
         semiBig.named('semiBig'),
         big.named('big'),
         large.named('large'),
+        massive.named('massive'),
       ];
 }
 
@@ -50,6 +54,7 @@ class AppEdgeInsetsSpacingData extends Equatable {
   EdgeInsets get semiBig => EdgeInsets.all(_spacing.semiBig);
   EdgeInsets get big => EdgeInsets.all(_spacing.big);
   EdgeInsets get large => EdgeInsets.all(_spacing.large);
+  EdgeInsets get massive => EdgeInsets.all(_spacing.massive);
 
   final AppSpacingData _spacing;
 
