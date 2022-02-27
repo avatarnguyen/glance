@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 const kSizeTimeWidth = 40.0;
 const kSizeDrawerItemHeight = 50.0;
 
+const kBorderWidthButton = 1.4;
+
 // Screen Size Helpers
 double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
