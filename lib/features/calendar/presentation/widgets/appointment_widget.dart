@@ -12,7 +12,7 @@ class _AppointmentSheetWidget extends StatelessWidget {
     final _textWidth = mediaQuery.size.width - 140;
     final today = DateTime.now();
     return Container(
-      height: mediaQuery.size.height / 1.9,
+      // height: mediaQuery.size.height / 1.9,
       width: mediaQuery.size.width,
       decoration: BoxDecoration(
         color: theme.colors.lighBackground,

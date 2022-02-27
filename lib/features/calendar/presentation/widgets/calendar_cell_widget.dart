@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:dart_date/dart_date.dart';
 import 'package:intl/intl.dart';
 
-class CalendarCellWidget extends HookWidget {
+class CalendarCellWidget extends HookWidget with UiLoggy {
   const CalendarCellWidget({
     Key? key,
     this.startDay,
@@ -78,6 +79,18 @@ class CalendarCellWidget extends HookWidget {
           );
         },
       ),
+      headerStyle: HeaderStyle(
+        titleTextStyle: theme.typography.title4.copyWith(
+          color: theme.colors.accent2,
+        ),
+        leftChevronIcon: const AppIcon.small(FontAwesomeIcons.chevronLeft),
+        rightChevronIcon: const AppIcon.small(FontAwesomeIcons.chevronRight),
+        titleCentered: true,
+        formatButtonVisible: false,
+        // formatButtonTextStyle: theme.typography.title4.copyWith(
+        //   color: theme.colors.accent2,
+        // ),
+      ),
       availableGestures: AvailableGestures.horizontalSwipe,
       headerVisible: false,
       daysOfWeekVisible: true,
@@ -105,6 +118,9 @@ class CalendarCellWidget extends HookWidget {
       onDaySelected: (selectedDay, focusedDay) {
         _selectedDay.value = selectedDay;
         onDaySelected?.call(selectedDay, focusedDay);
+      },
+      onPageChanged: (date) {
+        loggy.info(date);
       },
     );
   }

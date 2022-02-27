@@ -14,38 +14,40 @@ class _SingleMonthWidget extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final today = DateTime.now();
     final month = CustomDateUtils.returnMonth(today);
+    final _startday = today.setMonth(today.month - 2);
+    final _endDay = today.setMonth(today.month + 5);
 
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        height: mediaQuery.size.height / 2,
-        width: mediaQuery.size.width,
-        padding: EdgeInsets.all(theme.spacing.regular),
-        child: Column(
-          children: [
-            AppPadding.small(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AppText.title1(
-                    "$month ${today.year.toString()}",
-                    color: theme.colors.accent1,
+    return Container(
+      width: mediaQuery.size.width,
+      padding: EdgeInsets.all(theme.spacing.regular),
+      child: Column(
+        children: [
+          AppPadding.small(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppText.title1(
+                  "$month ${today.year.toString()}",
+                  color: theme.colors.accent1,
+                ),
+                IconButton(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  visualDensity: VisualDensity.compact,
+                  onPressed: monthIconPressed,
+                  icon: const AppIcon.regular(
+                    Icons.calendar_view_month,
                   ),
-                  IconButton(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    visualDensity: VisualDensity.compact,
-                    onPressed: monthIconPressed,
-                    icon: const AppIcon.regular(
-                      Icons.calendar_view_month,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const AppGap.regular(),
-            const CalendarCellWidget(),
-          ],
-        ),
+          ),
+          const AppGap.semiBig(),
+          CalendarCellWidget(
+            startDay: _startday.startOfMonth,
+            endDay: _endDay.endOfMonth,
+          ),
+          const AppGap.semiSmall(),
+        ],
       ),
     );
   }

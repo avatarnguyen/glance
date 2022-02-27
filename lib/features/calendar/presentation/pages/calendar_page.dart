@@ -32,23 +32,27 @@ class CalendarPage extends HookWidget {
       backgroundColor: theme.colors.background,
       body: SafeArea(
         child: HookBuilder(
-          builder: (context) => Stack(
+          builder: (context) => Column(
             children: [
-              Positioned.fill(
-                child: _showAllMonth.value
-                    ? _MonthListWidget(
-                        monthIconPressed: _toggleMonthSelection,
-                      )
-                    : _SingleMonthWidget(
-                        monthIconPressed: _toggleMonthSelection,
-                      ),
+              // Positioned.fill(
+              //   child: _showAllMonth.value
+              //       ? _MonthListWidget(
+              //           monthIconPressed: _toggleMonthSelection,
+              //         )
+              //       : _SingleMonthWidget(
+              //           monthIconPressed: _toggleMonthSelection,
+              //         ),
+              // ),
+              // if (!_showAllMonth.value)
+              // const Positioned(
+              //   bottom: 0,
+              //   left: 0,
+              //   child: _AppointmentSheetWidget(),
+              // ),
+              _SingleMonthWidget(
+                monthIconPressed: _toggleMonthSelection,
               ),
-              if (!_showAllMonth.value)
-                const Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: _AppointmentSheetWidget(),
-                ),
+              const _AppointmentSheetWidget().expanded(),
             ],
           ),
         ),
