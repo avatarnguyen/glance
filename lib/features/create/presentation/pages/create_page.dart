@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/core/styles/widgets/buttons/icon_button.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/create/presentation/widgets/dotted_tab_indicator.dart';
 import 'package:glance/features/create/presentation/widgets/line_painter.dart';
@@ -53,12 +54,9 @@ class CreatePage extends StatelessWidget {
           bottom: null,
           leading: null,
           actions: [
-            CupertinoButton(
+            AppIconButton.regular(
+              FontAwesomeIcons.times,
               onPressed: context.pop,
-              child: AppIcon.regular(
-                Icons.close,
-                color: theme.colors.primary1,
-              ),
             ),
           ],
         ),
@@ -74,7 +72,11 @@ class CreatePage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: theme.spacing.semiBig),
             children: [
               TabBar(
-                indicatorColor: theme.colors.accent2,
+                unselectedLabelColor: theme.colors.accent2,
+                unselectedLabelStyle: theme.typography.title3,
+                labelColor: theme.colors.primary1,
+                labelStyle: theme.typography.title3,
+                indicatorColor: theme.colors.accent1,
                 indicator: DottedTabIndicator(
                   color: theme.colors.accent2,
                   radius: 4.0,
@@ -83,12 +85,8 @@ class CreatePage extends StatelessWidget {
                 enableFeedback: true,
                 onTap: (index) {},
                 tabs: const [
-                  Tab(
-                    child: AppText.title3('Task'),
-                  ),
-                  Tab(
-                    child: AppText.title3('Event'),
-                  ),
+                  Tab(child: Text('Task')),
+                  Tab(child: Text('Event')),
                 ],
               ),
               const AppGap.semiBig(),
