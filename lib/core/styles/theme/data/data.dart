@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'colors.dart';
@@ -19,6 +20,7 @@ class AppThemeData extends Equatable {
     required this.radius,
     required this.spacing,
     required this.shadow,
+    required this.shadowWithColor,
     required this.durations,
     required this.images,
     // required this.formFactor,
@@ -36,6 +38,7 @@ class AppThemeData extends Equatable {
         radius: const AppRadiusData.regular(),
         spacing: AppSpacingData.regular(),
         shadow: AppShadowsData.regular(),
+        shadowWithColor: AppShadowsData.withColor(const Color(0xFFEDD5AD)),
         durations: AppDurationsData.regular(),
         images: AppImagesData.regular(
           appLogo: appLogo,
@@ -48,6 +51,7 @@ class AppThemeData extends Equatable {
   final AppRadiusData radius;
   final AppSpacingData spacing;
   final AppShadowsData shadow;
+  final AppShadowsData shadowWithColor;
   final AppDurationsData durations;
   final AppImagesData images;
   // final AppFormFactor formFactor;
@@ -77,6 +81,7 @@ class AppThemeData extends Equatable {
       images: images,
       radius: radius,
       shadow: shadow,
+      shadowWithColor: shadowWithColor,
       spacing: spacing,
       typography: typography,
     );
@@ -91,6 +96,7 @@ class AppThemeData extends Equatable {
       icons: icons, images: images,
       radius: radius,
       shadow: shadow,
+      shadowWithColor: shadowWithColor,
       spacing: spacing,
       typography: typography,
     );
@@ -121,6 +127,7 @@ class AppThemeData extends Equatable {
       images: images,
       radius: radius,
       shadow: shadow,
+      shadowWithColor: shadowWithColor,
       spacing: spacing,
       typography: typography,
     );
