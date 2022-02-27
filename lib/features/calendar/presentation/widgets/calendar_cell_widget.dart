@@ -11,11 +11,15 @@ class CalendarCellWidget extends HookWidget with UiLoggy {
     Key? key,
     this.startDay,
     this.endDay,
+    this.headerVisible,
     this.onDaySelected,
+    this.rowHeight,
   }) : super(key: key);
 
   final DateTime? startDay;
   final DateTime? endDay;
+  final bool? headerVisible;
+  final double? rowHeight;
   final void Function(DateTime select, DateTime focus)? onDaySelected;
 
   @override
@@ -92,9 +96,9 @@ class CalendarCellWidget extends HookWidget with UiLoggy {
         // ),
       ),
       availableGestures: AvailableGestures.horizontalSwipe,
-      headerVisible: false,
+      headerVisible: headerVisible ?? false,
       daysOfWeekVisible: true,
-      rowHeight: 36,
+      rowHeight: rowHeight ?? 36,
       calendarFormat: CalendarFormat.month,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(

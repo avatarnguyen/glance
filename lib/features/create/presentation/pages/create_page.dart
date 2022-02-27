@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/core/presentation/widgets/bottomsheet/datepicker_bottomsheet.dart';
 import 'package:glance/core/styles/widgets/buttons/icon_button.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/create/presentation/widgets/dotted_tab_indicator.dart';
@@ -69,25 +70,34 @@ class CreatePage extends StatelessWidget {
         body: Material(
           type: MaterialType.transparency,
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: theme.spacing.semiBig),
+            padding: EdgeInsets.symmetric(
+              horizontal: theme.spacing.semiBig,
+              vertical: 0.0,
+            ),
             children: [
-              TabBar(
-                unselectedLabelColor: theme.colors.accent2,
-                unselectedLabelStyle: theme.typography.title3,
-                labelColor: theme.colors.primary1,
-                labelStyle: theme.typography.title3,
-                indicatorColor: theme.colors.accent1,
-                indicator: DottedTabIndicator(
-                  color: theme.colors.accent2,
-                  radius: 4.0,
+              Align(
+                alignment: Alignment.topCenter,
+                child: SizedBox(
+                  width: screenWidthPercentage(context, percentage: 0.6),
+                  child: TabBar(
+                    unselectedLabelColor: theme.colors.accent2,
+                    unselectedLabelStyle: theme.typography.title3,
+                    labelColor: theme.colors.primary1,
+                    labelStyle: theme.typography.title3,
+                    indicatorColor: theme.colors.accent1,
+                    indicator: DottedTabIndicator(
+                      color: theme.colors.accent2,
+                      radius: 4.0,
+                    ),
+                    overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
+                    enableFeedback: true,
+                    onTap: (index) {},
+                    tabs: const [
+                      Tab(child: Text('Task')),
+                      Tab(child: Text('Event')),
+                    ],
+                  ),
                 ),
-                overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
-                enableFeedback: true,
-                onTap: (index) {},
-                tabs: const [
-                  Tab(child: Text('Task')),
-                  Tab(child: Text('Event')),
-                ],
               ),
               const AppGap.semiBig(),
               const ProjectPickerWidget(),

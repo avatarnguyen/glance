@@ -20,16 +20,32 @@ class _EditDateWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
-            children: [
-              AppText.title3(
-                CustomDateUtils.returnDateWithDay(today),
-              ),
-              const AppGap.small(),
-              AppText.title4(
-                CustomDateUtils.returnTime(today),
-              ),
-            ],
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              showAppBottomSheet(
+                context,
+                headerVisible: false,
+                fullscreen: true,
+                height: screenHeightPercentage(
+                  context,
+                  percentage: 0.75,
+                ),
+                backgroundColor: theme.colors.primary1,
+                child: const DatePickerBottomsheet(),
+              );
+            },
+            child: Column(
+              children: [
+                AppText.title3(
+                  CustomDateUtils.returnDateWithDay(today),
+                ),
+                const AppGap.small(),
+                AppText.title4(
+                  CustomDateUtils.returnTime(today),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             width: 2.0,
@@ -38,16 +54,32 @@ class _EditDateWidget extends StatelessWidget {
               painter: LinePainter(_primaryColor),
             ),
           ),
-          Column(
-            children: [
-              AppText.title3(
-                CustomDateUtils.returnDateWithDay(today),
-              ),
-              const AppGap.small(),
-              AppText.title4(
-                CustomDateUtils.returnTime(today),
-              ),
-            ],
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              showAppBottomSheet(
+                context,
+                headerVisible: false,
+                fullscreen: true,
+                height: screenHeightPercentage(
+                  context,
+                  percentage: 0.75,
+                ),
+                backgroundColor: theme.colors.primary1,
+                child: const DatePickerBottomsheet(),
+              );
+            },
+            child: Column(
+              children: [
+                AppText.title3(
+                  CustomDateUtils.returnDateWithDay(today),
+                ),
+                const AppGap.small(),
+                AppText.title4(
+                  CustomDateUtils.returnTime(today),
+                ),
+              ],
+            ),
           ),
         ],
       ),

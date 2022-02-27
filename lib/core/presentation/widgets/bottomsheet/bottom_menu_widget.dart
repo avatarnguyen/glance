@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
-import 'package:glance/core/styles/widgets/buttons/icon_button.dart';
 
 Future<T?> showAppBottomSheet<T>(
   BuildContext context, {
@@ -9,7 +8,10 @@ Future<T?> showAppBottomSheet<T>(
   bool? fullscreen,
   bool headerVisible = true,
   Color? backgroundColor,
+  Color? foregroundColor,
   String? title,
+  double? height,
+  Widget? leading,
 }) {
   final theme = AppTheme.of(context);
   return showModalBottomSheet<T>(
@@ -18,6 +20,11 @@ Future<T?> showAppBottomSheet<T>(
     barrierColor: null,
     isScrollControlled: fullscreen ?? false,
     useRootNavigator: true,
+    constraints: height != null
+        ? BoxConstraints(
+            maxHeight: height,
+          )
+        : null,
     builder: (ctx) {
       return Container(
         margin: theme.spacing.asInsets().regular,
@@ -37,11 +44,16 @@ Future<T?> showAppBottomSheet<T>(
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      AppText.title2(title ?? '').padding(
+                      if (leading != null) leading,
+                      AppText.title2(
+                        title ?? '',
+                        color: foregroundColor,
+                      ).padding(
                         left: theme.spacing.small,
                       ),
                       AppIconButton.regular(
                         FontAwesomeIcons.times,
+                        color: foregroundColor,
                         onPressed: () {
                           Navigator.pop(context);
                         },
