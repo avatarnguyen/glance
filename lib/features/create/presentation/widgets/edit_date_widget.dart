@@ -12,10 +12,10 @@ class _EditDateWidget extends StatelessWidget {
     final _primaryColor = theme.colors.primary1;
 
     return Container(
-      padding: theme.spacing.asInsets().semiSmall,
+      padding: theme.spacing.asInsets().small,
       decoration: BoxDecoration(
         borderRadius: theme.radius.asBorderRadius().big,
-        border: Border.all(color: _primaryColor),
+        border: Border.all(color: _primaryColor, width: kBorderWidthButton),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

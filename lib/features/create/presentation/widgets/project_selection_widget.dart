@@ -17,9 +17,9 @@ class _ProjectSelectionWidget extends StatelessWidget with UiLoggy {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: theme.radius.asBorderRadius().medium,
-          border: Border.all(color: theme.colors.primary1),
+          border: Border.all(color: theme.colors.primary1, width: kBorderWidthButton),
         ),
-        child: const AppText.title3('Project ABC'),
+        child: const AppText.title2('Project ABC'),
       ),
     );
   }
