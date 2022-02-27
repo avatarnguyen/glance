@@ -13,7 +13,9 @@ class _TitleEditFieldWidget extends HookWidget {
     return TextField(
       controller: _textController,
       autofocus: true,
-      style: theme.typography.title1,
+      style: theme.typography.title1.copyWith(
+        color: theme.colors.primary1,
+      ),
       cursorColor: theme.colors.accent1,
       minLines: 2,
       maxLines: 3,
@@ -21,7 +23,9 @@ class _TitleEditFieldWidget extends HookWidget {
       textAlignVertical: TextAlignVertical.center,
       decoration: InputDecoration(
         hintText: 'New Task',
-        hintStyle: theme.typography.title1.copyWith(color: theme.colors.accent2),
+        hintStyle: theme.typography.title1.copyWith(
+          color: theme.colors.accent2,
+        ),
         border: InputBorder.none,
       ),
       onChanged: (text) {},
