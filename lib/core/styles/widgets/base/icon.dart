@@ -5,6 +5,7 @@ import 'package:glance/core/styles/styles.dart';
 
 enum AppIconSize {
   small,
+  semiSmall,
   regular,
   big,
 }
@@ -14,6 +15,8 @@ extension AppIconSizeExtension on AppIconSizesData {
     switch (size) {
       case AppIconSize.small:
         return small;
+      case AppIconSize.semiSmall:
+        return semiSmall;
       case AppIconSize.regular:
         return regular;
       case AppIconSize.big:
@@ -37,6 +40,12 @@ class AppIcon extends StatelessWidget {
   })  : size = AppIconSize.small,
         super(key: key);
 
+  const AppIcon.semiSmall(
+    this.data, {
+    Key? key,
+    this.color,
+  })  : size = AppIconSize.semiSmall,
+        super(key: key);
   const AppIcon.regular(
     this.data, {
     Key? key,

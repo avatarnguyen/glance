@@ -22,6 +22,14 @@ class AppIconButton extends StatelessWidget {
   })  : size = AppIconSize.small,
         super(key: key);
 
+  const AppIconButton.semiSmall(
+    this.data, {
+    Key? key,
+    this.color,
+    this.onPressed,
+  })  : size = AppIconSize.semiSmall,
+        super(key: key);
+
   const AppIconButton.regular(
     this.data, {
     Key? key,

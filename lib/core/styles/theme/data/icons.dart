@@ -75,23 +75,27 @@ class AppIconCharactersData extends Equatable {
 class AppIconSizesData extends Equatable {
   const AppIconSizesData({
     required this.small,
+    required this.semiSmall,
     required this.regular,
     required this.big,
   });
 
   factory AppIconSizesData.regular() => const AppIconSizesData(
         small: 16.0,
+        semiSmall: 20.0,
         regular: 24.0,
         big: 32.0,
       );
 
   final double small;
+  final double semiSmall;
   final double regular;
   final double big;
 
   @override
   List<Object?> get props => [
         small.named('small'),
+        semiSmall.named('semiSmall'),
         regular.named('regular'),
         big.named('big'),
       ];
