@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/styles/styles.dart';
 
 enum AppIconSize {
@@ -58,7 +59,7 @@ class AppIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     final color = this.color ?? theme.colors.accent3;
-    return Icon(
+    return FaIcon(
       data,
       color: color,
       size: theme.icons.sizes.resolve(size),
