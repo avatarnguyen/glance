@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:glance/core/glance_core.dart';
-import 'package:glance/core/presentation/widgets/bottom_menu_widget.dart';
 
 class ProjectPickerWidget extends StatelessWidget {
   const ProjectPickerWidget({Key? key}) : super(key: key);
