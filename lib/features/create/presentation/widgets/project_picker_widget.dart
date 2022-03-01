@@ -21,7 +21,7 @@ class ProjectPickerWidget extends StatelessWidget {
             context,
             percentage: 0.75,
           ),
-          backgroundColor: theme.colors.primary1,
+          backgroundColor: theme.colors.background,
           foregroundColor: theme.colors.accent2,
           title: 'Projects',
           leading: AppIconButton.semiSmall(
@@ -71,7 +71,7 @@ class _ProjectListWidget extends HookWidget {
   }) {
     return ListTile(
       dense: false,
-      selectedTileColor: theme.colors.primary2.withOpacity(0.4),
+      selectedTileColor: theme.colors.primary1.withOpacity(0.4),
       selected: selectedIndex.value == index,
       shape: RoundedRectangleBorder(
         borderRadius: theme.radius.asBorderRadius().big,

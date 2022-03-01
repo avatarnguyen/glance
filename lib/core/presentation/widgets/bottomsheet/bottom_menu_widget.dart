@@ -33,7 +33,7 @@ Future<T?> showAppBottomSheet<T>(
           color: backgroundColor ?? theme.colors.lighBackground,
           borderRadius: theme.radius.asBorderRadius().big,
           boxShadow: [
-            theme.shadowWithColor.small,
+            theme.shadow.small,
             // theme.shadowWithColor.regular,
           ],
         ),

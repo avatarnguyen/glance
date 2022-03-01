@@ -23,17 +23,7 @@ class _EditDateWidget extends StatelessWidget {
           CupertinoButton(
             padding: EdgeInsets.zero,
             onPressed: () {
-              showAppBottomSheet(
-                context,
-                headerVisible: false,
-                fullscreen: true,
-                height: screenHeightPercentage(
-                  context,
-                  percentage: 0.75,
-                ),
-                backgroundColor: theme.colors.primary1,
-                child: const DatePickerBottomsheet(),
-              );
+              _handleDatePickerPressed(context);
             },
             child: Column(
               children: [
@@ -57,17 +47,7 @@ class _EditDateWidget extends StatelessWidget {
           CupertinoButton(
             padding: EdgeInsets.zero,
             onPressed: () {
-              showAppBottomSheet(
-                context,
-                headerVisible: false,
-                fullscreen: true,
-                height: screenHeightPercentage(
-                  context,
-                  percentage: 0.75,
-                ),
-                backgroundColor: theme.colors.primary1,
-                child: const DatePickerBottomsheet(),
-              );
+              _handleDatePickerPressed(context);
             },
             child: Column(
               children: [
@@ -83,6 +63,21 @@ class _EditDateWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _handleDatePickerPressed(BuildContext context) {
+    final theme = AppTheme.of(context);
+    showAppBottomSheet(
+      context,
+      headerVisible: true,
+      fullscreen: true,
+      height: screenHeightPercentage(
+        context,
+        percentage: 0.75,
+      ),
+      backgroundColor: theme.colors.background,
+      child: const DatePickerBottomsheet(),
     );
   }
 }

@@ -14,11 +14,18 @@ class CalendarCellWidget extends HookWidget with UiLoggy {
     this.headerVisible,
     this.onDaySelected,
     this.rowHeight,
+    this.rangeStart,
+    this.rangeEnd,
+    this.fullMonth,
   }) : super(key: key);
 
   final DateTime? startDay;
   final DateTime? endDay;
+  final DateTime? rangeStart;
+  final DateTime? rangeEnd;
+
   final bool? headerVisible;
+  final bool? fullMonth;
   final double? rowHeight;
   final void Function(DateTime select, DateTime focus)? onDaySelected;
 
@@ -38,6 +45,8 @@ class CalendarCellWidget extends HookWidget with UiLoggy {
       lastDay: lastDay,
       focusedDay: firstDay,
       currentDay: today,
+      rangeStartDay: rangeStart,
+      rangeEndDay: rangeEnd,
       calendarBuilders: CalendarBuilders(
         selectedBuilder: (_, date, events) {
           return Container(
@@ -99,7 +108,7 @@ class CalendarCellWidget extends HookWidget with UiLoggy {
       headerVisible: headerVisible ?? false,
       daysOfWeekVisible: true,
       rowHeight: rowHeight ?? 36,
-      calendarFormat: CalendarFormat.month,
+      calendarFormat: fullMonth == false ? CalendarFormat.twoWeeks : CalendarFormat.month,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         defaultTextStyle: theme.typography.paragraph1.copyWith(

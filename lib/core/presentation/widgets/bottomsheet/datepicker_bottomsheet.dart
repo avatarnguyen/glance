@@ -1,10 +1,15 @@
+import 'package:dartx/dartx.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/features/calendar/presentation/widgets/calendar_cell_widget.dart';
 import 'package:dart_date/dart_date.dart';
+
+enum DatePickerMode {
+  timeRange,
+  allDay,
+  multipleDay,
+}
 
 class DatePickerBottomsheet extends HookWidget with UiLoggy {
   const DatePickerBottomsheet({Key? key}) : super(key: key);
@@ -14,87 +19,164 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
     final theme = AppTheme.of(context);
     final today = DateTime.now();
     final _endDay = today.setMonth(today.month + 3);
+    final _pageControler = usePageController();
     final _selectedIndex = useState(0);
+    final _mode = useState(DatePickerMode.timeRange);
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const AppGap.small(),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const AppGap.semiBig().flexible(),
-            ChoiceChip(
-              padding: EdgeInsets.zero,
-              label: const Text('Start'),
-              labelPadding: EdgeInsets.symmetric(
-                vertical: 0,
-                horizontal: theme.spacing.big,
-              ),
-              selectedColor: theme.colors.accent2,
-              side: BorderSide(color: theme.colors.accent2),
-              backgroundColor: theme.colors.primary1,
-              labelStyle: theme.typography.title3.copyWith(
-                color: _selectedIndex.value == 0 ? theme.colors.primary1 : theme.colors.accent2,
-              ),
-              selected: _selectedIndex.value == 0,
-              onSelected: (bool selected) {
+            AppTextButton.regular(
+              data: "Time Range",
+              color: _mode.value == DatePickerMode.timeRange ? theme.colors.accent2 : null,
+              onPressed: () {
+                _mode.value = DatePickerMode.timeRange;
                 _selectedIndex.value = 0;
               },
             ),
-            const AppGap.regular(),
-            ChoiceChip(
-              padding: EdgeInsets.zero,
-              label: const Text('End'),
-              labelPadding: EdgeInsets.symmetric(
-                vertical: 0,
-                horizontal: theme.spacing.big,
-              ),
-              selectedColor: theme.colors.accent2,
-              backgroundColor: theme.colors.primary1,
-              side: BorderSide(color: theme.colors.accent2),
-              labelStyle: theme.typography.title3.copyWith(
-                color: _selectedIndex.value == 1 ? theme.colors.primary1 : theme.colors.accent2,
-              ),
-              selected: _selectedIndex.value == 1,
-              onSelected: (bool selected) {
-                _selectedIndex.value = 1;
+            AppTextButton.regular(
+              data: "All day",
+              color: _mode.value == DatePickerMode.allDay ? theme.colors.accent2 : null,
+              onPressed: () {
+                _mode.value = DatePickerMode.allDay;
               },
             ),
-            const AppGap.semiBig().flexible(),
-            AppIconButton.regular(
-              FontAwesomeIcons.times,
-              color: theme.colors.accent2,
+            AppTextButton.regular(
+              data: "Multiple Day",
+              color: _mode.value == DatePickerMode.multipleDay ? theme.colors.accent2 : null,
               onPressed: () {
-                Navigator.pop(context);
+                _mode.value = DatePickerMode.multipleDay;
               },
             ),
           ],
         ),
-        CalendarCellWidget(
-          headerVisible: true,
-          rowHeight: 32,
-          startDay: today.startOfMonth,
-          endDay: _endDay.endOfMonth,
-        ),
-        SizedBox(
-          // height: 160,
-          width: screenWidthPercentage(context, percentage: 0.7),
-          child: CupertinoTheme(
-            data: CupertinoThemeData(
-              textTheme: CupertinoTextThemeData(
-                dateTimePickerTextStyle: theme.typography.title3.copyWith(
-                  color: theme.colors.accent2,
-                ),
-              ),
-            ),
-            child: CupertinoDatePicker(
-              use24hFormat: MediaQuery.of(context).alwaysUse24HourFormat,
-              mode: CupertinoDatePickerMode.time,
-              initialDateTime: DateTime.now(),
-              onDateTimeChanged: onDateTimeChanged,
-            ),
+        const AppGap.small(),
+        if (_mode.value == DatePickerMode.allDay || _mode.value == DatePickerMode.multipleDay) ...[
+          CalendarCellWidget(
+            headerVisible: true,
+            rowHeight: 30,
+            // rangeStart: 1.days.fromNow,
+            // rangeEnd: today.setDay(today.day + 2),
+            startDay: today.startOfMonth,
+            endDay: _endDay.endOfMonth,
           ),
-        ).expanded(),
+          const AppGap.big(),
+        ],
+        if (_mode.value == DatePickerMode.timeRange) ...[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AppTextButton.regular(
+                data: 'Start',
+                color: _selectedIndex.value == 0 ? theme.colors.accent3 : theme.colors.primary1,
+                onPressed: () {
+                  _pageControler.animateToPage(
+                    0,
+                    duration: 500.milliseconds,
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
+              AppTextButton.regular(
+                data: 'End',
+                color: _selectedIndex.value == 1 ? theme.colors.accent3 : theme.colors.primary1,
+                onPressed: () {
+                  _pageControler.animateToPage(
+                    1,
+                    duration: 500.milliseconds,
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
+            ],
+          ),
+          PageView(
+            controller: _pageControler,
+            scrollDirection: Axis.horizontal,
+            onPageChanged: (index) {
+              _selectedIndex.value = index;
+            },
+            children: [
+              Column(
+                children: [
+                  CalendarCellWidget(
+                    headerVisible: true,
+                    fullMonth: false,
+                    rowHeight: 30,
+                    startDay: today.startOfMonth,
+                    endDay: _endDay.endOfMonth,
+                  ),
+                  SizedBox(
+                    child: CupertinoTheme(
+                      data: CupertinoThemeData(
+                        textTheme: CupertinoTextThemeData(
+                          dateTimePickerTextStyle: theme.typography.title3.copyWith(
+                            color: theme.colors.accent2,
+                          ),
+                        ),
+                      ),
+                      child: CupertinoDatePicker(
+                        key: const Key('StartTimePicker'),
+                        use24hFormat: MediaQuery.of(context).alwaysUse24HourFormat,
+                        mode: CupertinoDatePickerMode.time,
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: onDateTimeChanged,
+                      ),
+                    ),
+                  ).expanded(),
+                ],
+              ),
+              Column(
+                children: [
+                  CalendarCellWidget(
+                    headerVisible: true,
+                    fullMonth: false,
+                    rowHeight: 30,
+                    startDay: today.startOfMonth,
+                    endDay: _endDay.endOfMonth,
+                  ),
+                  SizedBox(
+                    child: CupertinoTheme(
+                      data: CupertinoThemeData(
+                        textTheme: CupertinoTextThemeData(
+                          dateTimePickerTextStyle: theme.typography.title3.copyWith(
+                            color: theme.colors.accent2,
+                          ),
+                        ),
+                      ),
+                      child: CupertinoDatePicker(
+                        key: const Key('EndTimePicker'),
+                        use24hFormat: MediaQuery.of(context).alwaysUse24HourFormat,
+                        mode: CupertinoDatePickerMode.time,
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: onDateTimeChanged,
+                      ),
+                    ),
+                  ).expanded(),
+                ],
+              ),
+            ],
+          ).expanded(),
+        ],
+        Padding(
+          padding: EdgeInsets.only(
+            top: theme.spacing.small,
+            bottom: theme.spacing.semiSmall,
+          ),
+          child: Row(
+            children: [
+              AppFilledButton.regular(
+                radius: theme.radius.regular.x,
+                data: 'Save',
+                onPressed: () {},
+              ).expanded(),
+            ],
+          ),
+        ),
       ],
     );
   }
