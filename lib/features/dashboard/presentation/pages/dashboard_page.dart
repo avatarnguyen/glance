@@ -44,7 +44,6 @@ class DashboardPage extends HookWidget {
       ),
       body: PageView(
         physics: const ClampingScrollPhysics(),
-        scrollDirection: Axis.vertical,
         controller: _pageControler,
         children: const [
           CalendarPage(),
