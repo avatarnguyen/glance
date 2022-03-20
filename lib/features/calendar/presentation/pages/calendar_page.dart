@@ -6,6 +6,7 @@ import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/calendar/presentation/widgets/calendar_cell_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 part '../widgets/month_listview_widget.dart';
 part '../widgets/single_month_widget.dart';
@@ -13,50 +14,74 @@ part '../widgets/appointment_widget.dart';
 
 const kMonthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-class CalendarPage extends HookWidget {
+class CalendarPage extends StatefulWidget {
   const CalendarPage({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<CalendarPage> createState() => _CalendarPageState();
+}
+
+class _CalendarPageState extends State<CalendarPage> {
+  final _elements = [
+    {'name': 'John', 'group': "2022.03.14"},
+    {'name': 'Test 1', 'group': "2022.03.14"},
+    {'name': 'This is a test', 'group': "2022.03.14"},
+    {'name': 'Test 2', 'group': "2022.03.14"},
+    {'name': 'John', 'group': "2022.03.15"},
+    {'name': 'Random Test', 'group': "2022.03.15"},
+    {'name': 'John', 'group': "2022.03.15"},
+    {'name': 'Miranda', 'group': "2022.03.16"},
+    {'name': 'Miranda', 'group': "2022.03.16"},
+    {'name': 'Miranda', 'group': "2022.03.16"},
+    {'name': 'Mike', 'group': "2022.03.17"},
+    {'name': 'Mike', 'group': "2022.03.17"},
+    {'name': 'Test', 'group': "2022.03.17"},
+    {'name': 'Danny', 'group': "2022.03.17"},
+    {'name': 'Mike', 'group': "2022.03.18"},
+    {'name': 'Mike', 'group': "2022.03.18"},
+    {'name': 'Mike', 'group': "2022.03.18"},
+    {'name': 'Test', 'group': "2022.03.19"},
+    {'name': 'Danny', 'group': "2022.03.19"},
+  ];
+  @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    // final _showAllMonth = useState(false);
 
-    final _showAllMonth = useState(false);
-
-    void _toggleMonthSelection() {
-      _showAllMonth.value = !_showAllMonth.value;
-    }
+    // void _toggleMonthSelection() {
+    //   _showAllMonth.value = !_showAllMonth.value;
+    // }
 
     return Scaffold(
-      backgroundColor: theme.colors.background,
+      backgroundColor: context.gColor.lighBackground,
       body: SafeArea(
-        child: HookBuilder(
-          builder: (context) => Column(
-            children: [
-              // Positioned.fill(
-              //   child: _showAllMonth.value
-              //       ? _MonthListWidget(
-              //           monthIconPressed: _toggleMonthSelection,
-              //         )
-              //       : _SingleMonthWidget(
-              //           monthIconPressed: _toggleMonthSelection,
-              //         ),
-              // ),
-              // if (!_showAllMonth.value)
-              // const Positioned(
-              //   bottom: 0,
-              //   left: 0,
-              //   child: _AppointmentSheetWidget(),
-              // ),
-              _SingleMonthWidget(
-                monthIconPressed: _toggleMonthSelection,
+        child: GroupedListView<dynamic, String>(
+          elements: _elements,
+          groupBy: (element) => element['group'],
+          groupComparator: (value1, value2) => value2.compareTo(value1),
+          order: GroupedListOrder.DESC,
+          groupSeparatorBuilder: (String value) => AppPadding.regular(
+            child: AppText.title2(value),
+          ),
+          itemComparator: (item1, item2) => item1['name'].compareTo(item2['name']),
+          itemBuilder: (ctx, element) => AppPadding.small(
+            child: Card(
+              elevation: 5,
+              child: ListTile(
+                title: AppText.title4(
+                  element['name'],
+                ),
               ),
-              const _AppointmentSheetWidget().expanded(),
-            ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+            // _SingleMonthWidget(
+            //   monthIconPressed: _toggleMonthSelection,
+            // ),
+            // const _AppointmentSheetWidget().expanded(),

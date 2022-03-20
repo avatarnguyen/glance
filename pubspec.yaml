@@ -24,6 +24,7 @@ dependencies:
   table_calendar: ^3.0.3
   gap: ^2.0.0
   flutter_svg: ^1.0.3
+  grouped_list: ^4.2.0
   # flutter_platform_widgets: ^1.20.0
 
   # Routing
