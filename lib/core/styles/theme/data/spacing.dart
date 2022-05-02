@@ -7,6 +7,7 @@ class AppSpacingData extends Equatable {
     required this.small,
     required this.semiSmall,
     required this.regular,
+    required this.medium,
     required this.semiBig,
     required this.big,
     required this.large,
@@ -17,6 +18,7 @@ class AppSpacingData extends Equatable {
         small: 4,
         semiSmall: 8,
         regular: 12,
+        medium: 18,
         semiBig: 24,
         big: 32,
         large: 40,
@@ -26,6 +28,7 @@ class AppSpacingData extends Equatable {
   final double small;
   final double semiSmall;
   final double regular;
+  final double medium;
   final double semiBig;
   final double big;
   final double large;
@@ -38,6 +41,7 @@ class AppSpacingData extends Equatable {
         small.named('small'),
         semiSmall.named('semiSmall'),
         regular.named('regular'),
+        medium.named('medium'),
         semiBig.named('semiBig'),
         big.named('big'),
         large.named('large'),
@@ -51,6 +55,7 @@ class AppEdgeInsetsSpacingData extends Equatable {
   EdgeInsets get small => EdgeInsets.all(_spacing.small);
   EdgeInsets get semiSmall => EdgeInsets.all(_spacing.semiSmall);
   EdgeInsets get regular => EdgeInsets.all(_spacing.regular);
+  EdgeInsets get medium => EdgeInsets.all(_spacing.medium);
   EdgeInsets get semiBig => EdgeInsets.all(_spacing.semiBig);
   EdgeInsets get big => EdgeInsets.all(_spacing.big);
   EdgeInsets get large => EdgeInsets.all(_spacing.large);

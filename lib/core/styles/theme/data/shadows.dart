@@ -6,6 +6,7 @@ const Color kcLightShadow = Color(0x19303133);
 
 class AppShadowsData extends Equatable {
   const AppShadowsData({
+    required this.base,
     required this.small,
     required this.regular,
     required this.medium,
@@ -14,6 +15,10 @@ class AppShadowsData extends Equatable {
   });
 
   factory AppShadowsData.regular() => const AppShadowsData(
+        base: BoxShadow(
+          color: kcLightShadow,
+          blurRadius: 1,
+        ),
         small: BoxShadow(
           color: kcLightShadow,
           blurRadius: 3,
@@ -42,6 +47,10 @@ class AppShadowsData extends Equatable {
       );
 
   factory AppShadowsData.withColor(Color color) => AppShadowsData(
+        base: BoxShadow(
+          color: color,
+          blurRadius: 1,
+        ),
         small: BoxShadow(
           color: color,
           blurRadius: 3,
@@ -69,6 +78,7 @@ class AppShadowsData extends Equatable {
         ),
       );
 
+  final BoxShadow base;
   final BoxShadow small;
   final BoxShadow regular;
   final BoxShadow medium;
@@ -77,6 +87,7 @@ class AppShadowsData extends Equatable {
 
   @override
   List<Object?> get props => [
+        base.named('base'),
         small.named('small'),
         regular.named('regular'),
         medium.named('medium'),
