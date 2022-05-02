@@ -1,6 +1,6 @@
 part of '../pages/create_page.dart';
 
-class _TypeEditWidget extends HookWidget with UiLoggy {
+class _TypeEditWidget extends HookWidget {
   const _TypeEditWidget({Key? key}) : super(key: key);
 
   @override

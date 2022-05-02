@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartx/dartx.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -11,7 +13,7 @@ enum DatePickerMode {
   multipleDay,
 }
 
-class DatePickerBottomsheet extends HookWidget with UiLoggy {
+class DatePickerBottomsheet extends HookWidget {
   const DatePickerBottomsheet({Key? key}) : super(key: key);
 
   @override
@@ -31,7 +33,9 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
           children: [
             AppTextButton.regular(
               data: "Time Range",
-              color: _mode.value == DatePickerMode.timeRange ? theme.colors.accent2 : null,
+              color: _mode.value == DatePickerMode.timeRange
+                  ? theme.colors.accent2
+                  : null,
               onPressed: () {
                 _mode.value = DatePickerMode.timeRange;
                 _selectedIndex.value = 0;
@@ -39,14 +43,18 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
             ),
             AppTextButton.regular(
               data: "All day",
-              color: _mode.value == DatePickerMode.allDay ? theme.colors.accent2 : null,
+              color: _mode.value == DatePickerMode.allDay
+                  ? theme.colors.accent2
+                  : null,
               onPressed: () {
                 _mode.value = DatePickerMode.allDay;
               },
             ),
             AppTextButton.regular(
               data: "Multiple Day",
-              color: _mode.value == DatePickerMode.multipleDay ? theme.colors.accent2 : null,
+              color: _mode.value == DatePickerMode.multipleDay
+                  ? theme.colors.accent2
+                  : null,
               onPressed: () {
                 _mode.value = DatePickerMode.multipleDay;
               },
@@ -54,7 +62,8 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
           ],
         ),
         const AppGap.small(),
-        if (_mode.value == DatePickerMode.allDay || _mode.value == DatePickerMode.multipleDay) ...[
+        if (_mode.value == DatePickerMode.allDay ||
+            _mode.value == DatePickerMode.multipleDay) ...[
           CalendarCellWidget(
             headerVisible: true,
             rowHeight: 30,
@@ -72,7 +81,9 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
             children: [
               AppTextButton.regular(
                 data: 'Start',
-                color: _selectedIndex.value == 0 ? theme.colors.accent3 : theme.colors.primary1,
+                color: _selectedIndex.value == 0
+                    ? theme.colors.accent3
+                    : theme.colors.primary1,
                 onPressed: () {
                   _pageControler.animateToPage(
                     0,
@@ -83,7 +94,9 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
               ),
               AppTextButton.regular(
                 data: 'End',
-                color: _selectedIndex.value == 1 ? theme.colors.accent3 : theme.colors.primary1,
+                color: _selectedIndex.value == 1
+                    ? theme.colors.accent3
+                    : theme.colors.primary1,
                 onPressed: () {
                   _pageControler.animateToPage(
                     1,
@@ -114,14 +127,16 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
                     child: CupertinoTheme(
                       data: CupertinoThemeData(
                         textTheme: CupertinoTextThemeData(
-                          dateTimePickerTextStyle: theme.typography.title3.copyWith(
+                          dateTimePickerTextStyle:
+                              theme.typography.title3.copyWith(
                             color: theme.colors.accent2,
                           ),
                         ),
                       ),
                       child: CupertinoDatePicker(
                         key: const Key('StartTimePicker'),
-                        use24hFormat: MediaQuery.of(context).alwaysUse24HourFormat,
+                        use24hFormat:
+                            MediaQuery.of(context).alwaysUse24HourFormat,
                         mode: CupertinoDatePickerMode.time,
                         initialDateTime: DateTime.now(),
                         onDateTimeChanged: onDateTimeChanged,
@@ -143,14 +158,16 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
                     child: CupertinoTheme(
                       data: CupertinoThemeData(
                         textTheme: CupertinoTextThemeData(
-                          dateTimePickerTextStyle: theme.typography.title3.copyWith(
+                          dateTimePickerTextStyle:
+                              theme.typography.title3.copyWith(
                             color: theme.colors.accent2,
                           ),
                         ),
                       ),
                       child: CupertinoDatePicker(
                         key: const Key('EndTimePicker'),
-                        use24hFormat: MediaQuery.of(context).alwaysUse24HourFormat,
+                        use24hFormat:
+                            MediaQuery.of(context).alwaysUse24HourFormat,
                         mode: CupertinoDatePickerMode.time,
                         initialDateTime: DateTime.now(),
                         onDateTimeChanged: onDateTimeChanged,
@@ -181,7 +198,5 @@ class DatePickerBottomsheet extends HookWidget with UiLoggy {
     );
   }
 
-  void onDateTimeChanged(DateTime time) {
-    loggy.info(time);
-  }
+  void onDateTimeChanged(DateTime time) {}
 }
