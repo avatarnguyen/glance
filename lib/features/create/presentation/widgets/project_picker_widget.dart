@@ -21,7 +21,7 @@ class ProjectPickerWidget extends StatelessWidget {
             context,
             percentage: 0.75,
           ),
-          backgroundColor: theme.colors.background,
+          backgroundColor: theme.colors.primary2,
           foregroundColor: theme.colors.accent2,
           title: 'Projects',
           leading: AppIconButton.semiSmall(

@@ -37,7 +37,7 @@ class CreatePage extends StatelessWidget {
         MaterialState.selected,
       };
       if (states.any(interactiveStates.contains)) {
-        return Platform.isIOS ? Colors.transparent : theme.colors.accent4;
+        return Platform.isIOS ? Colors.transparent : theme.colors.accent3;
       }
       return Colors.transparent;
     }
@@ -46,11 +46,11 @@ class CreatePage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         key: const Key('Createpage'),
-        backgroundColor: theme.colors.lighBackground,
+        backgroundColor: theme.colors.primary1,
         appBar: AppBar(
           elevation: 0.0,
           automaticallyImplyLeading: false,
-          backgroundColor: theme.colors.lighBackground,
+          backgroundColor: theme.colors.primary1,
           centerTitle: true,
           bottom: null,
           leading: null,
@@ -89,7 +89,8 @@ class CreatePage extends StatelessWidget {
                       color: theme.colors.accent2,
                       radius: 4.0,
                     ),
-                    overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
+                    overlayColor:
+                        MaterialStateProperty.resolveWith(getOverlayColor),
                     enableFeedback: true,
                     onTap: (index) {},
                     tabs: const [

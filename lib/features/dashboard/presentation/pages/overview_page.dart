@@ -16,54 +16,89 @@ class OverviewPage extends StatelessWidget {
 
     return Scaffold(
       key: const Key("OverviewPage"),
-      body: AppPadding.big(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppText.title1(
-              _getCurrentGreeting(today),
-              color: theme.colors.primary1,
-            ),
-            const AppGap.regular(),
-            AppText.title2(
-              CustomDateUtils.returnDateWithDay(today),
-              color: theme.colors.primary1,
-            ),
-            const AppGap.large(),
-            const AlldayEventWidget(),
-            TimeEventWidget(
-              color: Colors.orange,
-              time: DateTime(2022, 2, 20, 10, 30),
-              text: 'Finishing Project',
-              subtitle: '30min',
-              isEvent: true,
-            ),
-            const AppGap.small(),
-            TimeEventWidget(
-              color: Colors.purple,
-              time: DateTime.now(),
-              text: 'Coding Side Project',
-              subtitle: '1h 30m',
-              isEvent: false,
-            ),
-            const AppGap.small(),
-            TimeEventWidget(
-              color: Colors.purple,
-              time: DateTime.now(),
-              text: 'Coding Side Project',
-              subtitle: '2h',
-              isEvent: false,
-            ),
-            const AppGap.small(),
-            TimeEventWidget(
-              color: Colors.green,
-              time: DateTime.now(),
-              text: 'Get some shit done, without distraction',
-              subtitle: '4h',
-              isEvent: false,
-            ),
-          ],
+      backgroundColor: theme.colors.primary1,
+      appBar: AppBarCustom(
+        centerTitle: false,
+        title: AppText.title1(
+          _getCurrentGreeting(today),
+          color: theme.colors.accent1,
+        ),
+        actions: [
+          IconButton(
+            color: theme.colors.accent1,
+            onPressed: () {
+              context.push('/$kRouteCalendar');
+            },
+            icon: const Icon(Icons.calendar_month),
+          ),
+          IconButton(
+            color: theme.colors.accent1,
+            onPressed: () {
+              context.push('/$kRouteSetting');
+            },
+            icon: const Icon(Icons.settings),
+          )
+        ],
+      ),
+      body: AppPadding(
+        padding: const AppEdgeInsets.only(
+          bottom: AppGapSize.big,
+          top: AppGapSize.medium,
+          left: AppGapSize.medium,
+          right: AppGapSize.medium,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              theme.shadow.base,
+              theme.shadow.medium,
+            ],
+            borderRadius: theme.radius.asBorderRadius().medium,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppText.title2(
+                CustomDateUtils.returnDateWithDay(today),
+                color: theme.colors.accent1,
+              ),
+              const AppGap.large(),
+              const AlldayEventWidget(),
+              TimeEventWidget(
+                color: Colors.orange,
+                time: DateTime(2022, 2, 20, 10, 30),
+                text: 'Finishing Project',
+                subtitle: '30min',
+                isEvent: true,
+              ),
+              const AppGap.small(),
+              TimeEventWidget(
+                color: Colors.purple,
+                time: DateTime.now(),
+                text: 'Coding Side Project',
+                subtitle: '1h 30m',
+                isEvent: false,
+              ),
+              const AppGap.small(),
+              TimeEventWidget(
+                color: Colors.purple,
+                time: DateTime.now(),
+                text: 'Coding Side Project',
+                subtitle: '2h',
+                isEvent: false,
+              ),
+              const AppGap.small(),
+              TimeEventWidget(
+                color: Colors.green,
+                time: DateTime.now(),
+                text: 'Get some shit done, without distraction',
+                subtitle: '4h',
+                isEvent: false,
+              ),
+            ],
+          ),
         ),
       ).safeArea(),
     );

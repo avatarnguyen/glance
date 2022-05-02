@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/presentation/pages/home_page.dart';
+import 'package:glance/features/calendar/presentation/pages/calendar_page.dart';
 import 'package:glance/features/create/presentation/pages/create_page.dart';
 import 'package:glance/features/settings/presentation/pages/setting_page.dart';
 import 'package:go_router/go_router.dart';
@@ -13,6 +14,7 @@ const kRouteLogin = 'login';
 const kRouteConfirmation = 'confirmation';
 const kRouteCreate = 'create';
 const kRouteSetting = 'setting';
+const kRouteCalendar = 'calendar';
 
 class AppRouter {
   // final _projectBloc = getIt<ProjectBloc>();
@@ -49,6 +51,15 @@ class AppRouter {
           key: state.pageKey,
           fullscreen: true,
           child: const SettingPage(),
+        ),
+      ),
+      GoRoute(
+        name: kRouteCalendar,
+        path: '/calendar',
+        pageBuilder: (context, state) => getPlatformApp(
+          key: state.pageKey,
+          fullscreen: true,
+          child: const CalendarPage(),
         ),
       ),
       GoRoute(

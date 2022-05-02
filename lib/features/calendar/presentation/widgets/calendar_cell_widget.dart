@@ -39,7 +39,7 @@ class CalendarCellWidget extends HookWidget {
     final lastDay = endDay ?? today.endOfMonth;
 
     final _selectedDay = useState(today);
-    final _accent4 = theme.colors.accent4;
+    final _accent3 = theme.colors.accent3;
 
     return TableCalendar(
       key: const Key('Single_Calender'),
@@ -71,7 +71,7 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.paragraph1(
               date.day.toString(),
-              color: theme.colors.accent4,
+              color: theme.colors.accent3,
             ),
           );
         },
@@ -115,16 +115,16 @@ class CalendarCellWidget extends HookWidget {
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         defaultTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent4,
+          color: _accent3,
         ),
         weekendTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent4,
+          color: _accent3,
         ),
         todayTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent4,
+          color: _accent3,
         ),
         selectedTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent4,
+          color: _accent3,
         ),
         // todayDecoration: BoxDecoration(),
         outsideDaysVisible: false,

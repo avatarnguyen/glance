@@ -76,7 +76,7 @@ class _EditDateWidget extends StatelessWidget {
         context,
         percentage: 0.75,
       ),
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.primary2,
       child: const DatePickerBottomsheet(),
     );
   }

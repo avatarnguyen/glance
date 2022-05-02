@@ -29,7 +29,7 @@ class TaskItemWidget extends HookWidget {
         Material(
           color: Colors.transparent,
           child: Checkbox(
-            checkColor: theme.colors.accent4,
+            checkColor: theme.colors.accent3,
             fillColor: MaterialStateProperty.resolveWith(getColor),
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             visualDensity: const VisualDensity(

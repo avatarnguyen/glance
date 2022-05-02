@@ -54,7 +54,18 @@ class _CalendarPageState extends State<CalendarPage> {
     // }
 
     return Scaffold(
-      backgroundColor: context.gColor.lighBackground,
+      backgroundColor: context.gColor.primary1,
+      appBar: const AppBarCustom(
+          // actions: [
+          //   IconButton(
+          //     onPressed: () => context.pop(),
+          //     icon: Icon(
+          //       Icons.close,
+          //       color: context.gColor.secondary,
+          //     ),
+          //   )
+          // ],
+          ),
       body: SafeArea(
         child: GroupedListView<dynamic, String>(
           elements: _elements,
@@ -64,7 +75,8 @@ class _CalendarPageState extends State<CalendarPage> {
           groupSeparatorBuilder: (String value) => AppPadding.regular(
             child: AppText.title2(value),
           ),
-          itemComparator: (item1, item2) => item1['name'].compareTo(item2['name']),
+          itemComparator: (item1, item2) =>
+              item1['name'].compareTo(item2['name']),
           itemBuilder: (ctx, element) => AppPadding.small(
             child: Card(
               elevation: 5,

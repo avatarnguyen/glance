@@ -15,7 +15,7 @@ class _AppointmentSheetWidget extends StatelessWidget {
       // height: mediaQuery.size.height / 1.9,
       width: mediaQuery.size.width,
       decoration: BoxDecoration(
-        color: theme.colors.lighBackground,
+        color: theme.colors.primary1,
         borderRadius: BorderRadius.only(
           topLeft: theme.radius.big,
           topRight: theme.radius.big,

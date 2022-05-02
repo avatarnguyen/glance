@@ -41,14 +41,14 @@ class TimeEventWidget extends StatelessWidget {
                 textAlign: TextAlign.right,
                 maxLines: 2,
                 style: theme.typography.paragraph1.copyWith(
-                  color: theme.colors.primary1,
+                  color: theme.colors.accent1,
                 ),
               ),
               if (subtitle != null)
                 AppText.paragraph2(
                   subtitle!,
                   maxLines: 1,
-                  color: theme.colors.accent2,
+                  color: theme.colors.secondary,
                 ),
             ],
           ),

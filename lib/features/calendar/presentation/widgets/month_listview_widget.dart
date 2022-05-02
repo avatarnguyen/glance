@@ -49,7 +49,8 @@ class _MonthListWidget extends HookWidget {
                 children: kMonthList.map((month) {
                   final _startDay = DateTime(today.year, month, 1);
                   return AppPadding(
-                    padding: const AppEdgeInsets.only(bottom: AppGapSize.regular),
+                    padding:
+                        const AppEdgeInsets.only(bottom: AppGapSize.regular),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +58,7 @@ class _MonthListWidget extends HookWidget {
                         AppPadding.regular(
                           child: AppText.title2(
                             CustomDateUtils.returnMonth(_startDay),
-                            color: theme.colors.accent4,
+                            color: theme.colors.accent3,
                           ),
                         ),
                         const AppGap.small(),

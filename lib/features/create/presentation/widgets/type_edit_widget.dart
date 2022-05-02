@@ -32,6 +32,6 @@ class _TypeEditWidget extends HookWidget {
   ) =>
       AppText.title3(
         text,
-        color: theme.colors.accent4,
+        color: theme.colors.accent3,
       );
 }
