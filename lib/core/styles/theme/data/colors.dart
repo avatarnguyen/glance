@@ -19,10 +19,10 @@ class AppColorsData extends Equatable {
         primary2: Color(0xFF2f41cb),
         accent1: Color(0xFF2f41cb),
         accent2: Color(0xFFb4c6e3),
-        accent3: Colors.black87,
+        accent3: Color.fromARGB(255, 0, 3, 38),
         secondary: Color(0xFFb4c6e3),
         secondary2: Color(0xFFeff2f9),
-        secondary3: Colors.black87,
+        secondary3: Color.fromARGB(255, 0, 3, 38),
       );
 
   // factory AppColorsData.dark() => const AppColorsData(

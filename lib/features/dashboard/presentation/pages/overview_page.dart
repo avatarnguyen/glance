@@ -56,6 +56,7 @@ class OverviewPage extends StatelessWidget {
             ],
             borderRadius: theme.radius.asBorderRadius().medium,
           ),
+          padding: EdgeInsets.all(theme.spacing.regular),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
