@@ -30,7 +30,7 @@ Future<T?> showAppBottomSheet<T>(
         margin: theme.spacing.asInsets().regular,
         padding: EdgeInsets.symmetric(horizontal: theme.spacing.regular),
         decoration: BoxDecoration(
-          color: backgroundColor ?? theme.colors.primary1,
+          color: backgroundColor ?? theme.colors.primary,
           borderRadius: theme.radius.asBorderRadius().big,
           boxShadow: [
             theme.shadow.small,

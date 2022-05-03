@@ -78,7 +78,7 @@ class AppOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final _color = color ?? theme.colors.primary1;
+    final _color = color ?? theme.colors.primary;
     return AppButton.outlined(
       size: size,
       child: child ?? Text(data ?? ''),

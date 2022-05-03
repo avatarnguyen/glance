@@ -4,25 +4,21 @@ import 'package:glance/core/utils/named.dart';
 
 class AppColorsData extends Equatable {
   const AppColorsData({
-    required this.primary1,
-    required this.primary2,
-    required this.accent1,
-    required this.accent2,
-    required this.accent3,
+    required this.primary,
+    required this.accent,
     required this.secondary,
-    required this.secondary2,
-    required this.secondary3,
+    required this.textPrimary,
+    required this.textAccent,
+    required this.textSecondary,
   });
 
   factory AppColorsData.light() => const AppColorsData(
-        primary1: Color(0xFFeff2f9),
-        primary2: Color(0xFF2f41cb),
-        accent1: Color(0xFF2f41cb),
-        accent2: Color(0xFFb4c6e3),
-        accent3: Color.fromARGB(255, 0, 3, 38),
+        primary: Color(0xFFeff2f9),
+        accent: Color(0xFF2f41cb),
         secondary: Color(0xFFb4c6e3),
-        secondary2: Color(0xFFeff2f9),
-        secondary3: Color.fromARGB(255, 0, 3, 38),
+        textPrimary: Color(0xFF090d16),
+        textSecondary: Color(0xFF121a2c),
+        textAccent: Color(0xFFeaecf1),
       );
 
   // factory AppColorsData.dark() => const AppColorsData(
@@ -36,24 +32,20 @@ class AppColorsData extends Equatable {
   //       actionBarForeground: Color(0xFFFFFFFF),
   //     );
 
-  final Color primary1;
-  final Color primary2;
-  final Color accent1;
-  final Color accent2;
-  final Color accent3;
+  final Color primary;
+  final Color accent;
   final Color secondary;
-  final Color secondary2;
-  final Color secondary3;
+  final Color textPrimary;
+  final Color textAccent;
+  final Color textSecondary;
 
   @override
   List<Object?> get props => [
-        primary1.named('primary1'),
-        primary2.named('primary2'),
-        accent1.named('accent1'),
-        accent2.named('accent2'),
-        accent3.named('accent3'),
+        primary.named('primary'),
+        accent.named('accent'),
         secondary.named('secondary'),
-        secondary2.named('secondary2'),
-        secondary3.named('secondary3'),
+        textPrimary.named('textPrimary'),
+        textAccent.named('textAccent'),
+        textSecondary.named('textSecondary'),
       ];
 }

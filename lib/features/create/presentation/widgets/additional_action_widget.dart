@@ -8,7 +8,7 @@ class _AdditionalActionWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final _color = theme.colors.primary1;
+    final _color = theme.colors.primary;
     final _flagColor = useState(_color);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -18,7 +18,7 @@ class _AdditionalActionWidget extends HookWidget {
           color: _flagColor.value,
         ).onTapGestures(
           () {
-            _flagColor.value = theme.colors.accent1;
+            _flagColor.value = theme.colors.accent;
           },
         ),
         const AppGap.big(),

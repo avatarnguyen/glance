@@ -29,9 +29,9 @@ class _HomePageState extends State<HomePage>
           child: FloatingActionButton(
             child: Icon(
               Icons.add,
-              color: theme.colors.primary1,
+              color: theme.colors.textAccent,
             ),
-            backgroundColor: theme.colors.accent1,
+            backgroundColor: theme.colors.accent,
             onPressed: () {},
           ),
         ),
@@ -44,9 +44,9 @@ class _HomePageState extends State<HomePage>
             });
           },
           elevation: 0.0,
-          backgroundColor: theme.colors.primary1,
+          backgroundColor: theme.colors.primary,
           unselectedItemColor: theme.colors.secondary,
-          selectedItemColor: theme.colors.accent1,
+          selectedItemColor: theme.colors.accent,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(

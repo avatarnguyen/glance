@@ -54,7 +54,7 @@ class _CalendarPageState extends State<CalendarPage> {
     // }
 
     return Scaffold(
-      backgroundColor: context.gColor.primary1,
+      backgroundColor: context.gColor.primary,
       appBar: const AppBarCustom(
           // actions: [
           //   IconButton(

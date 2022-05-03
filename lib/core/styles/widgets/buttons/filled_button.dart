@@ -69,8 +69,8 @@ class AppFilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final _color = backgroundColor ?? theme.colors.primary1;
-    final _foregroundColor = foregroundColor ?? theme.colors.accent2;
+    final _color = backgroundColor ?? theme.colors.primary;
+    final _foregroundColor = foregroundColor ?? theme.colors.accent;
 
     return AppButton.filled(
       onPressed: onPressed,

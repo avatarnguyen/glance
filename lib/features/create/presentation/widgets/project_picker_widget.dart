@@ -21,12 +21,12 @@ class ProjectPickerWidget extends StatelessWidget {
             context,
             percentage: 0.75,
           ),
-          backgroundColor: theme.colors.primary2,
-          foregroundColor: theme.colors.accent2,
+          backgroundColor: theme.colors.accent,
+          foregroundColor: theme.colors.accent,
           title: 'Projects',
           leading: AppIconButton.semiSmall(
             FontAwesomeIcons.plus,
-            color: theme.colors.accent2,
+            color: theme.colors.accent,
             onPressed: () {},
           ),
           child: Material(
@@ -71,7 +71,7 @@ class _ProjectListWidget extends HookWidget {
   }) {
     return ListTile(
       dense: false,
-      selectedTileColor: theme.colors.primary1.withOpacity(0.4),
+      selectedTileColor: theme.colors.primary.withOpacity(0.4),
       selected: selectedIndex.value == index,
       shape: RoundedRectangleBorder(
         borderRadius: theme.radius.asBorderRadius().big,
@@ -88,7 +88,7 @@ class _ProjectListWidget extends HookWidget {
           const AppGap.semiBig(),
           AppText.title4(
             text,
-            color: theme.colors.accent2,
+            color: theme.colors.accent,
           ),
         ],
       ),

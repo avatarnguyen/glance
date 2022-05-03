@@ -21,7 +21,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final _titleWidget = titleText != null ? AppText.title1(titleText!) : null;
     return AppBar(
-      backgroundColor: context.gColor.primary1,
+      backgroundColor: context.gColor.primary,
       foregroundColor: context.gColor.secondary,
       elevation: 0.0,
       automaticallyImplyLeading: automaticallyImplyLeading,

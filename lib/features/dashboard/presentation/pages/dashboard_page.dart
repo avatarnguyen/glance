@@ -14,7 +14,7 @@ class DashboardPage extends HookWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return Scaffold(
-      backgroundColor: theme.colors.primary1,
+      backgroundColor: theme.colors.primary,
       body: PageView(
         physics: const ClampingScrollPhysics(),
         children: const [

@@ -67,8 +67,8 @@ class IosAppWidget extends StatelessWidget {
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,
       theme: CupertinoThemeData(
-        primaryColor: theme.colors.accent1,
-        scaffoldBackgroundColor: theme.colors.primary1,
+        primaryColor: theme.colors.accent,
+        scaffoldBackgroundColor: theme.colors.primary,
       ),
     );
   }

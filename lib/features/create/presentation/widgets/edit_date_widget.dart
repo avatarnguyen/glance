@@ -9,7 +9,7 @@ class _EditDateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     final today = DateTime.now();
-    final _primaryColor = theme.colors.primary1;
+    final _primaryColor = theme.colors.primary;
 
     return Container(
       padding: theme.spacing.asInsets().small,
@@ -76,7 +76,7 @@ class _EditDateWidget extends StatelessWidget {
         context,
         percentage: 0.75,
       ),
-      backgroundColor: theme.colors.primary2,
+      backgroundColor: theme.colors.accent,
       child: const DatePickerBottomsheet(),
     );
   }

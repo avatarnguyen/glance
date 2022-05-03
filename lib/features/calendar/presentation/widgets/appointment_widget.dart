@@ -15,7 +15,7 @@ class _AppointmentSheetWidget extends StatelessWidget {
       // height: mediaQuery.size.height / 1.9,
       width: mediaQuery.size.width,
       decoration: BoxDecoration(
-        color: theme.colors.primary1,
+        color: theme.colors.primary,
         borderRadius: BorderRadius.only(
           topLeft: theme.radius.big,
           topRight: theme.radius.big,
@@ -27,7 +27,7 @@ class _AppointmentSheetWidget extends StatelessWidget {
           children: [
             AppText.title1(
               CustomDateUtils.getDayTitle(today),
-              color: theme.colors.primary1,
+              color: theme.colors.primary,
             ),
             Flexible(
               child: PageView(

@@ -18,7 +18,7 @@ class _ProjectSelectionWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: theme.radius.asBorderRadius().medium,
           border: Border.all(
-              color: theme.colors.primary1, width: kBorderWidthButton),
+              color: theme.colors.primary, width: kBorderWidthButton),
         ),
         child: const AppText.title2('Project ABC'),
       ),

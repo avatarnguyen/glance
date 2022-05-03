@@ -39,7 +39,7 @@ class CalendarCellWidget extends HookWidget {
     final lastDay = endDay ?? today.endOfMonth;
 
     final _selectedDay = useState(today);
-    final _accent3 = theme.colors.accent3;
+    final _accent = theme.colors.accent;
 
     return TableCalendar(
       key: const Key('Single_Calender'),
@@ -54,7 +54,7 @@ class CalendarCellWidget extends HookWidget {
           return Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: theme.colors.accent3,
+                color: theme.colors.accent,
                 width: 1.5,
               ),
               shape: BoxShape.circle,
@@ -62,7 +62,7 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.title4(
               date.day.toString(),
-              color: theme.colors.accent3,
+              color: theme.colors.accent,
             ),
           );
         },
@@ -71,7 +71,7 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.paragraph1(
               date.day.toString(),
-              color: theme.colors.accent3,
+              color: theme.colors.accent,
             ),
           );
         },
@@ -80,7 +80,7 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.title4(
               date.day.toString(),
-              color: theme.colors.accent1,
+              color: theme.colors.accent,
             ),
           );
         },
@@ -89,21 +89,21 @@ class CalendarCellWidget extends HookWidget {
           return Center(
             child: AppText.paragraph2(
               text,
-              color: theme.colors.accent2,
+              color: theme.colors.accent,
             ),
           );
         },
       ),
       headerStyle: HeaderStyle(
         titleTextStyle: theme.typography.title4.copyWith(
-          color: theme.colors.accent2,
+          color: theme.colors.accent,
         ),
         leftChevronIcon: const AppIcon.small(FontAwesomeIcons.chevronLeft),
         rightChevronIcon: const AppIcon.small(FontAwesomeIcons.chevronRight),
         titleCentered: true,
         formatButtonVisible: false,
         // formatButtonTextStyle: theme.typography.title4.copyWith(
-        //   color: theme.colors.accent2,
+        //   color: theme.colors.accent,
         // ),
       ),
       availableGestures: AvailableGestures.horizontalSwipe,
@@ -115,16 +115,16 @@ class CalendarCellWidget extends HookWidget {
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         defaultTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent3,
+          color: _accent,
         ),
         weekendTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent3,
+          color: _accent,
         ),
         todayTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent3,
+          color: _accent,
         ),
         selectedTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent3,
+          color: _accent,
         ),
         // todayDecoration: BoxDecoration(),
         outsideDaysVisible: false,

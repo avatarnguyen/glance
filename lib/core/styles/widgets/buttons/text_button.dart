@@ -48,7 +48,7 @@ class AppTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final _color = color ?? theme.colors.primary1;
+    final _color = color ?? theme.colors.primary;
     final textstyle = () {
       switch (size) {
         case ButtonSize.small:

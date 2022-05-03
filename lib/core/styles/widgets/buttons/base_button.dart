@@ -80,7 +80,7 @@ class AppButton extends StatelessWidget {
           return theme.typography.paragraph1;
       }
     }();
-    final color = this.color ?? theme.colors.primary1;
+    final color = this.color ?? theme.colors.primary;
 
     const Set<MaterialState> interactiveStates = <MaterialState>{
       MaterialState.pressed,
@@ -140,7 +140,8 @@ class AppButton extends StatelessWidget {
     return type == ButtonType.outlined
         ? OutlinedButton(
             style: ButtonStyle(
-              padding: padding != null ? MaterialStateProperty.all(padding) : null,
+              padding:
+                  padding != null ? MaterialStateProperty.all(padding) : null,
               textStyle: MaterialStateProperty.resolveWith(getTextStyle),
               visualDensity: density ?? VisualDensity.adaptivePlatformDensity,
               foregroundColor: MaterialStateProperty.resolveWith(
@@ -153,14 +154,17 @@ class AppButton extends StatelessWidget {
                 Platform.isIOS ? 0 : 5,
               ),
               side: MaterialStateProperty.resolveWith(getBorderSide),
-              splashFactory: Platform.isIOS ? NoSplash.splashFactory : InkRipple.splashFactory,
+              splashFactory: Platform.isIOS
+                  ? NoSplash.splashFactory
+                  : InkRipple.splashFactory,
             ),
             onPressed: onPressed,
             child: child,
           )
         : ElevatedButton(
             style: ButtonStyle(
-              padding: padding != null ? MaterialStateProperty.all(padding) : null,
+              padding:
+                  padding != null ? MaterialStateProperty.all(padding) : null,
               textStyle: MaterialStateProperty.resolveWith(getTextStyle),
               visualDensity: density ?? VisualDensity.adaptivePlatformDensity,
               foregroundColor: MaterialStateProperty.resolveWith(
@@ -174,7 +178,9 @@ class AppButton extends StatelessWidget {
               elevation: MaterialStateProperty.all(
                 Platform.isIOS ? 0 : 5,
               ),
-              splashFactory: Platform.isIOS ? NoSplash.splashFactory : InkRipple.splashFactory,
+              splashFactory: Platform.isIOS
+                  ? NoSplash.splashFactory
+                  : InkRipple.splashFactory,
             ),
             onPressed: onPressed,
             child: child,

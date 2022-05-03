@@ -20,7 +20,7 @@ class AlldayEventWidget extends StatelessWidget {
             'all day',
             textAlign: TextAlign.right,
             style: theme.typography.paragraph1.copyWith(
-              color: theme.colors.accent1,
+              color: theme.colors.accent,
             ),
           ),
         ),

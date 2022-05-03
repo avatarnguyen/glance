@@ -12,8 +12,8 @@ class _TypeEditWidget extends HookWidget {
       child: CupertinoSlidingSegmentedControl<int>(
         padding: theme.spacing.asInsets().semiSmall,
         groupValue: _currentIndex.value,
-        thumbColor: theme.colors.primary2,
-        backgroundColor: theme.colors.primary1,
+        thumbColor: theme.colors.accent,
+        backgroundColor: theme.colors.primary,
         children: {
           0: _buildSegment(theme, 'Task', _currentIndex.value == 0),
           1: _buildSegment(theme, 'Event', _currentIndex.value == 1),
@@ -32,6 +32,6 @@ class _TypeEditWidget extends HookWidget {
   ) =>
       AppText.title3(
         text,
-        color: theme.colors.accent3,
+        color: theme.colors.accent,
       );
 }

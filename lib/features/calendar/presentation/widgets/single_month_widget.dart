@@ -28,7 +28,7 @@ class _SingleMonthWidget extends StatelessWidget {
               children: [
                 AppText.title1(
                   "$month ${today.year.toString()}",
-                  color: theme.colors.accent1,
+                  color: theme.colors.accent,
                 ),
                 IconButton(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),

@@ -9,23 +9,20 @@ class ProjectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.gColor.primary1,
+      backgroundColor: context.gColor.primary,
       body: CustomScrollView(
         slivers: [
           CupertinoSliverNavigationBar(
             heroTag: const ObjectKey(ProjectPage),
             border: null,
-            backgroundColor: context.gColor.primary1,
+            backgroundColor: context.gColor.primary,
             stretch: true,
             largeTitle: AppText.title1(
               'Projects',
-              color: context.gColor.accent1,
+              color: context.gColor.textAccent,
             ),
             leading: const SizedBox(width: 0),
           ),
-          // SliverPadding(
-          //   padding: EdgeInsets.only(top: context.gSpacing.regular),
-          // ),
           SliverPadding(
             padding: EdgeInsets.all(context.gSpacing.semiSmall),
             sliver: SliverGrid(

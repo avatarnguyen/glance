@@ -14,25 +14,25 @@ class OverviewPage extends StatelessWidget {
     final theme = AppTheme.of(context);
     final today = DateTime.now();
 
+    final iconColor = theme.colors.accent;
     return Scaffold(
       key: const Key("OverviewPage"),
-      backgroundColor: theme.colors.primary1,
+      backgroundColor: theme.colors.primary,
       appBar: AppBarCustom(
         centerTitle: false,
         title: AppText.title1(
           _getCurrentGreeting(today),
-          color: theme.colors.accent1,
         ),
         actions: [
           IconButton(
-            color: theme.colors.accent1,
+            color: iconColor,
             onPressed: () {
               context.push('/$kRouteCalendar');
             },
             icon: const Icon(Icons.calendar_month),
           ),
           IconButton(
-            color: theme.colors.accent1,
+            color: iconColor,
             onPressed: () {
               context.push('/$kRouteSetting');
             },
@@ -63,7 +63,7 @@ class OverviewPage extends StatelessWidget {
             children: [
               AppText.title2(
                 CustomDateUtils.returnDateWithDay(today),
-                color: theme.colors.accent1,
+                color: theme.colors.accent,
               ),
               const AppGap.large(),
               const AlldayEventWidget(),

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartx/dartx.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -25,6 +23,7 @@ class DatePickerBottomsheet extends HookWidget {
     final _selectedIndex = useState(0);
     final _mode = useState(DatePickerMode.timeRange);
 
+    final buttonColor = theme.colors.accent;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -33,9 +32,8 @@ class DatePickerBottomsheet extends HookWidget {
           children: [
             AppTextButton.regular(
               data: "Time Range",
-              color: _mode.value == DatePickerMode.timeRange
-                  ? theme.colors.accent2
-                  : null,
+              color:
+                  _mode.value == DatePickerMode.timeRange ? buttonColor : null,
               onPressed: () {
                 _mode.value = DatePickerMode.timeRange;
                 _selectedIndex.value = 0;
@@ -43,9 +41,7 @@ class DatePickerBottomsheet extends HookWidget {
             ),
             AppTextButton.regular(
               data: "All day",
-              color: _mode.value == DatePickerMode.allDay
-                  ? theme.colors.accent2
-                  : null,
+              color: _mode.value == DatePickerMode.allDay ? buttonColor : null,
               onPressed: () {
                 _mode.value = DatePickerMode.allDay;
               },
@@ -53,7 +49,7 @@ class DatePickerBottomsheet extends HookWidget {
             AppTextButton.regular(
               data: "Multiple Day",
               color: _mode.value == DatePickerMode.multipleDay
-                  ? theme.colors.accent2
+                  ? buttonColor
                   : null,
               onPressed: () {
                 _mode.value = DatePickerMode.multipleDay;
@@ -82,8 +78,8 @@ class DatePickerBottomsheet extends HookWidget {
               AppTextButton.regular(
                 data: 'Start',
                 color: _selectedIndex.value == 0
-                    ? theme.colors.accent3
-                    : theme.colors.primary1,
+                    ? buttonColor
+                    : theme.colors.primary,
                 onPressed: () {
                   _pageControler.animateToPage(
                     0,
@@ -95,8 +91,8 @@ class DatePickerBottomsheet extends HookWidget {
               AppTextButton.regular(
                 data: 'End',
                 color: _selectedIndex.value == 1
-                    ? theme.colors.accent3
-                    : theme.colors.primary1,
+                    ? buttonColor
+                    : theme.colors.primary,
                 onPressed: () {
                   _pageControler.animateToPage(
                     1,
@@ -129,7 +125,7 @@ class DatePickerBottomsheet extends HookWidget {
                         textTheme: CupertinoTextThemeData(
                           dateTimePickerTextStyle:
                               theme.typography.title3.copyWith(
-                            color: theme.colors.accent2,
+                            color: theme.colors.accent,
                           ),
                         ),
                       ),
@@ -160,7 +156,7 @@ class DatePickerBottomsheet extends HookWidget {
                         textTheme: CupertinoTextThemeData(
                           dateTimePickerTextStyle:
                               theme.typography.title3.copyWith(
-                            color: theme.colors.accent2,
+                            color: theme.colors.accent,
                           ),
                         ),
                       ),

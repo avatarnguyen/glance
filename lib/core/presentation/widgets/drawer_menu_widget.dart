@@ -82,12 +82,12 @@ class _MenuItemWidget extends StatelessWidget {
         alignment: Alignment.center,
         margin: theme.spacing.asInsets().semiSmall,
         decoration: BoxDecoration(
-          color: isActive ? theme.colors.primary1.withOpacity(0.1) : null,
+          color: isActive ? theme.colors.primary.withOpacity(0.1) : null,
           borderRadius: theme.radius.asBorderRadius().medium,
         ),
         child: AppText.title2(
           text,
-          color: theme.colors.accent1,
+          color: theme.colors.accent,
         ),
       ),
     );

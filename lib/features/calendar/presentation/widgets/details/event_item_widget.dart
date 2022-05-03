@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/dot_painter.dart';
 
 class EventItemWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class EventItemWidget extends StatelessWidget {
         const Gap(16.0),
         AppText.title4(
           text,
-          color: Colors.black54,
+          color: theme.colors.textSecondary,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ).flexible(),
