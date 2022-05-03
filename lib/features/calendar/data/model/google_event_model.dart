@@ -45,22 +45,22 @@ class GoogleEventModel with _$GoogleEventModel {
     );
   }
 
-  Event toEntity(GoogleEventModel model) {
-    final _isAllDay = model.start?.date != null && model.end?.date != null;
+  Event toEntity() {
+    final _isAllDay = start?.date != null && end?.date != null;
     return Event(
-      id: model.id,
-      title: model.title,
-      description: model.description,
-      colorId: model.colorId,
-      calendarId: model.calendarId,
-      recurringEventId: model.recurringEventId,
-      recurrence: model.recurrence,
-      originalStartTime: model.originalStartTime?.dateTime,
-      start: _isAllDay ? model.start?.date : model.start?.dateTime,
-      end: _isAllDay ? model.end?.date : model.end?.dateTime,
+      id: id,
+      title: title,
+      description: description,
+      colorId: colorId,
+      calendarId: calendarId,
+      recurringEventId: recurringEventId,
+      recurrence: recurrence,
+      originalStartTime: originalStartTime?.dateTime,
+      start: _isAllDay ? start?.date : start?.dateTime,
+      end: _isAllDay ? end?.date : end?.dateTime,
       allDay: _isAllDay,
-      organizer: model.organizer,
-      timeZone: model.start?.timeZone,
+      organizer: organizer,
+      timeZone: start?.timeZone,
     );
   }
 

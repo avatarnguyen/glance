@@ -20,17 +20,17 @@ class GoogleCalendarModel with _$GoogleCalendarModel {
     String? timeZone,
   }) = _GoogleCalendarModel;
 
-  Calendar toEntity(GoogleCalendarModel calendarModel) {
+  Calendar toEntity() {
     return Calendar(
-      id: calendarModel.id,
-      name: calendarModel.name,
-      backgroundColor: calendarModel.backgroundColor,
-      foregroundColor: calendarModel.foregroundColor,
-      accountName: calendarModel.accountName,
-      isDefault: calendarModel.isDefault,
-      selected: calendarModel.selected,
-      deleted: calendarModel.deleted,
-      timeZone: calendarModel.timeZone,
+      id: id,
+      name: name,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
+      accountName: accountName,
+      isDefault: isDefault,
+      selected: selected,
+      deleted: deleted,
+      timeZone: timeZone,
     );
   }
 
