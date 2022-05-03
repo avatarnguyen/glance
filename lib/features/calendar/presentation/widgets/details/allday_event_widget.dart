@@ -11,38 +11,47 @@ class AlldayEventWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: kSizeTimeWidth,
-          child: Text(
-            'all day',
-            textAlign: TextAlign.right,
-            style: theme.typography.paragraph1.copyWith(
-              color: theme.colors.accent,
-            ),
-          ),
-        ),
-        const AppGap.small(),
-        Column(
+    return LayoutBuilder(builder: (context, constraints) {
+      return SizedBox(
+        width: constraints.maxWidth,
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            EventItemWidget(
-              color: Colors.blue,
-              text: 'Checking Inbox',
+          children: [
+            SizedBox(
+              width: kSizeTimeWidth,
+              child: Text(
+                'all day',
+                textAlign: TextAlign.right,
+                style: theme.typography.paragraph1.copyWith(
+                  color: theme.colors.accent,
+                ),
+              ),
             ),
-            EventItemWidget(
-              color: Colors.green,
-              text: 'Design New App',
-            ),
-            TaskItemWidget(
-              color: Colors.blue,
-              text: 'Coding Side Project',
-            ),
+            const AppGap.semiSmall(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                EventItemWidget(
+                  color: Colors.blue,
+                  text:
+                      'Checking Inbox Checking Inbox Checking Inbox Checking Inbox Inbox',
+                ),
+                AppGap.small(),
+                EventItemWidget(
+                  color: Colors.green,
+                  text: 'Design New App',
+                ),
+                AppGap.small(),
+                TaskItemWidget(
+                  color: Colors.blue,
+                  text: 'Coding Side Project',
+                ),
+                AppGap.small(),
+              ],
+            ).expanded(),
           ],
-        ).expanded(),
-      ],
-    );
+        ),
+      );
+    });
   }
 }

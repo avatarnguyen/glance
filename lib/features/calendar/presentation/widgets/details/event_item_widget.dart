@@ -21,7 +21,7 @@ class EventItemWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const AppGap.regular(),
-        CustomPaint(painter: DotPainter(color)),
+        CustomPaint(painter: DotPainter(color, radius: 5.0)),
         const Gap(16.0),
         AppText.title4(
           text,

@@ -17,9 +17,8 @@ class ProjectPage extends StatelessWidget {
             border: null,
             backgroundColor: context.gColor.primary,
             stretch: true,
-            largeTitle: AppText.title1(
+            largeTitle: const AppText.title1(
               'Projects',
-              color: context.gColor.textAccent,
             ),
             leading: const SizedBox(width: 0),
           ),

@@ -25,52 +25,51 @@ class TimeEventWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final mediaQuery = MediaQuery.of(context);
-    final _textWidth = textWidth ?? mediaQuery.size.width - 108;
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: kSizeTimeWidth,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                CustomDateUtils.returnTime(time),
-                textAlign: TextAlign.right,
-                maxLines: 2,
-                style: theme.typography.paragraph1.copyWith(
-                  color: theme.colors.accent,
-                ),
+    return LayoutBuilder(builder: (context, constraints) {
+      return SizedBox(
+        width: constraints.maxWidth,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: kSizeTimeWidth,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    CustomDateUtils.returnTime(time),
+                    textAlign: TextAlign.right,
+                    maxLines: 2,
+                    style: theme.typography.paragraph1.copyWith(
+                      color: theme.colors.accent,
+                    ),
+                  ),
+                  if (subtitle != null)
+                    AppText.paragraph2(
+                      subtitle!,
+                      maxLines: 1,
+                      color: theme.colors.secondary,
+                    ),
+                ],
               ),
-              if (subtitle != null)
-                AppText.paragraph2(
-                  subtitle!,
-                  maxLines: 1,
-                  color: theme.colors.secondary,
-                ),
-            ],
-          ),
+            ),
+            const AppGap.semiSmall(),
+            SizedBox(
+              child: isEvent
+                  ? EventItemWidget(
+                      color: color,
+                      text: text,
+                    )
+                  : TaskItemWidget(
+                      color: color,
+                      text: text,
+                    ),
+            ).expanded(),
+          ],
         ),
-        const AppGap.small(),
-        if (isEvent)
-          SizedBox(
-            width: _textWidth,
-            child: EventItemWidget(
-              color: color,
-              text: text,
-            ),
-          )
-        else
-          SizedBox(
-            width: _textWidth,
-            child: TaskItemWidget(
-              color: color,
-              text: text,
-            ),
-          ),
-      ],
-    );
+      );
+    });
   }
 }
