@@ -55,7 +55,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     required DateTime timeMax,
   }) async {
     final appointments = <GoogleEventModel>[];
-    final AuthClient? client = await _getAuthClient();
+    final client = await _getAuthClient();
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
 
@@ -98,6 +98,110 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     return appointments;
   }
 
+  @override
+  Future<void> createGoogleEvent({
+    String? calendarId,
+    required GoogleEventModel eventModel,
+  }) async {
+    final client = await _getAuthClient();
+    if (client != null) {
+      final calendarApi = google_api.CalendarApi(client);
+
+      try {
+        final request = google_api.Event.fromJson(eventModel.toJson());
+        await calendarApi.events.insert(request, calendarId ?? 'primary');
+      } catch (e) {
+        log.e('Catches: ${e.toString()}');
+        throw ServerException();
+      }
+    } else {
+      throw AuthException();
+    }
+  }
+
+  @override
+  Future<void> updateGoogleEvent({
+    String? calendarId,
+    required GoogleEventModel eventModel,
+  }) async {
+    final client = await _getAuthClient();
+    if (client != null) {
+      final calendarApi = google_api.CalendarApi(client);
+
+      try {
+        if (eventModel.id != null) {
+          final request = google_api.Event.fromJson(eventModel.toJson());
+          log.v(eventModel.toJson());
+          log.v(request.toJson());
+          log.v('Calendar ID: $calendarId');
+          await calendarApi.events.update(
+            request,
+            calendarId ?? 'primary',
+            eventModel.id!,
+          );
+        } else {
+          log.e('Event ID is null');
+          throw ServerException();
+        }
+      } catch (e) {
+        log.e('Catches: ${e.toString()}');
+        throw ServerException();
+      }
+    } else {
+      throw AuthException();
+    }
+  }
+
+  @override
+  Future<void> deleteGoogleEvent({
+    required String calendarId,
+    required GoogleEventModel eventModel,
+  }) async {
+    final AuthClient? client = await _getAuthClient();
+    if (client != null) {
+      final calendarApi = google_api.CalendarApi(client);
+
+      try {
+        if (eventModel.id != null) {
+          await calendarApi.events.delete(calendarId, eventModel.id!);
+        } else {
+          log.e('Event ID is null');
+          throw ServerException();
+        }
+      } catch (e) {
+        log.e('Catches: ${e.toString()}');
+        throw ServerException();
+      }
+    }
+  }
+
+  @override
+  Future<List<GoogleCalendarModel>> getGoogleCalendars() async {
+    final calendars = <GoogleCalendarModel>[];
+
+    final AuthClient? client = await _getAuthClient();
+    if (client != null) {
+      final calendarApi = google_api.CalendarApi(client);
+      try {
+        final calendarsList = await calendarApi.calendarList.list();
+        log.i('Calendar List: $calendarsList');
+        final calendarItems = calendarsList.items;
+        if (calendarItems != null) {
+          for (var item in calendarItems) {
+            log.d('Calendar Items: ${item.toJson()}');
+            final calendar = GoogleCalendarModel.fromJson(item.toJson());
+            calendars.add(calendar);
+          }
+        }
+      } catch (e) {
+        log.e('Catches: ${e.toString()}');
+        throw ServerException();
+      }
+    }
+    return calendars;
+  }
+
+  /// Handle sign in and return authClient for Api Call
   Future<AuthClient?> _getAuthClient() async {
     final _isSignIn = await googleSignIn.isSignedIn();
     log.i('Is Sign In? --> $_isSignIn');
@@ -129,114 +233,6 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
       }
     }
     return appointments;
-  }
-
-  @override
-  Future<void> createGoogleEvent({
-    String? calendarId,
-    required GoogleEventModel eventModel,
-  }) async {
-    var client = await googleSignIn.authenticatedClient();
-    if (client != null) {
-      final calendarApi = google_api.CalendarApi(client);
-
-      try {
-        final request = google_api.Event.fromJson(eventModel.toJson());
-        await calendarApi.events.insert(request, calendarId ?? 'primary');
-      } catch (e) {
-        log.e('Catches: ${e.toString()}');
-        throw ServerException();
-      }
-    } else {
-      await googleSignIn.signIn();
-    }
-  }
-
-  @override
-  Future<void> updateGoogleEvent({
-    String? calendarId,
-    required GoogleEventModel eventModel,
-  }) async {
-    final client = await googleSignIn.authenticatedClient();
-    if (client != null) {
-      final calendarApi = google_api.CalendarApi(client);
-
-      try {
-        if (eventModel.id != null) {
-          final request = google_api.Event.fromJson(eventModel.toJson());
-          log.v(eventModel.toJson());
-          log.v(request.toJson());
-          log.v('Calendar ID: $calendarId');
-          await calendarApi.events.update(
-            request,
-            calendarId ?? 'primary',
-            eventModel.id!,
-          );
-        } else {
-          log.e('Event ID is null');
-          throw ServerException();
-        }
-      } catch (e) {
-        log.e('Catches: ${e.toString()}');
-        throw ServerException();
-      }
-    } else {
-      await googleSignIn.signIn();
-    }
-  }
-
-  @override
-  Future<void> deleteGoogleEvent({
-    required String calendarId,
-    required GoogleEventModel eventModel,
-  }) async {
-    var client = await googleSignIn.authenticatedClient();
-    if (client != null) {
-      final calendarApi = google_api.CalendarApi(client);
-
-      try {
-        if (eventModel.id != null) {
-          await calendarApi.events.delete(calendarId, eventModel.id!);
-        } else {
-          log.e('Event ID is null');
-          throw ServerException();
-        }
-      } catch (e) {
-        log.e('Catches: ${e.toString()}');
-        throw ServerException();
-      }
-    } else {
-      await googleSignIn.signIn();
-    }
-  }
-
-  @override
-  Future<List<GoogleCalendarModel>> getGoogleCalendars() async {
-    final calendars = <GoogleCalendarModel>[];
-
-    final AuthClient? client = await _getAuthClient();
-    log.d('Client: $client');
-    if (client != null) {
-      final calendarApi = google_api.CalendarApi(client);
-      try {
-        final calendarsList = await calendarApi.calendarList.list();
-        log.i('Calendar List: $calendarsList');
-        final calendarItems = calendarsList.items;
-        if (calendarItems != null) {
-          for (var item in calendarItems) {
-            log.d('Calendar Items: ${item.toJson()}');
-            final calendar = GoogleCalendarModel.fromJson(item.toJson());
-            calendars.add(calendar);
-          }
-        }
-      } catch (e) {
-        log.e('Catches: ${e.toString()}');
-        throw ServerException();
-      }
-    } else {
-      log.e('Retry Get Client: ${await googleSignIn.authenticatedClient()}');
-    }
-    return calendars;
   }
 }
 
