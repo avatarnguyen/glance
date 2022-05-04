@@ -4,6 +4,7 @@ import 'package:glance/features/calendar/data/model/event_datetime_converter.dar
 import 'package:glance/features/calendar/data/model/event_organizer_converter.dart';
 import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
 import 'package:googleapis/calendar/v3.dart';
+import 'package:rrule/rrule.dart';
 
 // ignore_for_file: invalid_annotation_target
 part 'google_event_model.freezed.dart';
@@ -41,7 +42,9 @@ class GoogleEventModel with _$GoogleEventModel {
       foregroundColor: eventEntity.foregroundColor,
       calendarId: eventEntity.calendarId,
       recurringEventId: eventEntity.recurringEventId,
-      recurrence: eventEntity.recurrence,
+      recurrence: eventEntity.recurrenceRule != null
+          ? eventEntity.recurrenceRule!.map((rule) => rule.toString()).toList()
+          : null,
       originalStartTime:
           EventDateTimeModel(dateTime: eventEntity.originalStartTime),
       start: eventEntity.allDay == true
@@ -65,7 +68,9 @@ class GoogleEventModel with _$GoogleEventModel {
       foregroundColor: foregroundColor,
       calendarId: calendarId,
       recurringEventId: recurringEventId,
-      recurrence: recurrence,
+      recurrenceRule: recurrence != null
+          ? recurrence!.map((rule) => RecurrenceRule.fromString(rule)).toList()
+          : null,
       originalStartTime: originalStartTime?.dateTime,
       start: _isAllDay ? start?.date : start?.dateTime,
       end: _isAllDay ? end?.date : end?.dateTime,

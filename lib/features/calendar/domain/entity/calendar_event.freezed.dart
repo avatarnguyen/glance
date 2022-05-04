@@ -24,7 +24,8 @@ mixin _$CalendarEvent {
   String? get foregroundColor => throw _privateConstructorUsedError;
   String? get calendarId => throw _privateConstructorUsedError;
   String? get recurringEventId => throw _privateConstructorUsedError;
-  List<String>? get recurrence => throw _privateConstructorUsedError;
+  List<RecurrenceRule>? get recurrenceRule =>
+      throw _privateConstructorUsedError;
   DateTime? get originalStartTime =>
       throw _privateConstructorUsedError; // should be in  "yyyy-mm-dd" format if this is an all-day event
   DateTime? get start => throw _privateConstructorUsedError;
@@ -52,7 +53,7 @@ abstract class $CalendarEventCopyWith<$Res> {
       String? foregroundColor,
       String? calendarId,
       String? recurringEventId,
-      List<String>? recurrence,
+      List<RecurrenceRule>? recurrenceRule,
       DateTime? originalStartTime,
       DateTime? start,
       DateTime? end,
@@ -80,7 +81,7 @@ class _$CalendarEventCopyWithImpl<$Res>
     Object? foregroundColor = freezed,
     Object? calendarId = freezed,
     Object? recurringEventId = freezed,
-    Object? recurrence = freezed,
+    Object? recurrenceRule = freezed,
     Object? originalStartTime = freezed,
     Object? start = freezed,
     Object? end = freezed,
@@ -121,10 +122,10 @@ class _$CalendarEventCopyWithImpl<$Res>
           ? _value.recurringEventId
           : recurringEventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      recurrence: recurrence == freezed
-          ? _value.recurrence
-          : recurrence // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      recurrenceRule: recurrenceRule == freezed
+          ? _value.recurrenceRule
+          : recurrenceRule // ignore: cast_nullable_to_non_nullable
+              as List<RecurrenceRule>?,
       originalStartTime: originalStartTime == freezed
           ? _value.originalStartTime
           : originalStartTime // ignore: cast_nullable_to_non_nullable
@@ -169,7 +170,7 @@ abstract class _$CalendarEventCopyWith<$Res>
       String? foregroundColor,
       String? calendarId,
       String? recurringEventId,
-      List<String>? recurrence,
+      List<RecurrenceRule>? recurrenceRule,
       DateTime? originalStartTime,
       DateTime? start,
       DateTime? end,
@@ -199,7 +200,7 @@ class __$CalendarEventCopyWithImpl<$Res>
     Object? foregroundColor = freezed,
     Object? calendarId = freezed,
     Object? recurringEventId = freezed,
-    Object? recurrence = freezed,
+    Object? recurrenceRule = freezed,
     Object? originalStartTime = freezed,
     Object? start = freezed,
     Object? end = freezed,
@@ -240,10 +241,10 @@ class __$CalendarEventCopyWithImpl<$Res>
           ? _value.recurringEventId
           : recurringEventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      recurrence: recurrence == freezed
-          ? _value.recurrence
-          : recurrence // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      recurrenceRule: recurrenceRule == freezed
+          ? _value.recurrenceRule
+          : recurrenceRule // ignore: cast_nullable_to_non_nullable
+              as List<RecurrenceRule>?,
       originalStartTime: originalStartTime == freezed
           ? _value.originalStartTime
           : originalStartTime // ignore: cast_nullable_to_non_nullable
@@ -284,14 +285,14 @@ class _$_CalendarEvent implements _CalendarEvent {
       this.foregroundColor,
       this.calendarId,
       this.recurringEventId,
-      final List<String>? recurrence,
+      final List<RecurrenceRule>? recurrenceRule,
       this.originalStartTime,
       this.start,
       this.end,
       this.allDay,
       this.organizer,
       this.timeZone})
-      : _recurrence = recurrence;
+      : _recurrenceRule = recurrenceRule;
 
   @override
   final String? id;
@@ -309,10 +310,10 @@ class _$_CalendarEvent implements _CalendarEvent {
   final String? calendarId;
   @override
   final String? recurringEventId;
-  final List<String>? _recurrence;
+  final List<RecurrenceRule>? _recurrenceRule;
   @override
-  List<String>? get recurrence {
-    final value = _recurrence;
+  List<RecurrenceRule>? get recurrenceRule {
+    final value = _recurrenceRule;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -334,7 +335,7 @@ class _$_CalendarEvent implements _CalendarEvent {
 
   @override
   String toString() {
-    return 'CalendarEvent(id: $id, title: $title, description: $description, colorId: $colorId, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, calendarId: $calendarId, recurringEventId: $recurringEventId, recurrence: $recurrence, originalStartTime: $originalStartTime, start: $start, end: $end, allDay: $allDay, organizer: $organizer, timeZone: $timeZone)';
+    return 'CalendarEvent(id: $id, title: $title, description: $description, colorId: $colorId, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, calendarId: $calendarId, recurringEventId: $recurringEventId, recurrenceRule: $recurrenceRule, originalStartTime: $originalStartTime, start: $start, end: $end, allDay: $allDay, organizer: $organizer, timeZone: $timeZone)';
   }
 
   @override
@@ -356,7 +357,7 @@ class _$_CalendarEvent implements _CalendarEvent {
             const DeepCollectionEquality()
                 .equals(other.recurringEventId, recurringEventId) &&
             const DeepCollectionEquality()
-                .equals(other.recurrence, recurrence) &&
+                .equals(other.recurrenceRule, recurrenceRule) &&
             const DeepCollectionEquality()
                 .equals(other.originalStartTime, originalStartTime) &&
             const DeepCollectionEquality().equals(other.start, start) &&
@@ -377,7 +378,7 @@ class _$_CalendarEvent implements _CalendarEvent {
       const DeepCollectionEquality().hash(foregroundColor),
       const DeepCollectionEquality().hash(calendarId),
       const DeepCollectionEquality().hash(recurringEventId),
-      const DeepCollectionEquality().hash(recurrence),
+      const DeepCollectionEquality().hash(recurrenceRule),
       const DeepCollectionEquality().hash(originalStartTime),
       const DeepCollectionEquality().hash(start),
       const DeepCollectionEquality().hash(end),
@@ -401,7 +402,7 @@ abstract class _CalendarEvent implements CalendarEvent {
       final String? foregroundColor,
       final String? calendarId,
       final String? recurringEventId,
-      final List<String>? recurrence,
+      final List<RecurrenceRule>? recurrenceRule,
       final DateTime? originalStartTime,
       final DateTime? start,
       final DateTime? end,
@@ -426,7 +427,8 @@ abstract class _CalendarEvent implements CalendarEvent {
   @override
   String? get recurringEventId => throw _privateConstructorUsedError;
   @override
-  List<String>? get recurrence => throw _privateConstructorUsedError;
+  List<RecurrenceRule>? get recurrenceRule =>
+      throw _privateConstructorUsedError;
   @override
   DateTime? get originalStartTime => throw _privateConstructorUsedError;
   @override // should be in  "yyyy-mm-dd" format if this is an all-day event

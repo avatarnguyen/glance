@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rrule/rrule.dart';
 
 part 'calendar_event.freezed.dart';
 
@@ -13,7 +14,7 @@ class CalendarEvent with _$CalendarEvent {
     String? foregroundColor,
     String? calendarId,
     String? recurringEventId,
-    List<String>? recurrence,
+    List<RecurrenceRule>? recurrenceRule,
     DateTime? originalStartTime,
     // should be in  "yyyy-mm-dd" format if this is an all-day event
     DateTime? start,
