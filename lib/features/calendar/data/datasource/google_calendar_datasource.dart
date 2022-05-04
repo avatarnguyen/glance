@@ -56,7 +56,6 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
   }) async {
     final appointments = <GoogleEventModel>[];
     final AuthClient? client = await _getAuthClient();
-
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
 
@@ -101,9 +100,13 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
 
   Future<AuthClient?> _getAuthClient() async {
     final _isSignIn = await googleSignIn.isSignedIn();
+    log.i('Is Sign In? --> $_isSignIn');
     if (!_isSignIn) {
       await googleSignIn.signIn();
+    } else {
+      await googleSignIn.signInSilently();
     }
+
     return await googleSignIn.authenticatedClient();
   }
 
@@ -211,12 +214,13 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
   Future<List<GoogleCalendarModel>> getGoogleCalendars() async {
     final calendars = <GoogleCalendarModel>[];
 
-    var client = await googleSignIn.authenticatedClient();
+    final AuthClient? client = await _getAuthClient();
+    log.d('Client: $client');
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
-
       try {
         final calendarsList = await calendarApi.calendarList.list();
+        log.i('Calendar List: $calendarsList');
         final calendarItems = calendarsList.items;
         if (calendarItems != null) {
           for (var item in calendarItems) {
@@ -230,9 +234,8 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
         throw ServerException();
       }
     } else {
-      await googleSignIn.signIn();
+      log.e('Retry Get Client: ${await googleSignIn.authenticatedClient()}');
     }
-
     return calendars;
   }
 }

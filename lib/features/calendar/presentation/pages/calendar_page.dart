@@ -50,7 +50,9 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   @override
   void initState() {
     super.initState();
-    _getAllCalendars();
+    if (mounted) {
+      _getAllCalendars();
+    }
   }
 
   Future<void> _getAllCalendars() async {
@@ -62,9 +64,10 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
     final state = ref.watch(calendarNotifierProvider) as CalendarState;
     state.maybeWhen(
       orElse: () {
-        print('State not loaded');
+        print('--- State not loaded ---');
       },
       loaded: (calendars) {
+        print('---- State loaded ----');
         print('Fetched Calendars: $calendars');
       },
     );
