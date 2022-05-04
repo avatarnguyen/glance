@@ -1,15 +1,18 @@
+import 'dart:developer';
+
 import 'package:logger/logger.dart';
 
 // ignore: prefer_function_declarations_over_variables
 final logger = (Type type) => Logger(
       printer: PrefixPrinter(
         PrettyPrinter(
-          colors: false,
+          colors: true,
           methodCount: 0,
-          lineLength: 90,
+          lineLength: 80,
         ),
         location: "[${type.toString()}] ",
       ),
+      output: ConsoleOutput(),
       // level: Level.debug,
     );
 
@@ -45,5 +48,14 @@ class PrefixPrinter extends LogPrinter {
         .log(event)
         .map((s) => "${_prefixMap[event.level]}$s")
         .toList();
+  }
+}
+
+class ConsoleOutput extends LogOutput {
+  @override
+  void output(OutputEvent event) {
+    for (final line in event.lines) {
+      log(line);
+    }
   }
 }
