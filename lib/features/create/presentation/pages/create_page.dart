@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
-import 'package:glance/core/presentation/widgets/bottomsheet/datepicker_bottomsheet.dart';
-import 'package:glance/core/styles/widgets/buttons/icon_button.dart';
+import 'package:glance/core/presentation/common_widgets/bottomsheet/datepicker_bottomsheet.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/create/presentation/widgets/dotted_tab_indicator.dart';
 import 'package:glance/features/create/presentation/widgets/line_painter.dart';
@@ -56,7 +55,7 @@ class CreatePage extends StatelessWidget {
           leading: null,
           actions: [
             AppIconButton.regular(
-              FontAwesomeIcons.times,
+              FontAwesomeIcons.xmark,
               onPressed: context.pop,
             ),
           ],

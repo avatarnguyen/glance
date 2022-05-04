@@ -16,7 +16,14 @@ class CalendarNotifier extends StateNotifier<CalendarState> {
       (failure) => state = CalendarState.error(
         ErrorMessage.getErrorMessage(failure),
       ),
-      (events) => state = CalendarState.loaded(calendarEvents: events),
+      (events) {
+        final _sortedEvents = events
+          ..sort(
+            ((eventA, eventB) =>
+                (eventA.start?.isBefore(eventB.start!) == true) ? -1 : 1),
+          );
+        return state = CalendarState.loaded(calendarEvents: _sortedEvents);
+      },
     );
   }
 }
