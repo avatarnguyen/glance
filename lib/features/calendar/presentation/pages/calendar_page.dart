@@ -56,7 +56,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   }
 
   Future<void> _getAllCalendars() async {
-    await ref.read(calendarNotifierProvider.notifier).getCalendars();
+    await ref.read(calendarNotifierProvider.notifier).getCalendarEvents();
   }
 
   @override
@@ -68,7 +68,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
       },
       loaded: (calendars) {
         print('---- State loaded ----');
-        print('Fetched Calendars: $calendars');
+        print('Fetched Events: $calendars');
       },
     );
     return Scaffold(

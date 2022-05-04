@@ -2,18 +2,21 @@ part of 'calendar_provider.dart';
 
 /// Defines all the Calendar logic the app will use
 class CalendarNotifier extends StateNotifier<CalendarState> {
-  final GetCalendars _getCalendars;
+  final GetCalendarEvents _getCalendarEvents;
 
   CalendarNotifier(Ref ref)
-      : _getCalendars = ref.read(getCalendarsProvider),
+      : _getCalendarEvents = ref.read(getCalendarEventsProvider),
         super(const CalendarState.initial());
 
-  Future<void> getCalendars() async {
+  Future<void> getCalendarEvents() async {
     state = const CalendarState.loading();
-    final _result = await _getCalendars();
+    const _queryParams = CalendarEventParams();
+    final _result = await _getCalendarEvents(_queryParams);
     _result.fold(
-      (l) => state = const CalendarState.error(),
-      (calendars) => state = CalendarState.loaded(calendars: calendars),
+      (failure) => state = CalendarState.error(
+        ErrorMessage.getErrorMessage(failure),
+      ),
+      (events) => state = CalendarState.loaded(calendarEvents: events),
     );
   }
 }

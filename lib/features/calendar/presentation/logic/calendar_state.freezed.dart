@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CalendarState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Calendar> calendars) loaded,
+    required TResult Function(List<CalendarEvent> calendarEvents) loaded,
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? message) error,
@@ -26,7 +26,7 @@ mixin _$CalendarState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
@@ -34,7 +34,7 @@ mixin _$CalendarState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
@@ -89,7 +89,7 @@ class _$CalendarStateCopyWithImpl<$Res>
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
-  $Res call({List<Calendar> calendars});
+  $Res call({List<CalendarEvent> calendarEvents});
 }
 
 /// @nodoc
@@ -103,13 +103,13 @@ class _$DataCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? calendars = freezed,
+    Object? calendarEvents = freezed,
   }) {
     return _then(Data(
-      calendars: calendars == freezed
-          ? _value.calendars
-          : calendars // ignore: cast_nullable_to_non_nullable
-              as List<Calendar>,
+      calendarEvents: calendarEvents == freezed
+          ? _value.calendarEvents
+          : calendarEvents // ignore: cast_nullable_to_non_nullable
+              as List<CalendarEvent>,
     ));
   }
 }
@@ -117,19 +117,19 @@ class _$DataCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Data implements Data {
-  const _$Data({required final List<Calendar> calendars})
-      : _calendars = calendars;
+  const _$Data({required final List<CalendarEvent> calendarEvents})
+      : _calendarEvents = calendarEvents;
 
-  final List<Calendar> _calendars;
+  final List<CalendarEvent> _calendarEvents;
   @override
-  List<Calendar> get calendars {
+  List<CalendarEvent> get calendarEvents {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_calendars);
+    return EqualUnmodifiableListView(_calendarEvents);
   }
 
   @override
   String toString() {
-    return 'CalendarState.loaded(calendars: $calendars)';
+    return 'CalendarState.loaded(calendarEvents: $calendarEvents)';
   }
 
   @override
@@ -137,12 +137,13 @@ class _$Data implements Data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is Data &&
-            const DeepCollectionEquality().equals(other.calendars, calendars));
+            const DeepCollectionEquality()
+                .equals(other.calendarEvents, calendarEvents));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(calendars));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(calendarEvents));
 
   @JsonKey(ignore: true)
   @override
@@ -152,36 +153,36 @@ class _$Data implements Data {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Calendar> calendars) loaded,
+    required TResult Function(List<CalendarEvent> calendarEvents) loaded,
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? message) error,
   }) {
-    return loaded(calendars);
+    return loaded(calendarEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
   }) {
-    return loaded?.call(calendars);
+    return loaded?.call(calendarEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(calendars);
+      return loaded(calendarEvents);
     }
     return orElse();
   }
@@ -225,9 +226,10 @@ class _$Data implements Data {
 }
 
 abstract class Data implements CalendarState {
-  const factory Data({required final List<Calendar> calendars}) = _$Data;
+  const factory Data({required final List<CalendarEvent> calendarEvents}) =
+      _$Data;
 
-  List<Calendar> get calendars => throw _privateConstructorUsedError;
+  List<CalendarEvent> get calendarEvents => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
 }
@@ -270,7 +272,7 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Calendar> calendars) loaded,
+    required TResult Function(List<CalendarEvent> calendarEvents) loaded,
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? message) error,
@@ -281,7 +283,7 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
@@ -292,7 +294,7 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
@@ -384,7 +386,7 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Calendar> calendars) loaded,
+    required TResult Function(List<CalendarEvent> calendarEvents) loaded,
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? message) error,
@@ -395,7 +397,7 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
@@ -406,7 +408,7 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
@@ -522,7 +524,7 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Calendar> calendars) loaded,
+    required TResult Function(List<CalendarEvent> calendarEvents) loaded,
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? message) error,
@@ -533,7 +535,7 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,
@@ -544,7 +546,7 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Calendar> calendars)? loaded,
+    TResult Function(List<CalendarEvent> calendarEvents)? loaded,
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? message)? error,

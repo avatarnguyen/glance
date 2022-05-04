@@ -54,27 +54,29 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     required DateTime timeMin,
     required DateTime timeMax,
   }) async {
-    final appointments = <GoogleEventModel>[];
+    final _googleEventModelList = <GoogleEventModel>[];
     final client = await _getAuthClient();
+    log.d('client: $client');
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
+      log.d('Calendar List: ${calendarList?.length}');
 
       try {
-        if (calendarList != null) {
-          if (calendarList.isNotEmpty) {
-            for (final calendar in calendarList) {
-              final calEvents = await calendarApi.events.list(
-                calendar.id!,
-                timeMin: timeMin,
-                timeMax: timeMax,
-              );
-              // log.d('Retrieved Events: $calEvents');
-              _insertEventsToAppointments(
-                calEvents,
-                appointments,
-                calendar: calendar,
-              );
-            }
+        if (calendarList?.isNotEmpty == true) {
+          for (final calendar in calendarList!) {
+            final calendarId = calendar.id!;
+            log.v('Get Events of Calendar: $calendarId');
+            final _calendarApiEvents = await calendarApi.events.list(
+              calendarId,
+              timeMin: timeMin,
+              timeMax: timeMax,
+            );
+            log.d('Retrieved Events: ${_calendarApiEvents.toJson()}');
+            final _newCalendarEventModels = _toGoogleEventModels(
+              _calendarApiEvents,
+              calendar: calendar,
+            );
+            _googleEventModelList.addAll(_newCalendarEventModels);
           }
         } else {
           final calEvents = await calendarApi.events.list(
@@ -82,8 +84,9 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
             timeMin: timeMin,
             timeMax: timeMax,
           );
-          log.d('Retrieved Events from primary calendar: $calEvents');
-          _insertEventsToAppointments(calEvents, appointments);
+          log.v('Retrieved Events from primary calendar: $calEvents');
+          final _newCalendarEventModels = _toGoogleEventModels(calEvents);
+          _googleEventModelList.addAll(_newCalendarEventModels);
         }
       } catch (e) {
         log.e('Catches: ${e.toString()}');
@@ -93,9 +96,10 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
       throw AuthException();
     }
 
-    log.v('Appointments: ${appointments.length}');
+    log.v(
+        'Google Event Model List Item Counts: ${_googleEventModelList.length}');
 
-    return appointments;
+    return _googleEventModelList;
   }
 
   @override
@@ -184,7 +188,6 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
       final calendarApi = google_api.CalendarApi(client);
       try {
         final calendarsList = await calendarApi.calendarList.list();
-        log.i('Calendar List: $calendarsList');
         final calendarItems = calendarsList.items;
         if (calendarItems != null) {
           for (var item in calendarItems) {
@@ -214,19 +217,23 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     return await googleSignIn.authenticatedClient();
   }
 
-  List<GoogleEventModel> _insertEventsToAppointments(
-      google_api.Events calEvents, List<GoogleEventModel> appointments,
-      {GoogleCalendarModel? calendar}) {
-    if (calEvents.items != null && calEvents.items!.isNotEmpty) {
-      log.d('Items Total #: ${calEvents.items!.length}');
-      log.i('Items: ${calEvents.items?[0]}');
+  // Transfer Event Object (GoogleApi) to Google Event Model
+  // and add calendar id to event
+  List<GoogleEventModel> _toGoogleEventModels(
+    google_api.Events calEvents, {
+    GoogleCalendarModel? calendar,
+  }) {
+    final appointments = <GoogleEventModel>[];
+    if (calEvents.items?.isNotEmpty == true) {
+      log.i('Items Total #: ${calEvents.items!.length}');
+      log.v('Items: ${calEvents.items?[0]}');
       for (var i = 0; i < calEvents.items!.length; i++) {
         final event = calEvents.items![i];
-        log.d(event.toJson());
+        log.v('Event Json: ${event.toJson()}');
         if (event.start != null) {
           final eventJson = event.toJson();
 
-          eventJson['colorId'] = calendar?.backgroundColor ?? '#3B2DB0';
+          // eventJson['colorId'] = calendar?.backgroundColor ?? '#3B2DB0';
           eventJson['calendarId'] = calendar?.id ?? 'primary';
           appointments.add(GoogleEventModel.fromJson(eventJson));
         }

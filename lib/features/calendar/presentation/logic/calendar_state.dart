@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:glance/features/calendar/domain/entity/calendar.dart';
+import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
 
 part 'calendar_state.freezed.dart';
 
@@ -7,7 +7,7 @@ part 'calendar_state.freezed.dart';
 abstract class CalendarState with _$CalendarState {
   /// Data is present state
   const factory CalendarState.loaded({
-    required List<Calendar> calendars,
+    required List<CalendarEvent> calendarEvents,
   }) = Data;
 
   /// Initial/default state
