@@ -4,18 +4,20 @@ import 'package:glance/features/calendar/domain/entity/calendar.dart';
 part 'google_calendar_model.freezed.dart';
 part 'google_calendar_model.g.dart';
 
+// ignore_for_file: invalid_annotation_target
 @freezed
 class GoogleCalendarModel with _$GoogleCalendarModel {
   const GoogleCalendarModel._();
 
   factory GoogleCalendarModel({
     String? id,
-    String? name,
+    @JsonKey(name: 'summary') String? name,
+    String? description,
     String? backgroundColor,
     String? foregroundColor,
     String? accountName,
-    bool? isDefault,
-    bool? selected,
+    @JsonKey(name: 'primary') bool? isDefault,
+    @Default(false) bool? selected,
     bool? deleted,
     String? timeZone,
   }) = _GoogleCalendarModel;
@@ -24,6 +26,7 @@ class GoogleCalendarModel with _$GoogleCalendarModel {
     return Calendar(
       id: id,
       name: name,
+      description: description,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       accountName: accountName,
@@ -38,6 +41,7 @@ class GoogleCalendarModel with _$GoogleCalendarModel {
     return GoogleCalendarModel(
       id: calendar.id,
       name: calendar.name,
+      description: calendar.description,
       backgroundColor: calendar.backgroundColor,
       foregroundColor: calendar.foregroundColor,
       accountName: calendar.accountName,

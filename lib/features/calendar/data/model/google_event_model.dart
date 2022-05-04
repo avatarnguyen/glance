@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:glance/features/calendar/data/model/event_date_time.dart';
+import 'package:glance/features/calendar/data/model/event_date_time_model.dart';
 import 'package:glance/features/calendar/data/model/event_datetime_converter.dart';
-import 'package:glance/features/calendar/domain/entity/event.dart';
+import 'package:glance/features/calendar/data/model/event_organizer_converter.dart';
+import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
+import 'package:googleapis/calendar/v3.dart';
 
 // ignore_for_file: invalid_annotation_target
 part 'google_event_model.freezed.dart';
@@ -16,42 +18,51 @@ class GoogleEventModel with _$GoogleEventModel {
     @JsonKey(name: 'summary') String? title,
     String? description,
     String? colorId,
+    String? backgroundColor,
+    String? foregroundColor,
     String? calendarId,
     String? recurringEventId,
     List<String>? recurrence,
-    @EventDateTimeConverter() EventDateTime? originalStartTime,
-    @EventDateTimeConverter() EventDateTime? start,
-    @EventDateTimeConverter() EventDateTime? end,
-    String? organizer,
-  }) = _EventModel;
+    @EventDateTimeConverter() EventDateTimeModel? originalStartTime,
+    @EventDateTimeConverter() EventDateTimeModel? start,
+    @EventDateTimeConverter() EventDateTimeModel? end,
+    @EventOrganizerConverter()
+    @JsonKey(name: 'organizer')
+        String? organizerName,
+  }) = _GoogleEventModel;
 
-  factory GoogleEventModel.fromEntity(Event eventEntity) {
+  factory GoogleEventModel.fromEntity(CalendarEvent eventEntity) {
     return GoogleEventModel(
       id: eventEntity.id,
       title: eventEntity.title,
       description: eventEntity.description,
       colorId: eventEntity.colorId,
+      backgroundColor: eventEntity.backgroundColor,
+      foregroundColor: eventEntity.foregroundColor,
       calendarId: eventEntity.calendarId,
       recurringEventId: eventEntity.recurringEventId,
       recurrence: eventEntity.recurrence,
-      originalStartTime: EventDateTime(dateTime: eventEntity.originalStartTime),
+      originalStartTime:
+          EventDateTimeModel(dateTime: eventEntity.originalStartTime),
       start: eventEntity.allDay == true
-          ? EventDateTime(date: eventEntity.start)
-          : EventDateTime(dateTime: eventEntity.start),
+          ? EventDateTimeModel(date: eventEntity.start)
+          : EventDateTimeModel(dateTime: eventEntity.start),
       end: eventEntity.allDay == true
-          ? EventDateTime(date: eventEntity.end)
-          : EventDateTime(dateTime: eventEntity.end),
-      organizer: eventEntity.organizer,
+          ? EventDateTimeModel(date: eventEntity.end)
+          : EventDateTimeModel(dateTime: eventEntity.end),
+      organizerName: eventEntity.organizer,
     );
   }
 
-  Event toEntity() {
+  CalendarEvent toEntity() {
     final _isAllDay = start?.date != null && end?.date != null;
-    return Event(
+    return CalendarEvent(
       id: id,
       title: title,
       description: description,
       colorId: colorId,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
       calendarId: calendarId,
       recurringEventId: recurringEventId,
       recurrence: recurrence,
@@ -59,7 +70,7 @@ class GoogleEventModel with _$GoogleEventModel {
       start: _isAllDay ? start?.date : start?.dateTime,
       end: _isAllDay ? end?.date : end?.dateTime,
       allDay: _isAllDay,
-      organizer: organizer,
+      organizer: organizerName,
       timeZone: start?.timeZone,
     );
   }

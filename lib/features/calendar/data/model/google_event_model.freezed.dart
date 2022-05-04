@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 GoogleEventModel _$GoogleEventModelFromJson(Map<String, dynamic> json) {
-  return _EventModel.fromJson(json);
+  return _GoogleEventModel.fromJson(json);
 }
 
 /// @nodoc
@@ -25,16 +25,21 @@ mixin _$GoogleEventModel {
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get colorId => throw _privateConstructorUsedError;
+  String? get backgroundColor => throw _privateConstructorUsedError;
+  String? get foregroundColor => throw _privateConstructorUsedError;
   String? get calendarId => throw _privateConstructorUsedError;
   String? get recurringEventId => throw _privateConstructorUsedError;
   List<String>? get recurrence => throw _privateConstructorUsedError;
   @EventDateTimeConverter()
-  EventDateTime? get originalStartTime => throw _privateConstructorUsedError;
+  EventDateTimeModel? get originalStartTime =>
+      throw _privateConstructorUsedError;
   @EventDateTimeConverter()
-  EventDateTime? get start => throw _privateConstructorUsedError;
+  EventDateTimeModel? get start => throw _privateConstructorUsedError;
   @EventDateTimeConverter()
-  EventDateTime? get end => throw _privateConstructorUsedError;
-  String? get organizer => throw _privateConstructorUsedError;
+  EventDateTimeModel? get end => throw _privateConstructorUsedError;
+  @EventOrganizerConverter()
+  @JsonKey(name: 'organizer')
+  String? get organizerName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,20 +54,28 @@ abstract class $GoogleEventModelCopyWith<$Res> {
       _$GoogleEventModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-      @JsonKey(name: 'summary') String? title,
+      @JsonKey(name: 'summary')
+          String? title,
       String? description,
       String? colorId,
+      String? backgroundColor,
+      String? foregroundColor,
       String? calendarId,
       String? recurringEventId,
       List<String>? recurrence,
-      @EventDateTimeConverter() EventDateTime? originalStartTime,
-      @EventDateTimeConverter() EventDateTime? start,
-      @EventDateTimeConverter() EventDateTime? end,
-      String? organizer});
+      @EventDateTimeConverter()
+          EventDateTimeModel? originalStartTime,
+      @EventDateTimeConverter()
+          EventDateTimeModel? start,
+      @EventDateTimeConverter()
+          EventDateTimeModel? end,
+      @EventOrganizerConverter()
+      @JsonKey(name: 'organizer')
+          String? organizerName});
 
-  $EventDateTimeCopyWith<$Res>? get originalStartTime;
-  $EventDateTimeCopyWith<$Res>? get start;
-  $EventDateTimeCopyWith<$Res>? get end;
+  $EventDateTimeModelCopyWith<$Res>? get originalStartTime;
+  $EventDateTimeModelCopyWith<$Res>? get start;
+  $EventDateTimeModelCopyWith<$Res>? get end;
 }
 
 /// @nodoc
@@ -80,13 +93,15 @@ class _$GoogleEventModelCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? colorId = freezed,
+    Object? backgroundColor = freezed,
+    Object? foregroundColor = freezed,
     Object? calendarId = freezed,
     Object? recurringEventId = freezed,
     Object? recurrence = freezed,
     Object? originalStartTime = freezed,
     Object? start = freezed,
     Object? end = freezed,
-    Object? organizer = freezed,
+    Object? organizerName = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -105,6 +120,14 @@ class _$GoogleEventModelCopyWithImpl<$Res>
           ? _value.colorId
           : colorId // ignore: cast_nullable_to_non_nullable
               as String?,
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foregroundColor: foregroundColor == freezed
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
       calendarId: calendarId == freezed
           ? _value.calendarId
           : calendarId // ignore: cast_nullable_to_non_nullable
@@ -120,94 +143,103 @@ class _$GoogleEventModelCopyWithImpl<$Res>
       originalStartTime: originalStartTime == freezed
           ? _value.originalStartTime
           : originalStartTime // ignore: cast_nullable_to_non_nullable
-              as EventDateTime?,
+              as EventDateTimeModel?,
       start: start == freezed
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
-              as EventDateTime?,
+              as EventDateTimeModel?,
       end: end == freezed
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
-              as EventDateTime?,
-      organizer: organizer == freezed
-          ? _value.organizer
-          : organizer // ignore: cast_nullable_to_non_nullable
+              as EventDateTimeModel?,
+      organizerName: organizerName == freezed
+          ? _value.organizerName
+          : organizerName // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
 
   @override
-  $EventDateTimeCopyWith<$Res>? get originalStartTime {
+  $EventDateTimeModelCopyWith<$Res>? get originalStartTime {
     if (_value.originalStartTime == null) {
       return null;
     }
 
-    return $EventDateTimeCopyWith<$Res>(_value.originalStartTime!, (value) {
+    return $EventDateTimeModelCopyWith<$Res>(_value.originalStartTime!,
+        (value) {
       return _then(_value.copyWith(originalStartTime: value));
     });
   }
 
   @override
-  $EventDateTimeCopyWith<$Res>? get start {
+  $EventDateTimeModelCopyWith<$Res>? get start {
     if (_value.start == null) {
       return null;
     }
 
-    return $EventDateTimeCopyWith<$Res>(_value.start!, (value) {
+    return $EventDateTimeModelCopyWith<$Res>(_value.start!, (value) {
       return _then(_value.copyWith(start: value));
     });
   }
 
   @override
-  $EventDateTimeCopyWith<$Res>? get end {
+  $EventDateTimeModelCopyWith<$Res>? get end {
     if (_value.end == null) {
       return null;
     }
 
-    return $EventDateTimeCopyWith<$Res>(_value.end!, (value) {
+    return $EventDateTimeModelCopyWith<$Res>(_value.end!, (value) {
       return _then(_value.copyWith(end: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$EventModelCopyWith<$Res>
+abstract class _$GoogleEventModelCopyWith<$Res>
     implements $GoogleEventModelCopyWith<$Res> {
-  factory _$EventModelCopyWith(
-          _EventModel value, $Res Function(_EventModel) then) =
-      __$EventModelCopyWithImpl<$Res>;
+  factory _$GoogleEventModelCopyWith(
+          _GoogleEventModel value, $Res Function(_GoogleEventModel) then) =
+      __$GoogleEventModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
-      @JsonKey(name: 'summary') String? title,
+      @JsonKey(name: 'summary')
+          String? title,
       String? description,
       String? colorId,
+      String? backgroundColor,
+      String? foregroundColor,
       String? calendarId,
       String? recurringEventId,
       List<String>? recurrence,
-      @EventDateTimeConverter() EventDateTime? originalStartTime,
-      @EventDateTimeConverter() EventDateTime? start,
-      @EventDateTimeConverter() EventDateTime? end,
-      String? organizer});
+      @EventDateTimeConverter()
+          EventDateTimeModel? originalStartTime,
+      @EventDateTimeConverter()
+          EventDateTimeModel? start,
+      @EventDateTimeConverter()
+          EventDateTimeModel? end,
+      @EventOrganizerConverter()
+      @JsonKey(name: 'organizer')
+          String? organizerName});
 
   @override
-  $EventDateTimeCopyWith<$Res>? get originalStartTime;
+  $EventDateTimeModelCopyWith<$Res>? get originalStartTime;
   @override
-  $EventDateTimeCopyWith<$Res>? get start;
+  $EventDateTimeModelCopyWith<$Res>? get start;
   @override
-  $EventDateTimeCopyWith<$Res>? get end;
+  $EventDateTimeModelCopyWith<$Res>? get end;
 }
 
 /// @nodoc
-class __$EventModelCopyWithImpl<$Res>
+class __$GoogleEventModelCopyWithImpl<$Res>
     extends _$GoogleEventModelCopyWithImpl<$Res>
-    implements _$EventModelCopyWith<$Res> {
-  __$EventModelCopyWithImpl(
-      _EventModel _value, $Res Function(_EventModel) _then)
-      : super(_value, (v) => _then(v as _EventModel));
+    implements _$GoogleEventModelCopyWith<$Res> {
+  __$GoogleEventModelCopyWithImpl(
+      _GoogleEventModel _value, $Res Function(_GoogleEventModel) _then)
+      : super(_value, (v) => _then(v as _GoogleEventModel));
 
   @override
-  _EventModel get _value => super._value as _EventModel;
+  _GoogleEventModel get _value => super._value as _GoogleEventModel;
 
   @override
   $Res call({
@@ -215,15 +247,17 @@ class __$EventModelCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? colorId = freezed,
+    Object? backgroundColor = freezed,
+    Object? foregroundColor = freezed,
     Object? calendarId = freezed,
     Object? recurringEventId = freezed,
     Object? recurrence = freezed,
     Object? originalStartTime = freezed,
     Object? start = freezed,
     Object? end = freezed,
-    Object? organizer = freezed,
+    Object? organizerName = freezed,
   }) {
-    return _then(_EventModel(
+    return _then(_GoogleEventModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -240,6 +274,14 @@ class __$EventModelCopyWithImpl<$Res>
           ? _value.colorId
           : colorId // ignore: cast_nullable_to_non_nullable
               as String?,
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foregroundColor: foregroundColor == freezed
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
       calendarId: calendarId == freezed
           ? _value.calendarId
           : calendarId // ignore: cast_nullable_to_non_nullable
@@ -255,18 +297,18 @@ class __$EventModelCopyWithImpl<$Res>
       originalStartTime: originalStartTime == freezed
           ? _value.originalStartTime
           : originalStartTime // ignore: cast_nullable_to_non_nullable
-              as EventDateTime?,
+              as EventDateTimeModel?,
       start: start == freezed
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
-              as EventDateTime?,
+              as EventDateTimeModel?,
       end: end == freezed
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
-              as EventDateTime?,
-      organizer: organizer == freezed
-          ? _value.organizer
-          : organizer // ignore: cast_nullable_to_non_nullable
+              as EventDateTimeModel?,
+      organizerName: organizerName == freezed
+          ? _value.organizerName
+          : organizerName // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -274,24 +316,32 @@ class __$EventModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EventModel extends _EventModel {
-  _$_EventModel(
+class _$_GoogleEventModel extends _GoogleEventModel {
+  _$_GoogleEventModel(
       {this.id,
-      @JsonKey(name: 'summary') this.title,
+      @JsonKey(name: 'summary')
+          this.title,
       this.description,
       this.colorId,
+      this.backgroundColor,
+      this.foregroundColor,
       this.calendarId,
       this.recurringEventId,
       final List<String>? recurrence,
-      @EventDateTimeConverter() this.originalStartTime,
-      @EventDateTimeConverter() this.start,
-      @EventDateTimeConverter() this.end,
-      this.organizer})
+      @EventDateTimeConverter()
+          this.originalStartTime,
+      @EventDateTimeConverter()
+          this.start,
+      @EventDateTimeConverter()
+          this.end,
+      @EventOrganizerConverter()
+      @JsonKey(name: 'organizer')
+          this.organizerName})
       : _recurrence = recurrence,
         super._();
 
-  factory _$_EventModel.fromJson(Map<String, dynamic> json) =>
-      _$$_EventModelFromJson(json);
+  factory _$_GoogleEventModel.fromJson(Map<String, dynamic> json) =>
+      _$$_GoogleEventModelFromJson(json);
 
   @override
   final String? id;
@@ -302,6 +352,10 @@ class _$_EventModel extends _EventModel {
   final String? description;
   @override
   final String? colorId;
+  @override
+  final String? backgroundColor;
+  @override
+  final String? foregroundColor;
   @override
   final String? calendarId;
   @override
@@ -317,31 +371,37 @@ class _$_EventModel extends _EventModel {
 
   @override
   @EventDateTimeConverter()
-  final EventDateTime? originalStartTime;
+  final EventDateTimeModel? originalStartTime;
   @override
   @EventDateTimeConverter()
-  final EventDateTime? start;
+  final EventDateTimeModel? start;
   @override
   @EventDateTimeConverter()
-  final EventDateTime? end;
+  final EventDateTimeModel? end;
   @override
-  final String? organizer;
+  @EventOrganizerConverter()
+  @JsonKey(name: 'organizer')
+  final String? organizerName;
 
   @override
   String toString() {
-    return 'GoogleEventModel(id: $id, title: $title, description: $description, colorId: $colorId, calendarId: $calendarId, recurringEventId: $recurringEventId, recurrence: $recurrence, originalStartTime: $originalStartTime, start: $start, end: $end, organizer: $organizer)';
+    return 'GoogleEventModel(id: $id, title: $title, description: $description, colorId: $colorId, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, calendarId: $calendarId, recurringEventId: $recurringEventId, recurrence: $recurrence, originalStartTime: $originalStartTime, start: $start, end: $end, organizerName: $organizerName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventModel &&
+            other is _GoogleEventModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.colorId, colorId) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.foregroundColor, foregroundColor) &&
             const DeepCollectionEquality()
                 .equals(other.calendarId, calendarId) &&
             const DeepCollectionEquality()
@@ -352,7 +412,8 @@ class _$_EventModel extends _EventModel {
                 .equals(other.originalStartTime, originalStartTime) &&
             const DeepCollectionEquality().equals(other.start, start) &&
             const DeepCollectionEquality().equals(other.end, end) &&
-            const DeepCollectionEquality().equals(other.organizer, organizer));
+            const DeepCollectionEquality()
+                .equals(other.organizerName, organizerName));
   }
 
   @JsonKey(ignore: true)
@@ -363,42 +424,52 @@ class _$_EventModel extends _EventModel {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(colorId),
+      const DeepCollectionEquality().hash(backgroundColor),
+      const DeepCollectionEquality().hash(foregroundColor),
       const DeepCollectionEquality().hash(calendarId),
       const DeepCollectionEquality().hash(recurringEventId),
       const DeepCollectionEquality().hash(recurrence),
       const DeepCollectionEquality().hash(originalStartTime),
       const DeepCollectionEquality().hash(start),
       const DeepCollectionEquality().hash(end),
-      const DeepCollectionEquality().hash(organizer));
+      const DeepCollectionEquality().hash(organizerName));
 
   @JsonKey(ignore: true)
   @override
-  _$EventModelCopyWith<_EventModel> get copyWith =>
-      __$EventModelCopyWithImpl<_EventModel>(this, _$identity);
+  _$GoogleEventModelCopyWith<_GoogleEventModel> get copyWith =>
+      __$GoogleEventModelCopyWithImpl<_GoogleEventModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventModelToJson(this);
+    return _$$_GoogleEventModelToJson(this);
   }
 }
 
-abstract class _EventModel extends GoogleEventModel {
-  factory _EventModel(
+abstract class _GoogleEventModel extends GoogleEventModel {
+  factory _GoogleEventModel(
       {final String? id,
-      @JsonKey(name: 'summary') final String? title,
+      @JsonKey(name: 'summary')
+          final String? title,
       final String? description,
       final String? colorId,
+      final String? backgroundColor,
+      final String? foregroundColor,
       final String? calendarId,
       final String? recurringEventId,
       final List<String>? recurrence,
-      @EventDateTimeConverter() final EventDateTime? originalStartTime,
-      @EventDateTimeConverter() final EventDateTime? start,
-      @EventDateTimeConverter() final EventDateTime? end,
-      final String? organizer}) = _$_EventModel;
-  _EventModel._() : super._();
+      @EventDateTimeConverter()
+          final EventDateTimeModel? originalStartTime,
+      @EventDateTimeConverter()
+          final EventDateTimeModel? start,
+      @EventDateTimeConverter()
+          final EventDateTimeModel? end,
+      @EventOrganizerConverter()
+      @JsonKey(name: 'organizer')
+          final String? organizerName}) = _$_GoogleEventModel;
+  _GoogleEventModel._() : super._();
 
-  factory _EventModel.fromJson(Map<String, dynamic> json) =
-      _$_EventModel.fromJson;
+  factory _GoogleEventModel.fromJson(Map<String, dynamic> json) =
+      _$_GoogleEventModel.fromJson;
 
   @override
   String? get id => throw _privateConstructorUsedError;
@@ -410,6 +481,10 @@ abstract class _EventModel extends GoogleEventModel {
   @override
   String? get colorId => throw _privateConstructorUsedError;
   @override
+  String? get backgroundColor => throw _privateConstructorUsedError;
+  @override
+  String? get foregroundColor => throw _privateConstructorUsedError;
+  @override
   String? get calendarId => throw _privateConstructorUsedError;
   @override
   String? get recurringEventId => throw _privateConstructorUsedError;
@@ -417,17 +492,20 @@ abstract class _EventModel extends GoogleEventModel {
   List<String>? get recurrence => throw _privateConstructorUsedError;
   @override
   @EventDateTimeConverter()
-  EventDateTime? get originalStartTime => throw _privateConstructorUsedError;
+  EventDateTimeModel? get originalStartTime =>
+      throw _privateConstructorUsedError;
   @override
   @EventDateTimeConverter()
-  EventDateTime? get start => throw _privateConstructorUsedError;
+  EventDateTimeModel? get start => throw _privateConstructorUsedError;
   @override
   @EventDateTimeConverter()
-  EventDateTime? get end => throw _privateConstructorUsedError;
+  EventDateTimeModel? get end => throw _privateConstructorUsedError;
   @override
-  String? get organizer => throw _privateConstructorUsedError;
+  @EventOrganizerConverter()
+  @JsonKey(name: 'organizer')
+  String? get organizerName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventModelCopyWith<_EventModel> get copyWith =>
+  _$GoogleEventModelCopyWith<_GoogleEventModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

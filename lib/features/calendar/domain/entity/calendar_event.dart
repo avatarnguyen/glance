@@ -1,14 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'event.freezed.dart';
+part 'calendar_event.freezed.dart';
 
 @freezed
-class Event with _$Event {
-  factory Event({
+class CalendarEvent with _$CalendarEvent {
+  factory CalendarEvent({
     String? id,
     String? title,
     String? description,
     String? colorId,
+    String? backgroundColor,
+    String? foregroundColor,
     String? calendarId,
     String? recurringEventId,
     List<String>? recurrence,
@@ -19,5 +21,5 @@ class Event with _$Event {
     bool? allDay,
     String? organizer,
     String? timeZone,
-  }) = _Event;
+  }) = _CalendarEvent;
 }

@@ -21,10 +21,13 @@ GoogleCalendarModel _$GoogleCalendarModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GoogleCalendarModel {
   String? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'summary')
   String? get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   String? get backgroundColor => throw _privateConstructorUsedError;
   String? get foregroundColor => throw _privateConstructorUsedError;
   String? get accountName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'primary')
   bool? get isDefault => throw _privateConstructorUsedError;
   bool? get selected => throw _privateConstructorUsedError;
   bool? get deleted => throw _privateConstructorUsedError;
@@ -43,11 +46,12 @@ abstract class $GoogleCalendarModelCopyWith<$Res> {
       _$GoogleCalendarModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-      String? name,
+      @JsonKey(name: 'summary') String? name,
+      String? description,
       String? backgroundColor,
       String? foregroundColor,
       String? accountName,
-      bool? isDefault,
+      @JsonKey(name: 'primary') bool? isDefault,
       bool? selected,
       bool? deleted,
       String? timeZone});
@@ -66,6 +70,7 @@ class _$GoogleCalendarModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? backgroundColor = freezed,
     Object? foregroundColor = freezed,
     Object? accountName = freezed,
@@ -82,6 +87,10 @@ class _$GoogleCalendarModelCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
@@ -124,11 +133,12 @@ abstract class _$GoogleCalendarModelCopyWith<$Res>
   @override
   $Res call(
       {String? id,
-      String? name,
+      @JsonKey(name: 'summary') String? name,
+      String? description,
       String? backgroundColor,
       String? foregroundColor,
       String? accountName,
-      bool? isDefault,
+      @JsonKey(name: 'primary') bool? isDefault,
       bool? selected,
       bool? deleted,
       String? timeZone});
@@ -149,6 +159,7 @@ class __$GoogleCalendarModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? backgroundColor = freezed,
     Object? foregroundColor = freezed,
     Object? accountName = freezed,
@@ -165,6 +176,10 @@ class __$GoogleCalendarModelCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
@@ -203,12 +218,13 @@ class __$GoogleCalendarModelCopyWithImpl<$Res>
 class _$_GoogleCalendarModel extends _GoogleCalendarModel {
   _$_GoogleCalendarModel(
       {this.id,
-      this.name,
+      @JsonKey(name: 'summary') this.name,
+      this.description,
       this.backgroundColor,
       this.foregroundColor,
       this.accountName,
-      this.isDefault,
-      this.selected,
+      @JsonKey(name: 'primary') this.isDefault,
+      this.selected = false,
       this.deleted,
       this.timeZone})
       : super._();
@@ -219,7 +235,10 @@ class _$_GoogleCalendarModel extends _GoogleCalendarModel {
   @override
   final String? id;
   @override
+  @JsonKey(name: 'summary')
   final String? name;
+  @override
+  final String? description;
   @override
   final String? backgroundColor;
   @override
@@ -227,8 +246,10 @@ class _$_GoogleCalendarModel extends _GoogleCalendarModel {
   @override
   final String? accountName;
   @override
+  @JsonKey(name: 'primary')
   final bool? isDefault;
   @override
+  @JsonKey()
   final bool? selected;
   @override
   final bool? deleted;
@@ -237,7 +258,7 @@ class _$_GoogleCalendarModel extends _GoogleCalendarModel {
 
   @override
   String toString() {
-    return 'GoogleCalendarModel(id: $id, name: $name, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, accountName: $accountName, isDefault: $isDefault, selected: $selected, deleted: $deleted, timeZone: $timeZone)';
+    return 'GoogleCalendarModel(id: $id, name: $name, description: $description, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, accountName: $accountName, isDefault: $isDefault, selected: $selected, deleted: $deleted, timeZone: $timeZone)';
   }
 
   @override
@@ -247,6 +268,8 @@ class _$_GoogleCalendarModel extends _GoogleCalendarModel {
             other is _GoogleCalendarModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other.backgroundColor, backgroundColor) &&
             const DeepCollectionEquality()
@@ -265,6 +288,7 @@ class _$_GoogleCalendarModel extends _GoogleCalendarModel {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(backgroundColor),
       const DeepCollectionEquality().hash(foregroundColor),
       const DeepCollectionEquality().hash(accountName),
@@ -288,11 +312,12 @@ class _$_GoogleCalendarModel extends _GoogleCalendarModel {
 abstract class _GoogleCalendarModel extends GoogleCalendarModel {
   factory _GoogleCalendarModel(
       {final String? id,
-      final String? name,
+      @JsonKey(name: 'summary') final String? name,
+      final String? description,
       final String? backgroundColor,
       final String? foregroundColor,
       final String? accountName,
-      final bool? isDefault,
+      @JsonKey(name: 'primary') final bool? isDefault,
       final bool? selected,
       final bool? deleted,
       final String? timeZone}) = _$_GoogleCalendarModel;
@@ -304,7 +329,10 @@ abstract class _GoogleCalendarModel extends GoogleCalendarModel {
   @override
   String? get id => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'summary')
   String? get name => throw _privateConstructorUsedError;
+  @override
+  String? get description => throw _privateConstructorUsedError;
   @override
   String? get backgroundColor => throw _privateConstructorUsedError;
   @override
@@ -312,6 +340,7 @@ abstract class _GoogleCalendarModel extends GoogleCalendarModel {
   @override
   String? get accountName => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'primary')
   bool? get isDefault => throw _privateConstructorUsedError;
   @override
   bool? get selected => throw _privateConstructorUsedError;

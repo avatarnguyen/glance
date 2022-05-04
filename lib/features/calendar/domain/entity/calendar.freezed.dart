@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Calendar {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   String? get backgroundColor => throw _privateConstructorUsedError;
   String? get foregroundColor => throw _privateConstructorUsedError;
   String? get accountName => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $CalendarCopyWith<$Res> {
   $Res call(
       {String? id,
       String? name,
+      String? description,
       String? backgroundColor,
       String? foregroundColor,
       String? accountName,
@@ -59,6 +61,7 @@ class _$CalendarCopyWithImpl<$Res> implements $CalendarCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? backgroundColor = freezed,
     Object? foregroundColor = freezed,
     Object? accountName = freezed,
@@ -75,6 +78,10 @@ class _$CalendarCopyWithImpl<$Res> implements $CalendarCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
@@ -116,6 +123,7 @@ abstract class _$CalendarCopyWith<$Res> implements $CalendarCopyWith<$Res> {
   $Res call(
       {String? id,
       String? name,
+      String? description,
       String? backgroundColor,
       String? foregroundColor,
       String? accountName,
@@ -138,6 +146,7 @@ class __$CalendarCopyWithImpl<$Res> extends _$CalendarCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? backgroundColor = freezed,
     Object? foregroundColor = freezed,
     Object? accountName = freezed,
@@ -154,6 +163,10 @@ class __$CalendarCopyWithImpl<$Res> extends _$CalendarCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
@@ -193,6 +206,7 @@ class _$_Calendar implements _Calendar {
   _$_Calendar(
       {this.id,
       this.name,
+      this.description,
       this.backgroundColor,
       this.foregroundColor,
       this.accountName,
@@ -205,6 +219,8 @@ class _$_Calendar implements _Calendar {
   final String? id;
   @override
   final String? name;
+  @override
+  final String? description;
   @override
   final String? backgroundColor;
   @override
@@ -222,7 +238,7 @@ class _$_Calendar implements _Calendar {
 
   @override
   String toString() {
-    return 'Calendar(id: $id, name: $name, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, accountName: $accountName, isDefault: $isDefault, selected: $selected, deleted: $deleted, timeZone: $timeZone)';
+    return 'Calendar(id: $id, name: $name, description: $description, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, accountName: $accountName, isDefault: $isDefault, selected: $selected, deleted: $deleted, timeZone: $timeZone)';
   }
 
   @override
@@ -232,6 +248,8 @@ class _$_Calendar implements _Calendar {
             other is _Calendar &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other.backgroundColor, backgroundColor) &&
             const DeepCollectionEquality()
@@ -249,6 +267,7 @@ class _$_Calendar implements _Calendar {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(backgroundColor),
       const DeepCollectionEquality().hash(foregroundColor),
       const DeepCollectionEquality().hash(accountName),
@@ -267,6 +286,7 @@ abstract class _Calendar implements Calendar {
   factory _Calendar(
       {final String? id,
       final String? name,
+      final String? description,
       final String? backgroundColor,
       final String? foregroundColor,
       final String? accountName,
@@ -279,6 +299,8 @@ abstract class _Calendar implements Calendar {
   String? get id => throw _privateConstructorUsedError;
   @override
   String? get name => throw _privateConstructorUsedError;
+  @override
+  String? get description => throw _privateConstructorUsedError;
   @override
   String? get backgroundColor => throw _privateConstructorUsedError;
   @override

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'event.dart';
+part of 'calendar_event.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,11 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Event {
+mixin _$CalendarEvent {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get colorId => throw _privateConstructorUsedError;
+  String? get backgroundColor => throw _privateConstructorUsedError;
+  String? get foregroundColor => throw _privateConstructorUsedError;
   String? get calendarId => throw _privateConstructorUsedError;
   String? get recurringEventId => throw _privateConstructorUsedError;
   List<String>? get recurrence => throw _privateConstructorUsedError;
@@ -32,18 +34,22 @@ mixin _$Event {
   String? get timeZone => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
+  $CalendarEventCopyWith<CalendarEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventCopyWith<$Res> {
-  factory $EventCopyWith(Event value, $Res Function(Event) then) =
-      _$EventCopyWithImpl<$Res>;
+abstract class $CalendarEventCopyWith<$Res> {
+  factory $CalendarEventCopyWith(
+          CalendarEvent value, $Res Function(CalendarEvent) then) =
+      _$CalendarEventCopyWithImpl<$Res>;
   $Res call(
       {String? id,
       String? title,
       String? description,
       String? colorId,
+      String? backgroundColor,
+      String? foregroundColor,
       String? calendarId,
       String? recurringEventId,
       List<String>? recurrence,
@@ -56,12 +62,13 @@ abstract class $EventCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
-  _$EventCopyWithImpl(this._value, this._then);
+class _$CalendarEventCopyWithImpl<$Res>
+    implements $CalendarEventCopyWith<$Res> {
+  _$CalendarEventCopyWithImpl(this._value, this._then);
 
-  final Event _value;
+  final CalendarEvent _value;
   // ignore: unused_field
-  final $Res Function(Event) _then;
+  final $Res Function(CalendarEvent) _then;
 
   @override
   $Res call({
@@ -69,6 +76,8 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
     Object? title = freezed,
     Object? description = freezed,
     Object? colorId = freezed,
+    Object? backgroundColor = freezed,
+    Object? foregroundColor = freezed,
     Object? calendarId = freezed,
     Object? recurringEventId = freezed,
     Object? recurrence = freezed,
@@ -96,6 +105,14 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.colorId
           : colorId // ignore: cast_nullable_to_non_nullable
               as String?,
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foregroundColor: foregroundColor == freezed
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
       calendarId: calendarId == freezed
           ? _value.calendarId
           : calendarId // ignore: cast_nullable_to_non_nullable
@@ -137,15 +154,19 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
-  factory _$EventCopyWith(_Event value, $Res Function(_Event) then) =
-      __$EventCopyWithImpl<$Res>;
+abstract class _$CalendarEventCopyWith<$Res>
+    implements $CalendarEventCopyWith<$Res> {
+  factory _$CalendarEventCopyWith(
+          _CalendarEvent value, $Res Function(_CalendarEvent) then) =
+      __$CalendarEventCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
       String? title,
       String? description,
       String? colorId,
+      String? backgroundColor,
+      String? foregroundColor,
       String? calendarId,
       String? recurringEventId,
       List<String>? recurrence,
@@ -158,13 +179,15 @@ abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
-    implements _$EventCopyWith<$Res> {
-  __$EventCopyWithImpl(_Event _value, $Res Function(_Event) _then)
-      : super(_value, (v) => _then(v as _Event));
+class __$CalendarEventCopyWithImpl<$Res>
+    extends _$CalendarEventCopyWithImpl<$Res>
+    implements _$CalendarEventCopyWith<$Res> {
+  __$CalendarEventCopyWithImpl(
+      _CalendarEvent _value, $Res Function(_CalendarEvent) _then)
+      : super(_value, (v) => _then(v as _CalendarEvent));
 
   @override
-  _Event get _value => super._value as _Event;
+  _CalendarEvent get _value => super._value as _CalendarEvent;
 
   @override
   $Res call({
@@ -172,6 +195,8 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? colorId = freezed,
+    Object? backgroundColor = freezed,
+    Object? foregroundColor = freezed,
     Object? calendarId = freezed,
     Object? recurringEventId = freezed,
     Object? recurrence = freezed,
@@ -182,7 +207,7 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
     Object? organizer = freezed,
     Object? timeZone = freezed,
   }) {
-    return _then(_Event(
+    return _then(_CalendarEvent(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -199,6 +224,14 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
           ? _value.colorId
           : colorId // ignore: cast_nullable_to_non_nullable
               as String?,
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foregroundColor: foregroundColor == freezed
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
       calendarId: calendarId == freezed
           ? _value.calendarId
           : calendarId // ignore: cast_nullable_to_non_nullable
@@ -241,12 +274,14 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Event implements _Event {
-  _$_Event(
+class _$_CalendarEvent implements _CalendarEvent {
+  _$_CalendarEvent(
       {this.id,
       this.title,
       this.description,
       this.colorId,
+      this.backgroundColor,
+      this.foregroundColor,
       this.calendarId,
       this.recurringEventId,
       final List<String>? recurrence,
@@ -266,6 +301,10 @@ class _$_Event implements _Event {
   final String? description;
   @override
   final String? colorId;
+  @override
+  final String? backgroundColor;
+  @override
+  final String? foregroundColor;
   @override
   final String? calendarId;
   @override
@@ -295,19 +334,23 @@ class _$_Event implements _Event {
 
   @override
   String toString() {
-    return 'Event(id: $id, title: $title, description: $description, colorId: $colorId, calendarId: $calendarId, recurringEventId: $recurringEventId, recurrence: $recurrence, originalStartTime: $originalStartTime, start: $start, end: $end, allDay: $allDay, organizer: $organizer, timeZone: $timeZone)';
+    return 'CalendarEvent(id: $id, title: $title, description: $description, colorId: $colorId, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, calendarId: $calendarId, recurringEventId: $recurringEventId, recurrence: $recurrence, originalStartTime: $originalStartTime, start: $start, end: $end, allDay: $allDay, organizer: $organizer, timeZone: $timeZone)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Event &&
+            other is _CalendarEvent &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.colorId, colorId) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.foregroundColor, foregroundColor) &&
             const DeepCollectionEquality()
                 .equals(other.calendarId, calendarId) &&
             const DeepCollectionEquality()
@@ -330,6 +373,8 @@ class _$_Event implements _Event {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(colorId),
+      const DeepCollectionEquality().hash(backgroundColor),
+      const DeepCollectionEquality().hash(foregroundColor),
       const DeepCollectionEquality().hash(calendarId),
       const DeepCollectionEquality().hash(recurringEventId),
       const DeepCollectionEquality().hash(recurrence),
@@ -342,16 +387,18 @@ class _$_Event implements _Event {
 
   @JsonKey(ignore: true)
   @override
-  _$EventCopyWith<_Event> get copyWith =>
-      __$EventCopyWithImpl<_Event>(this, _$identity);
+  _$CalendarEventCopyWith<_CalendarEvent> get copyWith =>
+      __$CalendarEventCopyWithImpl<_CalendarEvent>(this, _$identity);
 }
 
-abstract class _Event implements Event {
-  factory _Event(
+abstract class _CalendarEvent implements CalendarEvent {
+  factory _CalendarEvent(
       {final String? id,
       final String? title,
       final String? description,
       final String? colorId,
+      final String? backgroundColor,
+      final String? foregroundColor,
       final String? calendarId,
       final String? recurringEventId,
       final List<String>? recurrence,
@@ -360,7 +407,7 @@ abstract class _Event implements Event {
       final DateTime? end,
       final bool? allDay,
       final String? organizer,
-      final String? timeZone}) = _$_Event;
+      final String? timeZone}) = _$_CalendarEvent;
 
   @override
   String? get id => throw _privateConstructorUsedError;
@@ -370,6 +417,10 @@ abstract class _Event implements Event {
   String? get description => throw _privateConstructorUsedError;
   @override
   String? get colorId => throw _privateConstructorUsedError;
+  @override
+  String? get backgroundColor => throw _privateConstructorUsedError;
+  @override
+  String? get foregroundColor => throw _privateConstructorUsedError;
   @override
   String? get calendarId => throw _privateConstructorUsedError;
   @override
@@ -390,5 +441,6 @@ abstract class _Event implements Event {
   String? get timeZone => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventCopyWith<_Event> get copyWith => throw _privateConstructorUsedError;
+  _$CalendarEventCopyWith<_CalendarEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }

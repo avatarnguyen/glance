@@ -7,6 +7,7 @@ class Calendar with _$Calendar {
   factory Calendar({
     String? id,
     String? name,
+    String? description,
     String? backgroundColor,
     String? foregroundColor,
     String? accountName,

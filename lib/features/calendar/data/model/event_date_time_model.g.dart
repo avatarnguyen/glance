@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'event_date_time.dart';
+part of 'event_date_time_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EventDateTime _$$_EventDateTimeFromJson(Map<String, dynamic> json) =>
-    _$_EventDateTime(
+_$_EventDateTimeModel _$$_EventDateTimeModelFromJson(
+        Map<String, dynamic> json) =>
+    _$_EventDateTimeModel(
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
       dateTime: json['dateTime'] == null
@@ -16,7 +17,8 @@ _$_EventDateTime _$$_EventDateTimeFromJson(Map<String, dynamic> json) =>
       timeZone: json['timeZone'] as String?,
     );
 
-Map<String, dynamic> _$$_EventDateTimeToJson(_$_EventDateTime instance) =>
+Map<String, dynamic> _$$_EventDateTimeModelToJson(
+        _$_EventDateTimeModel instance) =>
     <String, dynamic>{
       'date': instance.date?.toIso8601String(),
       'dateTime': instance.dateTime?.toIso8601String(),
