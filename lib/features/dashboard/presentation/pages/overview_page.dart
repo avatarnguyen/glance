@@ -21,6 +21,7 @@ class OverviewPage extends StatelessWidget {
       appBar: AppBarCustom(
         centerTitle: false,
         title: AppText.title1(
+          // CustomDateUtils.returnDateWithDay(today),
           _getCurrentGreeting(today),
         ),
         actions: [
@@ -68,6 +69,7 @@ class OverviewPage extends StatelessWidget {
               ),
               const AppGap.large(),
               const AlldayEventWidget(),
+              const AppGap.medium(),
               TimeEventWidget(
                 color: Colors.orange,
                 time: DateTime(2022, 2, 20, 10, 30),
@@ -109,13 +111,13 @@ class OverviewPage extends StatelessWidget {
   String _getCurrentGreeting(DateTime date) {
     final _currentHour = date.hour;
     if (_currentHour > 11 && _currentHour < 18) {
-      return 'Good Afternoon!';
+      return 'Good Afternoon';
     } else if (_currentHour > 5 && _currentHour < 12) {
-      return 'Good Morning!';
+      return 'Good Morning';
     } else if (_currentHour > 17 && _currentHour < 22) {
-      return 'Good Evening!';
+      return 'Good Evening';
     } else {
-      return 'Good Night!';
+      return 'Good Night';
     }
   }
 }

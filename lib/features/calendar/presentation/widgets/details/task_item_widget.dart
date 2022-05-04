@@ -21,37 +21,40 @@ class TaskItemWidget extends HookWidget {
 
     final _checkState = useState(false);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Material(
-          color: Colors.transparent,
-          child: Checkbox(
-            checkColor: theme.colors.accent,
-            fillColor: MaterialStateProperty.resolveWith(getColor),
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            visualDensity: const VisualDensity(
-              horizontal: VisualDensity.minimumDensity,
-              vertical: VisualDensity.minimumDensity,
-            ),
-            shape: StadiumBorder(
-              side: BorderSide(
-                color: color,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: theme.spacing.small),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Material(
+            color: Colors.transparent,
+            child: Checkbox(
+              checkColor: theme.colors.accent,
+              fillColor: MaterialStateProperty.resolveWith(getColor),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              visualDensity: const VisualDensity(
+                horizontal: VisualDensity.minimumDensity,
+                vertical: VisualDensity.minimumDensity,
               ),
+              shape: StadiumBorder(
+                side: BorderSide(
+                  color: color,
+                ),
+              ),
+              value: _checkState.value,
+              onChanged: (value) => _checkState.value = value ?? false,
             ),
-            value: _checkState.value,
-            onChanged: (value) => _checkState.value = value ?? false,
           ),
-        ),
-        const AppGap.small(),
-        AppText.title4(
-          text,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 2,
-        ).flexible(),
-      ],
+          const AppGap.small(),
+          AppText.title4(
+            text,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ).flexible(),
+        ],
+      ),
     );
   }
 }
