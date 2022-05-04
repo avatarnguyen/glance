@@ -1,0 +1,158 @@
+{
+  "project_info": {
+    "project_number": "478862318784",
+    "project_id": "newagent-ki9i",
+    "storage_bucket": "newagent-ki9i.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478862318784:android:21508da8f93c8fdfb0a125",
+        "android_client_info": {
+          "package_name": "com.anhnguyen.glance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478862318784-5onvhv4ovg8b6ealaal3i9hdc6sa372q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxAnLhKiI37Gck5cubrQIDENCUA3Jty98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478862318784-5onvhv4ovg8b6ealaal3i9hdc6sa372q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "478862318784-hj8ke77gc7bji9nfvk63vk53mqkvf55d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anhnguyen.glance"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478862318784:android:cb618af94db4097bb0a125",
+        "android_client_info": {
+          "package_name": "com.anhnguyen.refocusapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478862318784-me98i5b8pnhul5jt9ov7d9drue14ci90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anhnguyen.refocusapp",
+            "certificate_hash": "044c470050ce6c73469bbeafa8f3742199dc0d10"
+          }
+        },
+        {
+          "client_id": "478862318784-5onvhv4ovg8b6ealaal3i9hdc6sa372q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxAnLhKiI37Gck5cubrQIDENCUA3Jty98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478862318784-5onvhv4ovg8b6ealaal3i9hdc6sa372q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "478862318784-hj8ke77gc7bji9nfvk63vk53mqkvf55d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anhnguyen.glance"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478862318784:android:42fa4c7435f582d7b0a125",
+        "android_client_info": {
+          "package_name": "com.anhnguyen.refocusapp.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478862318784-fvgjuruehs353tbdq4uhi1auoo244uul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anhnguyen.refocusapp.dev",
+            "certificate_hash": "c5006c1024c9a560da165b1946d73c1f78428cc0"
+          }
+        },
+        {
+          "client_id": "478862318784-kt9r9b6akpchah5b7fqgd1nv0sb1vuim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anhnguyen.refocusapp.dev",
+            "certificate_hash": "044c470050ce6c73469bbeafa8f3742199dc0d10"
+          }
+        },
+        {
+          "client_id": "478862318784-ltmffuspdloajvhgstks8qr0v9natb1k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anhnguyen.refocusapp.dev",
+            "certificate_hash": "8ebc3f8c2c2cb997b1f74de506d3f1fc7e628e9a"
+          }
+        },
+        {
+          "client_id": "478862318784-v35ov2g62bfoabqfqrm9lpsur184novo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anhnguyen.refocusapp.dev",
+            "certificate_hash": "529791b999c67696a4a9089d6457d1198fa3bdbf"
+          }
+        },
+        {
+          "client_id": "478862318784-5onvhv4ovg8b6ealaal3i9hdc6sa372q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxAnLhKiI37Gck5cubrQIDENCUA3Jty98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478862318784-5onvhv4ovg8b6ealaal3i9hdc6sa372q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "478862318784-hj8ke77gc7bji9nfvk63vk53mqkvf55d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anhnguyen.glance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
