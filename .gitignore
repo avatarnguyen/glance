@@ -46,3 +46,5 @@ app.*.map.json
 /android/app/release
 
 __FLUTTER_DEV_LOG__
+
+*.env

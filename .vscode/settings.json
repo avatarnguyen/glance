@@ -7,6 +7,7 @@
   "Controler",
   "cupertino",
   "dartx",
+  "dotenv",
   "googleapis",
   "riverpod"
  ],
