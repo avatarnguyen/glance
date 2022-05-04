@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
+import 'package:glance/features/calendar/presentation/logic/calendar_provider.dart';
+import 'package:glance/features/calendar/presentation/logic/calendar_state.dart';
 import 'package:glance/features/calendar/presentation/widgets/calendar_cell_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 part '../widgets/month_listview_widget.dart';
 part '../widgets/single_month_widget.dart';
@@ -14,16 +17,14 @@ part '../widgets/appointment_widget.dart';
 
 const kMonthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-class CalendarPage extends StatefulWidget {
-  const CalendarPage({
-    Key? key,
-  }) : super(key: key);
+class CalendarPage extends StatefulHookConsumerWidget {
+  const CalendarPage({Key? key}) : super(key: key);
 
   @override
-  State<CalendarPage> createState() => _CalendarPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _CalendarPageState();
 }
 
-class _CalendarPageState extends State<CalendarPage> {
+class _CalendarPageState extends ConsumerState<CalendarPage> {
   final _elements = [
     {'name': 'John', 'group': "2022.03.14"},
     {'name': 'Test 1', 'group': "2022.03.14"},
@@ -45,27 +46,31 @@ class _CalendarPageState extends State<CalendarPage> {
     {'name': 'Test', 'group': "2022.03.19"},
     {'name': 'Danny', 'group': "2022.03.19"},
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _getAllCalendars();
+  }
+
+  Future<void> _getAllCalendars() async {
+    await ref.read(calendarNotifierProvider.notifier).getCalendars();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // final _showAllMonth = useState(false);
-
-    // void _toggleMonthSelection() {
-    //   _showAllMonth.value = !_showAllMonth.value;
-    // }
-
+    final state = ref.watch(calendarNotifierProvider) as CalendarState;
+    state.maybeWhen(
+      orElse: () {
+        print('State not loaded');
+      },
+      loaded: (calendars) {
+        print('Fetched Calendars: $calendars');
+      },
+    );
     return Scaffold(
       backgroundColor: context.gColor.primary,
-      appBar: const AppBarCustom(
-          // actions: [
-          //   IconButton(
-          //     onPressed: () => context.pop(),
-          //     icon: Icon(
-          //       Icons.close,
-          //       color: context.gColor.secondary,
-          //     ),
-          //   )
-          // ],
-          ),
+      appBar: const AppBarCustom(),
       body: SafeArea(
         child: GroupedListView<dynamic, String>(
           elements: _elements,
@@ -92,8 +97,3 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 }
-
-            // _SingleMonthWidget(
-            //   monthIconPressed: _toggleMonthSelection,
-            // ),
-            // const _AppointmentSheetWidget().expanded(),

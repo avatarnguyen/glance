@@ -3,9 +3,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'core/presentation/pages/app.dart';
 import 'package:timezone/data/latest.dart' as tz;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
   tz.initializeTimeZones();
+
+  await dotenv.load();
 
   runApp(
     const ProviderScope(

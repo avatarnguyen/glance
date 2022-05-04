@@ -5,6 +5,8 @@ class ServerException implements Exception {
   // String toString() => 'ServerException: ${message ?? ''}';
 }
 
+class AuthException implements Exception {}
+
 class CacheException implements Exception {}
 
 class ArgumentException implements Exception {}

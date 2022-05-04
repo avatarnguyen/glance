@@ -5,6 +5,7 @@ import 'package:glance/features/calendar/data/model/google_calendar_model.dart';
 import 'package:glance/features/calendar/data/model/google_event_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:googleapis/calendar/v3.dart' as google_api;
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart' as io;
 
@@ -41,9 +42,9 @@ abstract class GoogleCalendarDataSource {
 }
 
 class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
-  GoogleCalendarDataSourceImpl({required this.gCalSignIn});
+  GoogleCalendarDataSourceImpl({required this.googleSignIn});
 
-  final GoogleSignIn gCalSignIn;
+  final GoogleSignIn googleSignIn;
 
   final log = logger(GoogleCalendarDataSourceImpl);
 
@@ -54,7 +55,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     required DateTime timeMax,
   }) async {
     final appointments = <GoogleEventModel>[];
-    final client = await gCalSignIn.authenticatedClient();
+    final AuthClient? client = await _getAuthClient();
 
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
@@ -90,15 +91,20 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
         throw ServerException();
       }
     } else {
-      //TODO
-      // await gCalSignIn.signIn();
+      throw AuthException();
     }
 
     log.v('Appointments: ${appointments.length}');
 
-    //TODO: Write Test to check # of appointments return
-    //! not sure whether this working, login seems off
     return appointments;
+  }
+
+  Future<AuthClient?> _getAuthClient() async {
+    final _isSignIn = await googleSignIn.isSignedIn();
+    if (!_isSignIn) {
+      await googleSignIn.signIn();
+    }
+    return await googleSignIn.authenticatedClient();
   }
 
   List<GoogleEventModel> _insertEventsToAppointments(
@@ -127,7 +133,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     String? calendarId,
     required GoogleEventModel eventModel,
   }) async {
-    var client = await gCalSignIn.authenticatedClient();
+    var client = await googleSignIn.authenticatedClient();
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
 
@@ -139,7 +145,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
         throw ServerException();
       }
     } else {
-      await gCalSignIn.signIn();
+      await googleSignIn.signIn();
     }
   }
 
@@ -148,7 +154,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     String? calendarId,
     required GoogleEventModel eventModel,
   }) async {
-    final client = await gCalSignIn.authenticatedClient();
+    final client = await googleSignIn.authenticatedClient();
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
 
@@ -172,7 +178,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
         throw ServerException();
       }
     } else {
-      await gCalSignIn.signIn();
+      await googleSignIn.signIn();
     }
   }
 
@@ -181,7 +187,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
     required String calendarId,
     required GoogleEventModel eventModel,
   }) async {
-    var client = await gCalSignIn.authenticatedClient();
+    var client = await googleSignIn.authenticatedClient();
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
 
@@ -197,7 +203,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
         throw ServerException();
       }
     } else {
-      await gCalSignIn.signIn();
+      await googleSignIn.signIn();
     }
   }
 
@@ -205,7 +211,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
   Future<List<GoogleCalendarModel>> getGoogleCalendars() async {
     final calendars = <GoogleCalendarModel>[];
 
-    var client = await gCalSignIn.authenticatedClient();
+    var client = await googleSignIn.authenticatedClient();
     if (client != null) {
       final calendarApi = google_api.CalendarApi(client);
 
@@ -224,7 +230,7 @@ class GoogleCalendarDataSourceImpl implements GoogleCalendarDataSource {
         throw ServerException();
       }
     } else {
-      await gCalSignIn.signIn();
+      await googleSignIn.signIn();
     }
 
     return calendars;
