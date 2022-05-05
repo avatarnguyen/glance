@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:glance/core/glance_core.dart';
@@ -14,6 +15,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
   int viewIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    signIn();
+  }
+
+  Future<bool> signIn() async {
+    final creds = await FirebaseAuth.instance.signInAnonymously();
+    debugPrint(creds.user?.uid);
+    if (creds.user != null) {
+      return true;
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {

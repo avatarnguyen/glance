@@ -39,6 +39,8 @@ dependencies:
   flutter_dotenv: ^5.0.2
   firebase_core: ^1.16.0
   rrule: ^0.2.7
+  firebase_auth: ^3.3.17
+  cloud_firestore: ^3.1.14
 
 dev_dependencies:
   build_runner: ^2.1.10

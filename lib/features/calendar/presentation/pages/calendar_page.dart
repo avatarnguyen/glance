@@ -56,7 +56,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
             child: GroupedListView<CalendarEvent, String>(
               elements: events,
               groupBy: (element) =>
-                  element.start?.format('yMMMMd') ?? 'Undefined Start',
+                  element.start?.format('yMMMMd') ?? 'Unplanned',
               sort: false,
               groupSeparatorBuilder: (String value) => AppPadding.regular(
                 child: AppText.title2(value),
