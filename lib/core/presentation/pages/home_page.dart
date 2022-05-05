@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    signIn();
+    // signIn();
   }
 
   Future<bool> signIn() async {
@@ -35,8 +35,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
     final theme = AppTheme.of(context);
-    return Theme(
-      data: glanceLightThemeData(context),
+    return Material(
       child: Scaffold(
         floatingActionButton: Padding(
           padding: EdgeInsets.only(
@@ -52,28 +51,30 @@ class _HomePageState extends State<HomePage>
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: viewIndex,
-          onTap: (index) {
-            setState(() {
-              viewIndex = index;
-            });
-          },
-          elevation: 0.0,
-          backgroundColor: theme.colors.primary,
-          unselectedItemColor: theme.colors.secondary,
-          selectedItemColor: theme.colors.accent,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Dashboard',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.folder),
-              label: 'Projects',
-            )
-          ],
+        bottomNavigationBar: Material(
+          child: BottomNavigationBar(
+            currentIndex: viewIndex,
+            onTap: (index) {
+              setState(() {
+                viewIndex = index;
+              });
+            },
+            elevation: 0.0,
+            backgroundColor: theme.colors.primary,
+            unselectedItemColor: theme.colors.secondary,
+            selectedItemColor: theme.colors.accent,
+            type: BottomNavigationBarType.fixed,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.folder),
+                label: 'Projects',
+              )
+            ],
+          ),
         ),
         body: _getCurrentView(),
       ),

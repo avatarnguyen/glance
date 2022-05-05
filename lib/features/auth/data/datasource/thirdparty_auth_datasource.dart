@@ -4,6 +4,7 @@ abstract class ThirdPartyAuthDatasource {
   /// Idea: using repository pattern to use the same method for apple and google signin
   /// can be use through dependency injection with different interface implementation
   Future<void> signInWithThirdParty();
+  Future<void> signOut();
 }
 
 class GoogleAuthDatasource implements ThirdPartyAuthDatasource {
@@ -15,6 +16,11 @@ class GoogleAuthDatasource implements ThirdPartyAuthDatasource {
   Future<void> signInWithThirdParty() {
     // TODO: implement signInWithGoogle
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _googleSignIn.signOut();
   }
 }
 

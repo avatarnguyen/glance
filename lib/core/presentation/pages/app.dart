@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,20 +7,13 @@ import 'package:glance/core/config/router.dart';
 import 'package:glance/core/styles/styles.dart';
 import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MyApp extends StatefulWidget {
+class MyApp extends HookConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final _appRouter = AppRouter();
-
-  @override
-  Widget build(BuildContext context) {
-    final _router = _appRouter.router;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _router = ref.read(routerProvider);
     return AppTheme(
       data: AppThemeData.regular(
         appLogo: ExactAssetPicture(
@@ -26,9 +21,11 @@ class _MyAppState extends State<MyApp> {
           'assets/images/logo.svg',
         ),
       ),
-      child: AndroidAppWidget(
-        router: _router,
-      ),
+      child:
+          // Platform.isIOS
+          //     ? IosAppWidget(router: _router)
+          //     :
+          AndroidAppWidget(router: _router),
     );
   }
 }
