@@ -2,18 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/features/calendar/presentation/logic/calendar_provider.dart';
 import 'package:glance/features/dashboard/presentation/pages/overview_page.dart';
 import 'package:glance/features/project/presentation/pages/project_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulHookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin {
+class _HomePageState extends ConsumerState<HomePage> {
   int viewIndex = 0;
 
   // Future<bool> signIn() async {
@@ -26,8 +27,22 @@ class _HomePageState extends State<HomePage>
   // }
 
   @override
+  void initState() {
+    super.initState();
+    if (mounted) {
+      ref.read(calendarNotifierProvider.notifier).getCalendarEvents();
+    }
+  }
+
+  @override
+  void dispose() {
+    ref.read(calendarNotifierProvider.notifier).dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    super.build(context);
+    // super.build(context);
     final theme = AppTheme.of(context);
     return PlatformWidget(
       cupertino: (_, __) => Theme(
@@ -106,6 +121,6 @@ class _HomePageState extends State<HomePage>
     }
   }
 
-  @override
-  bool get wantKeepAlive => true;
+  // @override
+  // bool get wantKeepAlive => true;
 }

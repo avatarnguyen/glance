@@ -3,12 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class ProjectPage extends StatelessWidget {
+class ProjectPage extends StatefulWidget {
   const ProjectPage({Key? key}) : super(key: key);
 
   @override
+  State<ProjectPage> createState() => _ProjectPageState();
+}
+
+class _ProjectPageState extends State<ProjectPage>
+    with AutomaticKeepAliveClientMixin<ProjectPage> {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
+      key: const PageStorageKey<String>('project_page'),
       backgroundColor: context.gColor.primary,
       body: CustomScrollView(
         slivers: [
@@ -50,4 +58,7 @@ class ProjectPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

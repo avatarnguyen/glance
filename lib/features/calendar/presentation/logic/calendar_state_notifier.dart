@@ -48,7 +48,7 @@ class CalendarNotifier extends StateNotifier<CalendarState> {
           ((eventA, eventB) =>
               (eventA.start?.isBefore(eventB.start!) == true) ? -1 : 1),
         );
-        return state = CalendarState.loaded(
+        state = CalendarState.loaded(
           calendarEvents: _eventsAfterApplyRecurringRule,
         );
       },

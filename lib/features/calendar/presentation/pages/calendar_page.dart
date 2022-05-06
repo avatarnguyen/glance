@@ -27,19 +27,19 @@ class CalendarPage extends StatefulHookConsumerWidget {
 }
 
 class _CalendarPageState extends ConsumerState<CalendarPage> {
-  final _log = logger(CalendarPage);
+  // final _log = logger(CalendarPage);
 
-  @override
-  void initState() {
-    super.initState();
-    if (mounted) {
-      _getAllCalendars();
-    }
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   if (mounted) {
+  //     _getAllCalendars();
+  //   }
+  // }
 
-  Future<void> _getAllCalendars() async {
-    await ref.read(calendarNotifierProvider.notifier).getCalendarEvents();
-  }
+  // Future<void> _getAllCalendars() async {
+  //   await ref.read(calendarNotifierProvider.notifier).getCalendarEvents();
+  // }
 
   @override
   Widget build(BuildContext context) {

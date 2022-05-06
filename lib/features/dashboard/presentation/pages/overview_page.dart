@@ -1,21 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:glance/core/dependency_injection/auth_dependency.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class OverviewPage extends HookConsumerWidget {
+class OverviewPage extends StatefulHookConsumerWidget {
   const OverviewPage({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _OverviewPageState();
+}
+
+class _OverviewPageState extends ConsumerState<OverviewPage>
+    with AutomaticKeepAliveClientMixin<OverviewPage> {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
     final theme = AppTheme.of(context);
     final today = DateTime.now();
 
     return Scaffold(
-      key: const Key("OverviewPage"),
+      key: const PageStorageKey<String>('overview_page'),
       backgroundColor: theme.colors.primary,
       appBar: AppBarCustom(
         centerTitle: false,
@@ -116,4 +123,7 @@ class OverviewPage extends HookConsumerWidget {
       return 'Good Night';
     }
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
