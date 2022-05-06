@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/styles/theme/theme.dart';
 
 enum AppTextLevel {
@@ -125,13 +126,14 @@ class AppText extends StatelessWidget {
           return theme.typography.title4;
       }
     }();
-    return Text(
+    return PlatformText(
       data,
       style: style.copyWith(
         color: color,
         fontSize: fontSize,
       ),
       // softWrap: false,
+      // textAlign: TextAlign.start,
       maxLines: maxLines,
       overflow: overflow ?? TextOverflow.clip,
     );

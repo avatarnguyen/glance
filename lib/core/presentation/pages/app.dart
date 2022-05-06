@@ -3,10 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:glance/core/config/router.dart';
-import 'package:glance/core/styles/styles.dart';
+import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/styles/theme/app_theme_data.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MyApp extends HookConsumerWidget {
@@ -21,11 +19,10 @@ class MyApp extends HookConsumerWidget {
           'assets/images/logo.svg',
         ),
       ),
-      child:
-          // Platform.isIOS
-          //     ? IosAppWidget(router: _router)
-          //     :
-          AndroidAppWidget(router: _router),
+      child: PlatformWidget(
+        cupertino: (_, __) => IosAppWidget(router: _router),
+        material: (_, __) => AndroidAppWidget(router: _router),
+      ),
     );
   }
 }

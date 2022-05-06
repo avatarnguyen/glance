@@ -21,6 +21,12 @@ const kRouteSetting = 'setting';
 const kRouteCalendar = 'calendar';
 
 final routerProvider = Provider<GoRouter>((ref) {
+  final goRouterRefreshStream =
+      GoRouterRefreshStream(ref.watch(authChangeStreamProvider.stream));
+
+  ref.onDispose(() {
+    goRouterRefreshStream.dispose();
+  });
   return GoRouter(
     routes: [
       GoRoute(
@@ -83,7 +89,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         data: (state) {
           debugPrint('Has Data');
           return state.maybeWhen(
-            authenticated: () => _isAtHomePage ? null : '/',
+            authenticated: () => _isAtLoginPage ? '/' : null,
             unauthenticated: () => _isAtLoginPage ? null : '/login',
             orElse: () {
               // TODO: here better an error page
@@ -93,14 +99,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         },
         loading: () {
           debugPrint('Is Loading');
-          return _isAtLoginPage ? null : '/login';
+          // return _isAtLoginPage ? null : '/login';
+          return null;
         },
         orElse: () => null,
       );
     },
-    refreshListenable:
-        GoRouterRefreshStream(ref.watch(authChangeStreamProvider.stream)),
-    // refreshListenable: AuthNotifier(ref),
+    refreshListenable: goRouterRefreshStream,
     debugLogDiagnostics: true,
     errorPageBuilder: (context, state) => MaterialPage(
       key: state.pageKey,

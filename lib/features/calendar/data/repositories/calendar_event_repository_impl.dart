@@ -3,6 +3,7 @@ import 'package:glance/core/error/exception.dart';
 import 'package:glance/core/error/failure.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/utils/helpers/date_time_helper.dart';
+import 'package:glance/features/auth/domain/failures/auth_failure.dart';
 import 'package:glance/features/calendar/data/datasource/google_calendar_datasource.dart';
 import 'package:glance/features/calendar/data/model/google_calendar_model.dart';
 import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
@@ -54,6 +55,10 @@ class CalendarEventRepositoryImpl implements CalendarEventRepository {
       return Right(_calendarEvents);
     } on ServerException {
       _log.e('ServerException');
+      return Left(ServerFailure());
+    } on AuthException {
+      //FIXME: this method should actually return AuthFailure instead of Failure
+      _log.e('Auth Exception');
       return Left(ServerFailure());
     }
   }

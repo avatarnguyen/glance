@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/dependency_injection/auth_dependency.dart';
 import 'package:glance/core/glance_core.dart';
@@ -19,27 +20,28 @@ class OverviewPage extends HookConsumerWidget {
       backgroundColor: theme.colors.primary,
       appBar: AppBarCustom(
         centerTitle: false,
-        title: AppText.title1(
-          // CustomDateUtils.returnDateWithDay(today),
-          _getCurrentGreeting(today),
-        ),
+        // title: AppText.title1(
+        //   // CustomDateUtils.returnDateWithDay(today),
+        //   _getCurrentGreeting(today),
+        // ),
+        titleText: _getCurrentGreeting(today),
         actions: [
-          IconButton(
-            color: iconColor,
+          PlatformIconButton(
             onPressed: () {
               context.push('/$kRouteCalendar');
             },
-            icon: const Icon(Icons.calendar_month),
+            cupertinoIcon: const Icon(CupertinoIcons.calendar),
+            materialIcon: const Icon(Icons.calendar_month),
           ),
-          IconButton(
-            color: iconColor,
+          PlatformIconButton(
             onPressed: () {
               context.push('/$kRouteSetting');
             },
-            icon: const Icon(Icons.settings),
+            cupertinoIcon: const Icon(CupertinoIcons.settings),
+            materialIcon: const Icon(Icons.settings),
           ),
-          // IconButton(
-          //   color: iconColor,
+          // PlatformIconButton(
+          //   // color: iconColor,
           //   onPressed: () {
           //     ref.read(authDatasourceProvider).signOut();
           //     ref.read(googleSignInProvider).signOut();

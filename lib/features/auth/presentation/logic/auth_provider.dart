@@ -1,16 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glance/core/dependency_injection/auth_dependency.dart';
 import 'package:glance/core/enum/authentication_state_enum.dart';
 import 'package:glance/core/error/error_message.dart';
 
 import 'auth_state.dart';
-
-part 'auth_state_notifier.dart';
-
-// final authChangeProvider = ChangeNotifierProvider<AuthState>((ref) {
-//   return AuthNotifier();
-// });
 
 final authChangeStreamProvider = StreamProvider<AuthState>((ref) {
   final authWatchChanges = ref.read(authWatchChangesProvider);
