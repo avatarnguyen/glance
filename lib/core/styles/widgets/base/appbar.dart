@@ -19,7 +19,13 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _titleWidget = titleText != null ? AppText.title1(titleText!) : null;
+    final _titleWidget = titleText != null
+        ? AppText.title1(
+            titleText!,
+            fontSize: 26,
+            maxLines: 1,
+          )
+        : null;
     return PlatformAppBar(
       automaticallyImplyLeading: automaticallyImplyLeading,
       trailingActions: actions,
@@ -37,7 +43,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
                 child: centerTitle
                     ? _titleWidget
                     : Row(
-                        children: [_titleWidget],
+                        children: [_titleWidget.flexible()],
                       ),
               )
             : null,

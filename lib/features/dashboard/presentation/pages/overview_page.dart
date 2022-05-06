@@ -14,16 +14,11 @@ class OverviewPage extends HookConsumerWidget {
     final theme = AppTheme.of(context);
     final today = DateTime.now();
 
-    final iconColor = theme.colors.accent;
     return Scaffold(
       key: const Key("OverviewPage"),
       backgroundColor: theme.colors.primary,
       appBar: AppBarCustom(
         centerTitle: false,
-        // title: AppText.title1(
-        //   // CustomDateUtils.returnDateWithDay(today),
-        //   _getCurrentGreeting(today),
-        // ),
         titleText: _getCurrentGreeting(today),
         actions: [
           PlatformIconButton(
@@ -40,14 +35,6 @@ class OverviewPage extends HookConsumerWidget {
             cupertinoIcon: const Icon(CupertinoIcons.settings),
             materialIcon: const Icon(Icons.settings),
           ),
-          // PlatformIconButton(
-          //   // color: iconColor,
-          //   onPressed: () {
-          //     ref.read(authDatasourceProvider).signOut();
-          //     ref.read(googleSignInProvider).signOut();
-          //   },
-          //   icon: const Icon(Icons.logout),
-          // )
         ],
       ),
       body: AppPadding(
