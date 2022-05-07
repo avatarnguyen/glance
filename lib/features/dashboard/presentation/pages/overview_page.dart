@@ -1,11 +1,15 @@
+import 'package:dartx/dartx.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
+import 'package:glance/features/create/presentation/logic/create_provider.dart';
 import 'package:glance/features/create/presentation/widgets/create_popup_widget.dart';
+import 'package:glance/features/create/presentation/widgets/create_view_expansion_animation.dart';
 import 'package:glance/features/dashboard/presentation/logic/dashboard_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -57,7 +61,7 @@ class _OverviewPageState extends ConsumerState<OverviewPage>
         ),
         child: Column(
           children: [
-            const CreatePopUpViewWidget(),
+            const CreateViewExpansionAnimationWidget(),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,

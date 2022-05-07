@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/features/create/presentation/logic/create_provider.dart';
 import 'package:glance/features/dashboard/presentation/logic/dashboard_provider.dart';
 import 'package:glance/features/dashboard/presentation/pages/overview_page.dart';
 import 'package:glance/features/project/presentation/pages/project_page.dart';
@@ -56,19 +57,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       )
     ];
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: EdgeInsets.only(
-          top: theme.spacing.semiBig,
-        ),
-        child: FloatingActionButton(
-          child: Icon(
-            Icons.add,
-            color: theme.colors.textAccent,
-          ),
-          backgroundColor: theme.colors.accent,
-          onPressed: () {},
-        ),
-      ),
+      floatingActionButton: AppFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: PlatformWidget(
         material: (_, __) => BottomNavigationBar(
@@ -111,7 +100,29 @@ class _HomePageState extends ConsumerState<HomePage> {
         return Container(color: Colors.blue);
     }
   }
+}
 
-  // @override
-  // bool get wantKeepAlive => true;
+class AppFloatingButton extends HookConsumerWidget {
+  const AppFloatingButton({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = AppTheme.of(context);
+    final _isCreateViewOpen = ref.watch(openCreateViewProvider.state).state;
+    return Padding(
+      padding: EdgeInsets.only(
+        top: theme.spacing.semiBig,
+      ),
+      child: FloatingActionButton(
+        child: Icon(
+          _isCreateViewOpen ? Icons.close : Icons.add,
+          color: theme.colors.textAccent,
+        ),
+        backgroundColor: theme.colors.accent,
+        onPressed: () {
+          ref.read(openCreateViewProvider.state).state =
+              !ref.read(openCreateViewProvider.state).state;
+        },
+      ),
+    );
+  }
 }
