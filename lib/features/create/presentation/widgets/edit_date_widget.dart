@@ -28,7 +28,7 @@ class _EditDateWidget extends StatelessWidget {
             child: Column(
               children: [
                 AppText.title3(
-                  CustomDateUtils.returnDateWithDay(today),
+                  CustomDateUtils.returnDateInText(today),
                 ),
                 const AppGap.small(),
                 AppText.title4(
@@ -52,7 +52,7 @@ class _EditDateWidget extends StatelessWidget {
             child: Column(
               children: [
                 AppText.title3(
-                  CustomDateUtils.returnDateWithDay(today),
+                  CustomDateUtils.returnDateInText(today),
                 ),
                 const AppGap.small(),
                 AppText.title4(

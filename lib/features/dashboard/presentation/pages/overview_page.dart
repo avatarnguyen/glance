@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
+import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
+import 'package:glance/features/dashboard/presentation/logic/dashboard_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OverviewPage extends StatefulHookConsumerWidget {
@@ -15,14 +17,15 @@ class OverviewPage extends StatefulHookConsumerWidget {
 
 class _OverviewPageState extends ConsumerState<OverviewPage>
     with AutomaticKeepAliveClientMixin<OverviewPage> {
+  final today = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
     final theme = AppTheme.of(context);
-    final today = DateTime.now();
 
     return Scaffold(
-      key: const PageStorageKey<String>('overview_page'),
+      key: const PageStorageKey<String>('overview_page_storage_key'),
       backgroundColor: theme.colors.primary,
       appBar: AppBarCustom(
         centerTitle: false,
@@ -62,50 +65,7 @@ class _OverviewPageState extends ConsumerState<OverviewPage>
           ),
           width: screenWidth(context) - (2 * theme.spacing.medium),
           padding: EdgeInsets.all(theme.spacing.regular),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppText.title2(
-                CustomDateUtils.returnDateWithDay(today),
-                color: theme.colors.accent,
-              ),
-              const AppGap.large(),
-              const AlldayEventWidget(),
-              const AppGap.medium(),
-              TimeEventWidget(
-                color: Colors.orange,
-                time: DateTime(2022, 2, 20, 10, 30),
-                text: 'Finishing Project',
-                subtitle: '30min',
-                isEvent: true,
-              ),
-              const AppGap.small(),
-              TimeEventWidget(
-                color: Colors.purple,
-                time: DateTime.now(),
-                text: 'Coding Side Project',
-                subtitle: '1h 30m',
-                isEvent: false,
-              ),
-              const AppGap.small(),
-              TimeEventWidget(
-                color: Colors.purple,
-                time: DateTime.now(),
-                text: 'Coding Side Project',
-                subtitle: '2h',
-                isEvent: false,
-              ),
-              const AppGap.small(),
-              TimeEventWidget(
-                color: Colors.green,
-                time: DateTime.now(),
-                text: 'Get some shit done, without distraction',
-                subtitle: '4h',
-                isEvent: false,
-              ),
-            ],
-          ),
+          child: const _DashboardCardContentWidget(),
         ),
       ).safeArea(),
     );
@@ -126,4 +86,54 @@ class _OverviewPageState extends ConsumerState<OverviewPage>
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class _DashboardCardContentWidget extends HookConsumerWidget {
+  const _DashboardCardContentWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final today = DateTime.now();
+    final theme = AppTheme.of(context);
+    final _dashBoardState = ref.watch(dashboardNotifierProvider);
+    return _dashBoardState.when(
+      (items, allDayItems) {
+        final _topPad = (300 / items.length).roundToDouble();
+        debugPrint('Top Padding: $_topPad');
+        return ListView(
+          padding: EdgeInsets.only(top: _topPad),
+          children: [
+            const AppGap.medium(),
+            AppText.title2(
+              CustomDateUtils.returnDateInText(today),
+              fontSize: 22,
+              color: theme.colors.accent,
+            ),
+            const AppGap.large(),
+            const AlldayEventWidget(),
+            const AppGap.medium(),
+            ...items.map((item) {
+              if (item is CalendarEvent) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: theme.spacing.small),
+                  child: TimeEventWidget(
+                    color: Colors.orange,
+                    time: item.start!,
+                    text: item.title ?? '',
+                    subtitle:
+                        "~ ${item.end!.difference(item.start!).inHours.toString()} h",
+                    isEvent: true,
+                  ),
+                );
+              }
+              return const AppGap.small();
+            }).toList(),
+          ],
+        );
+      },
+      initial: () => const SizedBox.shrink(),
+      loading: () => kCenterProgressIndicator,
+      error: (message) => CustomErrorWidget(message: message),
+    );
+  }
 }

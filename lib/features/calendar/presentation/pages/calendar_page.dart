@@ -6,7 +6,6 @@ import 'package:glance/core/styles/color_constants.dart';
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
 import 'package:glance/features/calendar/presentation/logic/calendar_provider.dart';
-import 'package:glance/features/calendar/presentation/logic/calendar_state.dart';
 import 'package:glance/features/calendar/presentation/widgets/calendar_cell_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
@@ -29,21 +28,21 @@ class CalendarPage extends StatefulHookConsumerWidget {
 class _CalendarPageState extends ConsumerState<CalendarPage> {
   // final _log = logger(CalendarPage);
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   if (mounted) {
-  //     _getAllCalendars();
-  //   }
-  // }
+  @override
+  void initState() {
+    super.initState();
+    if (mounted) {
+      _getAllCalendars();
+    }
+  }
 
-  // Future<void> _getAllCalendars() async {
-  //   await ref.read(calendarNotifierProvider.notifier).getCalendarEvents();
-  // }
+  Future<void> _getAllCalendars() async {
+    await ref.read(calendarNotifierProvider.notifier).getCalendarEvents();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(calendarNotifierProvider) as CalendarState;
+    final state = ref.watch(calendarNotifierProvider);
 
     return Scaffold(
       backgroundColor: context.gColor.primary,

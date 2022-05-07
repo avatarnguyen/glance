@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:glance/core/glance_core.dart';
-import 'package:glance/features/calendar/presentation/logic/calendar_provider.dart';
+import 'package:glance/features/dashboard/presentation/logic/dashboard_provider.dart';
 import 'package:glance/features/dashboard/presentation/pages/overview_page.dart';
 import 'package:glance/features/project/presentation/pages/project_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -16,6 +16,21 @@ class HomePage extends StatefulHookConsumerWidget {
 
 class _HomePageState extends ConsumerState<HomePage> {
   int viewIndex = 0;
+  final today = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    if (mounted) {
+      ref.read(dashboardNotifierProvider.notifier).getEventsByDate(today);
+    }
+  }
+
+  @override
+  void dispose() {
+    ref.read(dashboardNotifierProvider.notifier).dispose();
+    super.dispose();
+  }
 
   // Future<bool> signIn() async {
   //   final creds = await FirebaseAuth.instance.signInAnonymously();
@@ -27,22 +42,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   // }
 
   @override
-  void initState() {
-    super.initState();
-    if (mounted) {
-      ref.read(calendarNotifierProvider.notifier).getCalendarEvents();
-    }
-  }
-
-  @override
-  void dispose() {
-    ref.read(calendarNotifierProvider.notifier).dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // super.build(context);
     final theme = AppTheme.of(context);
     return PlatformWidget(
       cupertino: (_, __) => Theme(

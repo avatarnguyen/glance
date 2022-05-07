@@ -24,7 +24,7 @@ class DateTimeUtils {
     return DateFormat.yMEd().format(date);
   }
 
-  static DateTime getBeginngOfDay(DateTime date) {
+  static DateTime getBeginningOfDay(DateTime date) {
     return date.copyWith(hour: 0, minute: 0, second: 0);
   }
 

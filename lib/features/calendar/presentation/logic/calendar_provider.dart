@@ -10,6 +10,7 @@ import 'calendar_state.dart';
 part 'calendar_state_notifier.dart';
 
 /// Provider to use the CalendarStateNotifier
-final calendarNotifierProvider = StateNotifierProvider(
+final calendarNotifierProvider =
+    StateNotifierProvider.autoDispose<CalendarNotifier, CalendarState>(
   (ref) => CalendarNotifier(ref),
 );
