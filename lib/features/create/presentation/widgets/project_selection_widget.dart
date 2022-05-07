@@ -1,7 +1,8 @@
-part of '../pages/create_page.dart';
+import 'package:flutter/material.dart';
+import 'package:glance/core/glance_core.dart';
 
-class _ProjectSelectionWidget extends StatelessWidget {
-  const _ProjectSelectionWidget({
+class ProjectSelectionWidget extends StatelessWidget {
+  const ProjectSelectionWidget({
     Key? key,
   }) : super(key: key);
 

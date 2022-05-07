@@ -1,7 +1,9 @@
-part of '../pages/create_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:glance/core/glance_core.dart';
 
-class _TitleEditFieldWidget extends HookWidget {
-  const _TitleEditFieldWidget({
+class TitleEditFieldWidget extends HookWidget {
+  const TitleEditFieldWidget({
     Key? key,
   }) : super(key: key);
 
@@ -9,24 +11,42 @@ class _TitleEditFieldWidget extends HookWidget {
   Widget build(BuildContext context) {
     final _textController = useTextEditingController();
     final theme = AppTheme.of(context);
+    final _hintTextStyle = theme.typography.title2.copyWith(
+      color: theme.colors.secondary,
+    );
+    const _hintText = 'New Task';
 
-    return TextField(
+    return PlatformTextField(
       controller: _textController,
       autofocus: true,
-      style: theme.typography.title1.copyWith(
-        color: theme.colors.primary,
+      style: theme.typography.title2.copyWith(
+        color: theme.colors.accent,
       ),
-      cursorColor: theme.colors.accent,
-      minLines: 2,
-      maxLines: 3,
+      cursorColor: theme.colors.secondary,
+      minLines: 1,
+      maxLines: 2,
       textAlign: TextAlign.center,
       textAlignVertical: TextAlignVertical.center,
-      decoration: InputDecoration(
-        hintText: 'New Task',
-        hintStyle: theme.typography.title1.copyWith(
-          color: theme.colors.accent,
+      material: (_, __) {
+        return MaterialTextFieldData(
+          decoration: InputDecoration(
+            hintText: _hintText,
+            hintStyle: _hintTextStyle,
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: theme.colors.secondary),
+              borderRadius: BorderRadius.circular(theme.radius.small.x),
+            ),
+          ),
+        );
+      },
+      cupertino: (_, __) => CupertinoTextFieldData(
+        padding: EdgeInsets.all(theme.spacing.semiSmall),
+        placeholder: _hintText,
+        placeholderStyle: _hintTextStyle,
+        decoration: BoxDecoration(
+          border: Border.all(color: theme.colors.secondary),
+          borderRadius: BorderRadius.circular(theme.radius.small.x),
         ),
-        border: InputBorder.none,
       ),
       onChanged: (text) {},
     );

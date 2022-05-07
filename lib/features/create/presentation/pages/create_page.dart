@@ -9,13 +9,11 @@ import 'package:glance/core/presentation/common_widgets/bottomsheet/datepicker_b
 import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/create/presentation/widgets/dotted_tab_indicator.dart';
 import 'package:glance/features/create/presentation/widgets/line_painter.dart';
-import 'package:glance/features/create/presentation/widgets/project_picker_widget.dart';
 
-part '../widgets/edit_date_widget.dart';
-part '../widgets/title_editfield_widget.dart';
-part '../widgets/additional_action_widget.dart';
-part '../widgets/project_selection_widget.dart';
-part '../widgets/type_edit_widget.dart';
+// part '../widgets/edit_date_widget.dart';
+// part '../widgets/title_editfield_widget.dart';
+// part '../widgets/additional_action_widget.dart';
+// part '../widgets/project_selection_widget.dart';
 
 const kCreateHeroTag = "create_page_hero";
 
@@ -100,13 +98,13 @@ class CreatePage extends StatelessWidget {
                 ),
               ),
               const AppGap.semiBig(),
-              const ProjectPickerWidget(),
-              const AppGap.semiBig(),
-              const _TitleEditFieldWidget(),
-              const _EditDateWidget(),
-              const AppGap.large(),
-              const _AdditionalActionWidget(),
-              const AppGap.large(),
+              // const ProjectPickerWidget(),
+              // const AppGap.semiBig(),
+              // const _TitleEditFieldWidget(),
+              // const _EditDateWidget(),
+              // const AppGap.large(),
+              // const _AdditionalActionWidget(),
+              // const AppGap.large(),
             ],
           ).safeArea(),
         ),

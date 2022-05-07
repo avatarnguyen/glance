@@ -1,7 +1,11 @@
-part of '../pages/create_page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:glance/core/glance_core.dart';
+import 'package:glance/core/presentation/common_widgets/bottomsheet/datepicker_bottomsheet.dart';
+import 'package:glance/core/utils/custom_date_format.dart';
+import 'package:glance/features/create/presentation/widgets/line_painter.dart';
 
-class _EditDateWidget extends StatelessWidget {
-  const _EditDateWidget({
+class EditDateWidget extends StatelessWidget {
+  const EditDateWidget({
     Key? key,
   }) : super(key: key);
 
@@ -9,13 +13,13 @@ class _EditDateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     final today = DateTime.now();
-    final _primaryColor = theme.colors.primary;
+    final _borderColor = theme.colors.secondary;
 
     return Container(
       padding: theme.spacing.asInsets().small,
       decoration: BoxDecoration(
-        borderRadius: theme.radius.asBorderRadius().big,
-        border: Border.all(color: _primaryColor, width: kBorderWidthButton),
+        borderRadius: theme.radius.asBorderRadius().medium,
+        border: Border.all(color: _borderColor, width: kBorderWidthButton),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -41,7 +45,7 @@ class _EditDateWidget extends StatelessWidget {
             width: 2.0,
             height: 32.0,
             child: CustomPaint(
-              painter: LinePainter(_primaryColor),
+              painter: LinePainter(_borderColor),
             ),
           ),
           CupertinoButton(
@@ -74,9 +78,10 @@ class _EditDateWidget extends StatelessWidget {
       fullscreen: true,
       height: screenHeightPercentage(
         context,
-        percentage: 0.75,
+        percentage: 0.65,
       ),
       backgroundColor: theme.colors.accent,
+      foregroundColor: theme.colors.textAccent,
       child: const DatePickerBottomsheet(),
     );
   }

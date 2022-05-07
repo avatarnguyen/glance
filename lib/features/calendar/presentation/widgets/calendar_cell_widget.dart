@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:dart_date/dart_date.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +20,7 @@ class CalendarCellWidget extends HookWidget {
     this.rangeStart,
     this.rangeEnd,
     this.fullMonth,
+    this.foregroundColor,
   }) : super(key: key);
 
   final DateTime? startDay;
@@ -26,6 +28,7 @@ class CalendarCellWidget extends HookWidget {
   final DateTime? rangeStart;
   final DateTime? rangeEnd;
 
+  final Color? foregroundColor;
   final bool? headerVisible;
   final bool? fullMonth;
   final double? rowHeight;
@@ -39,7 +42,7 @@ class CalendarCellWidget extends HookWidget {
     final lastDay = endDay ?? today.endOfMonth;
 
     final _selectedDay = useState(today);
-    final _accent = theme.colors.accent;
+    final _foregroundColor = foregroundColor ?? theme.colors.textAccent;
 
     return TableCalendar(
       key: const Key('Single_Calender'),
@@ -54,7 +57,7 @@ class CalendarCellWidget extends HookWidget {
           return Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: theme.colors.accent,
+                color: theme.colors.secondary,
                 width: 1.5,
               ),
               shape: BoxShape.circle,
@@ -62,41 +65,59 @@ class CalendarCellWidget extends HookWidget {
             alignment: Alignment.center,
             child: AppText.title4(
               date.day.toString(),
-              color: theme.colors.accent,
+              color: theme.colors.textAccent,
             ),
           );
         },
         defaultBuilder: (_, date, events) {
           return Container(
             alignment: Alignment.center,
-            child: AppText.paragraph1(
+            child: AppText.title4(
               date.day.toString(),
-              color: theme.colors.accent,
+              color: _foregroundColor,
             ),
           );
         },
         todayBuilder: (_, date, events) {
           return Container(
             alignment: Alignment.center,
-            child: AppText.title4(
+            child: AppText.title3(
               date.day.toString(),
-              color: theme.colors.accent,
+              color: glancePrimarySwatch.shade900,
+            ),
+          );
+        },
+        disabledBuilder: (_, date, events) {
+          return Container(
+            alignment: Alignment.center,
+            child: AppText.paragraph2(
+              date.day.toString(),
+              color: _foregroundColor,
+            ),
+          );
+        },
+        outsideBuilder: (context, day, _) {
+          final text = DateFormat.E().format(day);
+          return Center(
+            child: AppText.paragraph2(
+              text,
+              color: _foregroundColor,
             ),
           );
         },
         dowBuilder: (context, day) {
           final text = DateFormat.E().format(day);
           return Center(
-            child: AppText.paragraph2(
+            child: AppText.paragraph1(
               text,
-              color: theme.colors.accent,
+              color: _foregroundColor,
             ),
           );
         },
       ),
       headerStyle: HeaderStyle(
         titleTextStyle: theme.typography.title4.copyWith(
-          color: theme.colors.accent,
+          color: _foregroundColor,
         ),
         leftChevronIcon: const AppIcon.small(FontAwesomeIcons.chevronLeft),
         rightChevronIcon: const AppIcon.small(FontAwesomeIcons.chevronRight),
@@ -115,16 +136,16 @@ class CalendarCellWidget extends HookWidget {
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         defaultTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent,
+          color: _foregroundColor,
         ),
         weekendTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent,
+          color: _foregroundColor,
         ),
         todayTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent,
+          color: _foregroundColor,
         ),
         selectedTextStyle: theme.typography.paragraph1.copyWith(
-          color: _accent,
+          color: _foregroundColor,
         ),
         // todayDecoration: BoxDecoration(),
         outsideDaysVisible: false,

@@ -23,7 +23,13 @@ class DatePickerBottomsheet extends HookWidget {
     final _selectedIndex = useState(0);
     final _mode = useState(DatePickerMode.timeRange);
 
-    final buttonColor = theme.colors.accent;
+    final buttonColor = theme.colors.textAccent;
+    final inActiveButtonColor = theme.colors.secondary;
+    final datePickerTextTheme = CupertinoTextThemeData(
+      dateTimePickerTextStyle: theme.typography.title3.copyWith(
+        color: theme.colors.textAccent,
+      ),
+    );
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -32,8 +38,9 @@ class DatePickerBottomsheet extends HookWidget {
           children: [
             AppTextButton.regular(
               data: "Time Range",
-              color:
-                  _mode.value == DatePickerMode.timeRange ? buttonColor : null,
+              color: _mode.value == DatePickerMode.timeRange
+                  ? buttonColor
+                  : inActiveButtonColor,
               onPressed: () {
                 _mode.value = DatePickerMode.timeRange;
                 _selectedIndex.value = 0;
@@ -41,7 +48,9 @@ class DatePickerBottomsheet extends HookWidget {
             ),
             AppTextButton.regular(
               data: "All day",
-              color: _mode.value == DatePickerMode.allDay ? buttonColor : null,
+              color: _mode.value == DatePickerMode.allDay
+                  ? buttonColor
+                  : inActiveButtonColor,
               onPressed: () {
                 _mode.value = DatePickerMode.allDay;
               },
@@ -50,7 +59,7 @@ class DatePickerBottomsheet extends HookWidget {
               data: "Multiple Day",
               color: _mode.value == DatePickerMode.multipleDay
                   ? buttonColor
-                  : null,
+                  : inActiveButtonColor,
               onPressed: () {
                 _mode.value = DatePickerMode.multipleDay;
               },
@@ -79,7 +88,7 @@ class DatePickerBottomsheet extends HookWidget {
                 data: 'Start',
                 color: _selectedIndex.value == 0
                     ? buttonColor
-                    : theme.colors.primary,
+                    : inActiveButtonColor,
                 onPressed: () {
                   _pageControler.animateToPage(
                     0,
@@ -92,7 +101,7 @@ class DatePickerBottomsheet extends HookWidget {
                 data: 'End',
                 color: _selectedIndex.value == 1
                     ? buttonColor
-                    : theme.colors.primary,
+                    : inActiveButtonColor,
                 onPressed: () {
                   _pageControler.animateToPage(
                     1,
@@ -122,12 +131,7 @@ class DatePickerBottomsheet extends HookWidget {
                   SizedBox(
                     child: CupertinoTheme(
                       data: CupertinoThemeData(
-                        textTheme: CupertinoTextThemeData(
-                          dateTimePickerTextStyle:
-                              theme.typography.title3.copyWith(
-                            color: theme.colors.accent,
-                          ),
-                        ),
+                        textTheme: datePickerTextTheme,
                       ),
                       child: CupertinoDatePicker(
                         key: const Key('StartTimePicker'),
@@ -153,12 +157,7 @@ class DatePickerBottomsheet extends HookWidget {
                   SizedBox(
                     child: CupertinoTheme(
                       data: CupertinoThemeData(
-                        textTheme: CupertinoTextThemeData(
-                          dateTimePickerTextStyle:
-                              theme.typography.title3.copyWith(
-                            color: theme.colors.accent,
-                          ),
-                        ),
+                        textTheme: datePickerTextTheme,
                       ),
                       child: CupertinoDatePicker(
                         key: const Key('EndTimePicker'),
@@ -182,7 +181,7 @@ class DatePickerBottomsheet extends HookWidget {
           ),
           child: Row(
             children: [
-              AppFilledButton.regular(
+              AppFilledButton.big(
                 radius: theme.radius.regular.x,
                 data: 'Save',
                 onPressed: () {},
@@ -194,5 +193,7 @@ class DatePickerBottomsheet extends HookWidget {
     );
   }
 
-  void onDateTimeChanged(DateTime time) {}
+  void onDateTimeChanged(DateTime time) {
+    debugPrint('Change DateTime to: $time');
+  }
 }

@@ -14,27 +14,40 @@ Future<T?> showAppBottomSheet<T>(
   Widget? leading,
 }) {
   final theme = AppTheme.of(context);
-  return showModalBottomSheet<T>(
+  return showPlatformModalSheet<T>(
     context: context,
-    backgroundColor: Colors.transparent,
-    barrierColor: null,
-    isScrollControlled: fullscreen ?? false,
-    useRootNavigator: true,
-    constraints: height != null
-        ? BoxConstraints(
-            maxHeight: height,
-          )
-        : null,
+    material: MaterialModalSheetData(
+      backgroundColor: Colors.transparent,
+      barrierColor: null,
+      isScrollControlled: fullscreen ?? false,
+      useRootNavigator: true,
+      constraints: height != null
+          ? BoxConstraints(
+              maxHeight: height,
+            )
+          : null,
+    ),
+    cupertino: CupertinoModalSheetData(
+      useRootNavigator: true,
+    ),
     builder: (ctx) {
       return Container(
-        margin: theme.spacing.asInsets().regular,
+        margin: EdgeInsets.symmetric(
+          horizontal: theme.spacing.regular,
+          vertical: theme.spacing.semiBig,
+        ),
         padding: EdgeInsets.symmetric(horizontal: theme.spacing.regular),
+        constraints: height != null
+            ? BoxConstraints(
+                maxHeight: height,
+              )
+            : null,
         decoration: BoxDecoration(
           color: backgroundColor ?? theme.colors.primary,
           borderRadius: theme.radius.asBorderRadius().big,
           boxShadow: [
+            theme.shadow.base,
             theme.shadow.small,
-            // theme.shadowWithColor.regular,
           ],
         ),
         child: headerVisible
@@ -52,7 +65,7 @@ Future<T?> showAppBottomSheet<T>(
                         left: theme.spacing.small,
                       ),
                       AppIconButton.regular(
-                        FontAwesomeIcons.times,
+                        FontAwesomeIcons.xmark,
                         color: foregroundColor,
                         onPressed: () {
                           Navigator.pop(context);

@@ -32,15 +32,6 @@ class _HomePageState extends ConsumerState<HomePage> {
     super.dispose();
   }
 
-  // Future<bool> signIn() async {
-  //   final creds = await FirebaseAuth.instance.signInAnonymously();
-  //   debugPrint(creds.user?.uid);
-  //   if (creds.user != null) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);

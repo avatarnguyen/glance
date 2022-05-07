@@ -5,6 +5,7 @@ import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/calendar/domain/entity/calendar_event.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/allday_event_widget.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/time_event_widget.dart';
+import 'package:glance/features/create/presentation/widgets/create_popup_widget.dart';
 import 'package:glance/features/dashboard/presentation/logic/dashboard_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -54,18 +55,23 @@ class _OverviewPageState extends ConsumerState<OverviewPage>
           left: AppGapSize.medium,
           right: AppGapSize.medium,
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              theme.shadow.base,
-              theme.shadow.medium,
-            ],
-            borderRadius: theme.radius.asBorderRadius().medium,
-          ),
-          width: screenWidth(context) - (2 * theme.spacing.medium),
-          padding: EdgeInsets.all(theme.spacing.regular),
-          child: const _DashboardCardContentWidget(),
+        child: Column(
+          children: [
+            const CreatePopUpViewWidget(),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  theme.shadow.base,
+                  theme.shadow.medium,
+                ],
+                borderRadius: theme.radius.asBorderRadius().medium,
+              ),
+              width: screenWidth(context) - (2 * theme.spacing.medium),
+              padding: EdgeInsets.all(theme.spacing.regular),
+              child: const _DashboardCardContentWidget(),
+            ).expanded(),
+          ],
         ),
       ).safeArea(),
     );
@@ -98,9 +104,10 @@ class _DashboardCardContentWidget extends HookConsumerWidget {
     final _dashBoardState = ref.watch(dashboardNotifierProvider);
     return _dashBoardState.when(
       (items, allDayItems) {
-        final _topPad = (300 / items.length).roundToDouble();
+        final _topPad = (260 / items.length).roundToDouble();
         debugPrint('Top Padding: $_topPad');
         return ListView(
+          shrinkWrap: true,
           padding: EdgeInsets.only(top: _topPad),
           children: [
             const AppGap.medium(),

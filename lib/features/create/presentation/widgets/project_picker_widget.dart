@@ -12,6 +12,7 @@ class ProjectPickerWidget extends StatelessWidget {
     final theme = AppTheme.of(context);
     return AppFilledButton.big(
       padding: EdgeInsets.zero,
+      radius: theme.radius.semiBig.x,
       child: const Text('Project AB'),
       onPressed: () {
         showAppBottomSheet(
@@ -22,7 +23,7 @@ class ProjectPickerWidget extends StatelessWidget {
             percentage: 0.75,
           ),
           backgroundColor: theme.colors.accent,
-          foregroundColor: theme.colors.accent,
+          foregroundColor: theme.colors.textAccent,
           title: 'Projects',
           leading: AppIconButton.semiSmall(
             FontAwesomeIcons.plus,
@@ -71,7 +72,7 @@ class _ProjectListWidget extends HookWidget {
   }) {
     return ListTile(
       dense: false,
-      selectedTileColor: theme.colors.primary.withOpacity(0.4),
+      selectedTileColor: theme.colors.secondary.withOpacity(0.4),
       selected: selectedIndex.value == index,
       shape: RoundedRectangleBorder(
         borderRadius: theme.radius.asBorderRadius().big,
@@ -88,7 +89,7 @@ class _ProjectListWidget extends HookWidget {
           const AppGap.semiBig(),
           AppText.title4(
             text,
-            color: theme.colors.accent,
+            color: theme.colors.textAccent,
           ),
         ],
       ),
