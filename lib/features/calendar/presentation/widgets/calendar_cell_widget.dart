@@ -21,6 +21,7 @@ class CalendarCellWidget extends HookWidget {
     this.rangeEnd,
     this.fullMonth,
     this.foregroundColor,
+    this.onDayRangeSelected,
   }) : super(key: key);
 
   final DateTime? startDay;
@@ -32,7 +33,9 @@ class CalendarCellWidget extends HookWidget {
   final bool? headerVisible;
   final bool? fullMonth;
   final double? rowHeight;
-  final void Function(DateTime select, DateTime focus)? onDaySelected;
+  final void Function(DateTime selected)? onDaySelected;
+  final void Function(DateTime? selectedStart, DateTime? selectedEnd)?
+      onDayRangeSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +45,18 @@ class CalendarCellWidget extends HookWidget {
     final lastDay = endDay ?? today.endOfMonth;
 
     final _selectedDay = useState(today);
+    final _rangeStart = useState(rangeStart);
+    final _rangeEnd = useState(rangeEnd);
     final _foregroundColor = foregroundColor ?? theme.colors.textAccent;
 
     return TableCalendar(
-      key: const Key('Single_Calender'),
+      key: key ?? const Key('Single_Calender'),
       firstDay: firstDay,
       lastDay: lastDay,
       focusedDay: firstDay,
       currentDay: today,
-      rangeStartDay: rangeStart,
-      rangeEndDay: rangeEnd,
+      rangeStartDay: _rangeStart.value,
+      rangeEndDay: _rangeEnd.value,
       calendarBuilders: CalendarBuilders(
         selectedBuilder: (_, date, events) {
           return Container(
@@ -69,15 +74,13 @@ class CalendarCellWidget extends HookWidget {
             ),
           );
         },
-        defaultBuilder: (_, date, events) {
-          return Container(
-            alignment: Alignment.center,
-            child: AppText.title4(
-              date.day.toString(),
-              color: _foregroundColor,
-            ),
-          );
-        },
+        defaultBuilder: (_, date, events) => Container(
+          alignment: Alignment.center,
+          child: AppText.title4(
+            date.day.toString(),
+            color: _foregroundColor,
+          ),
+        ),
         todayBuilder: (_, date, events) {
           return Container(
             alignment: Alignment.center,
@@ -114,6 +117,13 @@ class CalendarCellWidget extends HookWidget {
             ),
           );
         },
+        //   rangeStartBuilder: (_, start, end) => Container(
+        //     alignment: Alignment.center,
+        //     child: AppText.title4(
+        //       start.day.toString(),
+        //       // color: _foregroundColor,
+        //     ),
+        //   ),
       ),
       headerStyle: HeaderStyle(
         titleTextStyle: theme.typography.title4.copyWith(
@@ -151,11 +161,23 @@ class CalendarCellWidget extends HookWidget {
         outsideDaysVisible: false,
       ),
       pageAnimationEnabled: false,
+      rangeSelectionMode: onDayRangeSelected != null
+          ? RangeSelectionMode.toggledOn
+          : RangeSelectionMode.toggledOff,
+      onRangeSelected: onDayRangeSelected != null
+          ? (start, end, focusedDay) {
+              _rangeStart.value = start;
+              _rangeEnd.value = end;
+              onDayRangeSelected?.call(start, end);
+            }
+          : null,
       selectedDayPredicate: (day) => isSameDay(_selectedDay.value, day),
-      onDaySelected: (selectedDay, focusedDay) {
-        _selectedDay.value = selectedDay;
-        onDaySelected?.call(selectedDay, focusedDay);
-      },
+      onDaySelected: onDaySelected != null
+          ? (selectedDay, focusedDay) {
+              _selectedDay.value = selectedDay;
+              onDaySelected?.call(selectedDay);
+            }
+          : null,
       onPageChanged: (date) {
         log('$date');
       },

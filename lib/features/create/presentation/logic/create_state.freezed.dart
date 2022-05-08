@@ -16,55 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CreateState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String? message) error,
-  }) =>
+  String? get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  CreateItemType get type => throw _privateConstructorUsedError;
+  String? get relatedProjectID => throw _privateConstructorUsedError;
+  String? get relatedCalendarID => throw _privateConstructorUsedError;
+  DateTime? get start => throw _privateConstructorUsedError;
+  DateTime? get end => throw _privateConstructorUsedError;
+  bool? get allDay => throw _privateConstructorUsedError;
+  String? get backgroundColor => throw _privateConstructorUsedError;
+  String? get foregroundColor => throw _privateConstructorUsedError;
+  String? get recurringEventId => throw _privateConstructorUsedError;
+  List<RecurrenceRule>? get recurrenceRule =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) =>
+
+  @JsonKey(ignore: true)
+  $CreateStateCopyWith<CreateState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -73,6 +41,20 @@ abstract class $CreateStateCopyWith<$Res> {
   factory $CreateStateCopyWith(
           CreateState value, $Res Function(CreateState) then) =
       _$CreateStateCopyWithImpl<$Res>;
+  $Res call(
+      {String? id,
+      String? title,
+      String? description,
+      CreateItemType type,
+      String? relatedProjectID,
+      String? relatedCalendarID,
+      DateTime? start,
+      DateTime? end,
+      bool? allDay,
+      String? backgroundColor,
+      String? foregroundColor,
+      String? recurringEventId,
+      List<RecurrenceRule>? recurrenceRule});
 }
 
 /// @nodoc
@@ -82,488 +64,338 @@ class _$CreateStateCopyWithImpl<$Res> implements $CreateStateCopyWith<$Res> {
   final CreateState _value;
   // ignore: unused_field
   final $Res Function(CreateState) _then;
-}
-
-/// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$DataCopyWithImpl<$Res> extends _$CreateStateCopyWithImpl<$Res>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(Data _value, $Res Function(Data) _then)
-      : super(_value, (v) => _then(v as Data));
-
-  @override
-  Data get _value => super._value as Data;
-}
-
-/// @nodoc
-
-class _$Data implements Data {
-  const _$Data();
-
-  @override
-  String toString() {
-    return 'CreateState()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Data);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String? message) error,
-  }) {
-    return $default();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-  }) {
-    return $default?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Data implements CreateState {
-  const factory Data() = _$Data;
-}
-
-/// @nodoc
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$CreateStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
-
-  @override
-  Initial get _value => super._value as Initial;
-}
-
-/// @nodoc
-
-class _$Initial implements Initial {
-  const _$Initial();
-
-  @override
-  String toString() {
-    return 'CreateState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String? message) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Initial implements CreateState {
-  const factory Initial() = _$Initial;
-}
-
-/// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$CreateStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
-
-  @override
-  Loading get _value => super._value as Loading;
-}
-
-/// @nodoc
-
-class _$Loading implements Loading {
-  const _$Loading();
-
-  @override
-  String toString() {
-    return 'CreateState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String? message) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loading implements CreateState {
-  const factory Loading() = _$Loading;
-}
-
-/// @nodoc
-abstract class $ErrorCopyWith<$Res> {
-  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
-      _$ErrorCopyWithImpl<$Res>;
-  $Res call({String? message});
-}
-
-/// @nodoc
-class _$ErrorCopyWithImpl<$Res> extends _$CreateStateCopyWithImpl<$Res>
-    implements $ErrorCopyWith<$Res> {
-  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
-      : super(_value, (v) => _then(v as Error));
-
-  @override
-  Error get _value => super._value as Error;
 
   @override
   $Res call({
-    Object? message = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? type = freezed,
+    Object? relatedProjectID = freezed,
+    Object? relatedCalendarID = freezed,
+    Object? start = freezed,
+    Object? end = freezed,
+    Object? allDay = freezed,
+    Object? backgroundColor = freezed,
+    Object? foregroundColor = freezed,
+    Object? recurringEventId = freezed,
+    Object? recurrenceRule = freezed,
   }) {
-    return _then(Error(
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CreateItemType,
+      relatedProjectID: relatedProjectID == freezed
+          ? _value.relatedProjectID
+          : relatedProjectID // ignore: cast_nullable_to_non_nullable
+              as String?,
+      relatedCalendarID: relatedCalendarID == freezed
+          ? _value.relatedCalendarID
+          : relatedCalendarID // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start: start == freezed
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      end: end == freezed
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      allDay: allDay == freezed
+          ? _value.allDay
+          : allDay // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foregroundColor: foregroundColor == freezed
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recurringEventId: recurringEventId == freezed
+          ? _value.recurringEventId
+          : recurringEventId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recurrenceRule: recurrenceRule == freezed
+          ? _value.recurrenceRule
+          : recurrenceRule // ignore: cast_nullable_to_non_nullable
+              as List<RecurrenceRule>?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$CreateDataCopyWith<$Res>
+    implements $CreateStateCopyWith<$Res> {
+  factory _$CreateDataCopyWith(
+          _CreateData value, $Res Function(_CreateData) then) =
+      __$CreateDataCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? id,
+      String? title,
+      String? description,
+      CreateItemType type,
+      String? relatedProjectID,
+      String? relatedCalendarID,
+      DateTime? start,
+      DateTime? end,
+      bool? allDay,
+      String? backgroundColor,
+      String? foregroundColor,
+      String? recurringEventId,
+      List<RecurrenceRule>? recurrenceRule});
+}
+
+/// @nodoc
+class __$CreateDataCopyWithImpl<$Res> extends _$CreateStateCopyWithImpl<$Res>
+    implements _$CreateDataCopyWith<$Res> {
+  __$CreateDataCopyWithImpl(
+      _CreateData _value, $Res Function(_CreateData) _then)
+      : super(_value, (v) => _then(v as _CreateData));
+
+  @override
+  _CreateData get _value => super._value as _CreateData;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? type = freezed,
+    Object? relatedProjectID = freezed,
+    Object? relatedCalendarID = freezed,
+    Object? start = freezed,
+    Object? end = freezed,
+    Object? allDay = freezed,
+    Object? backgroundColor = freezed,
+    Object? foregroundColor = freezed,
+    Object? recurringEventId = freezed,
+    Object? recurrenceRule = freezed,
+  }) {
+    return _then(_CreateData(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CreateItemType,
+      relatedProjectID: relatedProjectID == freezed
+          ? _value.relatedProjectID
+          : relatedProjectID // ignore: cast_nullable_to_non_nullable
+              as String?,
+      relatedCalendarID: relatedCalendarID == freezed
+          ? _value.relatedCalendarID
+          : relatedCalendarID // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start: start == freezed
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      end: end == freezed
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      allDay: allDay == freezed
+          ? _value.allDay
+          : allDay // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foregroundColor: foregroundColor == freezed
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recurringEventId: recurringEventId == freezed
+          ? _value.recurringEventId
+          : recurringEventId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recurrenceRule: recurrenceRule == freezed
+          ? _value.recurrenceRule
+          : recurrenceRule // ignore: cast_nullable_to_non_nullable
+              as List<RecurrenceRule>?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error([this.message]);
+class _$_CreateData implements _CreateData {
+  const _$_CreateData(
+      {this.id,
+      this.title,
+      this.description,
+      required this.type,
+      this.relatedProjectID,
+      this.relatedCalendarID,
+      this.start,
+      this.end,
+      this.allDay,
+      this.backgroundColor,
+      this.foregroundColor,
+      this.recurringEventId,
+      final List<RecurrenceRule>? recurrenceRule})
+      : _recurrenceRule = recurrenceRule;
 
   @override
-  final String? message;
+  final String? id;
+  @override
+  final String? title;
+  @override
+  final String? description;
+  @override
+  final CreateItemType type;
+  @override
+  final String? relatedProjectID;
+  @override
+  final String? relatedCalendarID;
+  @override
+  final DateTime? start;
+  @override
+  final DateTime? end;
+  @override
+  final bool? allDay;
+  @override
+  final String? backgroundColor;
+  @override
+  final String? foregroundColor;
+  @override
+  final String? recurringEventId;
+  final List<RecurrenceRule>? _recurrenceRule;
+  @override
+  List<RecurrenceRule>? get recurrenceRule {
+    final value = _recurrenceRule;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'CreateState.error(message: $message)';
+    return 'CreateState(id: $id, title: $title, description: $description, type: $type, relatedProjectID: $relatedProjectID, relatedCalendarID: $relatedCalendarID, start: $start, end: $end, allDay: $allDay, backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, recurringEventId: $recurringEventId, recurrenceRule: $recurrenceRule)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Error &&
-            const DeepCollectionEquality().equals(other.message, message));
+            other is _CreateData &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.relatedProjectID, relatedProjectID) &&
+            const DeepCollectionEquality()
+                .equals(other.relatedCalendarID, relatedCalendarID) &&
+            const DeepCollectionEquality().equals(other.start, start) &&
+            const DeepCollectionEquality().equals(other.end, end) &&
+            const DeepCollectionEquality().equals(other.allDay, allDay) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.foregroundColor, foregroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.recurringEventId, recurringEventId) &&
+            const DeepCollectionEquality()
+                .equals(other.recurrenceRule, recurrenceRule));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(relatedProjectID),
+      const DeepCollectionEquality().hash(relatedCalendarID),
+      const DeepCollectionEquality().hash(start),
+      const DeepCollectionEquality().hash(end),
+      const DeepCollectionEquality().hash(allDay),
+      const DeepCollectionEquality().hash(backgroundColor),
+      const DeepCollectionEquality().hash(foregroundColor),
+      const DeepCollectionEquality().hash(recurringEventId),
+      const DeepCollectionEquality().hash(recurrenceRule));
 
   @JsonKey(ignore: true)
   @override
-  $ErrorCopyWith<Error> get copyWith =>
-      _$ErrorCopyWithImpl<Error>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String? message) error,
-  }) {
-    return error(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-  }) {
-    return error?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(Data value) $default, {
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(Data value)? $default, {
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+  _$CreateDataCopyWith<_CreateData> get copyWith =>
+      __$CreateDataCopyWithImpl<_CreateData>(this, _$identity);
 }
 
-abstract class Error implements CreateState {
-  const factory Error([final String? message]) = _$Error;
+abstract class _CreateData implements CreateState {
+  const factory _CreateData(
+      {final String? id,
+      final String? title,
+      final String? description,
+      required final CreateItemType type,
+      final String? relatedProjectID,
+      final String? relatedCalendarID,
+      final DateTime? start,
+      final DateTime? end,
+      final bool? allDay,
+      final String? backgroundColor,
+      final String? foregroundColor,
+      final String? recurringEventId,
+      final List<RecurrenceRule>? recurrenceRule}) = _$_CreateData;
 
-  String? get message => throw _privateConstructorUsedError;
+  @override
+  String? get id => throw _privateConstructorUsedError;
+  @override
+  String? get title => throw _privateConstructorUsedError;
+  @override
+  String? get description => throw _privateConstructorUsedError;
+  @override
+  CreateItemType get type => throw _privateConstructorUsedError;
+  @override
+  String? get relatedProjectID => throw _privateConstructorUsedError;
+  @override
+  String? get relatedCalendarID => throw _privateConstructorUsedError;
+  @override
+  DateTime? get start => throw _privateConstructorUsedError;
+  @override
+  DateTime? get end => throw _privateConstructorUsedError;
+  @override
+  bool? get allDay => throw _privateConstructorUsedError;
+  @override
+  String? get backgroundColor => throw _privateConstructorUsedError;
+  @override
+  String? get foregroundColor => throw _privateConstructorUsedError;
+  @override
+  String? get recurringEventId => throw _privateConstructorUsedError;
+  @override
+  List<RecurrenceRule>? get recurrenceRule =>
+      throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
-  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
+  _$CreateDataCopyWith<_CreateData> get copyWith =>
+      throw _privateConstructorUsedError;
 }

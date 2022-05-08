@@ -4,13 +4,12 @@ import 'package:glance/features/create/presentation/widgets/edit_date_widget.dar
 import 'package:glance/features/create/presentation/widgets/project_picker_widget.dart';
 import 'package:glance/features/create/presentation/widgets/title_editfield_widget.dart';
 import 'package:glance/features/create/presentation/widgets/type_edit_widget.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CreatePopUpViewWidget extends ConsumerWidget {
+class CreatePopUpViewWidget extends StatelessWidget {
   const CreatePopUpViewWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // final theme = AppTheme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,

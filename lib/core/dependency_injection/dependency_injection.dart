@@ -6,6 +6,8 @@ import 'package:glance/features/calendar/domain/repositories/calendar_event_resp
 import 'package:glance/features/calendar/domain/repositories/calendar_repository.dart';
 import 'package:glance/features/calendar/domain/usecases/get_calendar_events.dart';
 import 'package:glance/features/calendar/domain/usecases/get_calendars.dart';
+import 'package:glance/features/create/domain/usecases/create_event.dart';
+import 'package:glance/features/create/domain/usecases/create_task.dart';
 import 'package:glance/features/dashboard/domain/usecases/get_events_by_date.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -43,6 +45,18 @@ final getCalendarEventsProvider = Provider<GetCalendarEvents>((ref) {
 
 final getEventsByDateProvider = Provider<GetEventsByDate>((ref) {
   return GetEventsByDate(
+    ref.read(calendarEventRepositoryProvider),
+  );
+});
+
+final createEventProvider = Provider<CreateEvent>((ref) {
+  return CreateEvent(
+    ref.read(calendarEventRepositoryProvider),
+  );
+});
+
+final createTaskProvider = Provider<CreateTask>((ref) {
+  return CreateTask(
     ref.read(calendarEventRepositoryProvider),
   );
 });
