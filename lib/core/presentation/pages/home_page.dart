@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:glance/core/glance_core.dart';
+import 'package:glance/core/styles/theme/app_theme_data.dart';
 import 'package:glance/features/create/presentation/logic/create_provider.dart';
 import 'package:glance/features/dashboard/presentation/logic/dashboard_provider.dart';
 import 'package:glance/features/dashboard/presentation/pages/overview_page.dart';
@@ -57,7 +57,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       )
     ];
     return Scaffold(
-      floatingActionButton: AppFloatingButton(),
+      floatingActionButton: const AppFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: PlatformWidget(
         material: (_, __) => BottomNavigationBar(

@@ -2,13 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
-import 'package:glance/core/presentation/common_widgets/bottomsheet/datepicker_bottomsheet.dart';
-import 'package:glance/core/utils/custom_date_format.dart';
 import 'package:glance/features/create/presentation/widgets/dotted_tab_indicator.dart';
-import 'package:glance/features/create/presentation/widgets/line_painter.dart';
 
 // part '../widgets/edit_date_widget.dart';
 // part '../widgets/title_editfield_widget.dart';
@@ -42,7 +38,7 @@ class CreatePage extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        key: const Key('Createpage'),
+        key: const Key('CreatePage'),
         backgroundColor: theme.colors.primary,
         appBar: AppBar(
           elevation: 0.0,

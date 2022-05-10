@@ -3,6 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glance/core/glance_core.dart';
 import 'package:glance/features/calendar/presentation/widgets/details/dot_painter.dart';
+import 'package:glance/features/create/presentation/logic/create_provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProjectPickerWidget extends StatelessWidget {
   const ProjectPickerWidget({Key? key}) : super(key: key);
@@ -44,18 +46,21 @@ class ProjectPickerWidget extends StatelessWidget {
   }
 }
 
-class _ProjectListWidget extends HookWidget {
-  const _ProjectListWidget({Key? key}) : super(key: key);
+class _ProjectListWidget extends HookConsumerWidget {
+  const _ProjectListWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final _selectedIndex = useState(0);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _selectedIndex = useState(-1);
     final theme = AppTheme.of(context);
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
         return buildListTile(
           theme,
+          ref,
           index: index,
           selectedIndex: _selectedIndex,
           text: 'Getting things done',
@@ -65,7 +70,8 @@ class _ProjectListWidget extends HookWidget {
   }
 
   ListTile buildListTile(
-    AppThemeData theme, {
+    AppThemeData theme,
+    WidgetRef ref, {
     required ValueNotifier<int> selectedIndex,
     required String text,
     required int index,
@@ -78,6 +84,10 @@ class _ProjectListWidget extends HookWidget {
         borderRadius: theme.radius.asBorderRadius().big,
       ),
       onTap: () {
+        //TODO: need to create project mechanism first
+        ref
+            .read(createNotifierProvider.notifier)
+            .changeRelatedProjectID('new_id');
         selectedIndex.value = index;
       },
       title: Row(

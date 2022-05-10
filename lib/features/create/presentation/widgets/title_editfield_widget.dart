@@ -23,7 +23,7 @@ class TitleEditFieldWidget extends HookConsumerWidget {
       ),
       cursorColor: theme.colors.secondary,
       minLines: 1,
-      maxLines: 2,
+      maxLines: 1,
       textAlign: TextAlign.center,
       textAlignVertical: TextAlignVertical.center,
       material: (_, __) {
@@ -52,6 +52,7 @@ class TitleEditFieldWidget extends HookConsumerWidget {
       },
       onSubmitted: (text) {
         ref.read(createNotifierProvider.notifier).submit();
+        ref.read(openCreateViewProvider.state).state = false;
       },
     );
   }

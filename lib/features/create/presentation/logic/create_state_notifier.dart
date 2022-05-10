@@ -9,29 +9,31 @@ class CreateNotifier extends StateNotifier<CreateState> {
         super(const CreateState(type: CreateItemType.event));
 
   final _log = logger(CreateNotifier);
-  void changeID(String id) => state.copyWith(id: id);
-  void changeType(CreateItemType type) => state.copyWith(type: type);
-  void changeTitle(String title) => state.copyWith(title: title);
-  void changeDescription(String text) => state.copyWith(description: text);
+  void changeID(String id) => state = state.copyWith(id: id);
+  void changeType(CreateItemType type) => state = state.copyWith(type: type);
+  void changeTitle(String title) => state = state.copyWith(title: title);
+  void changeDescription(String text) =>
+      state = state.copyWith(description: text);
 
   void changeStartDateTime(DateTime dateTime) =>
-      state.copyWith(start: dateTime);
+      state = state.copyWith(start: dateTime);
 
-  void changeEndDateTime(DateTime dateTime) => state.copyWith(end: dateTime);
-  void changeAllDay(bool isAllDay) => state.copyWith(allDay: isAllDay);
+  void changeEndDateTime(DateTime dateTime) =>
+      state = state.copyWith(end: dateTime);
+  void changeAllDay(bool isAllDay) => state = state.copyWith(allDay: isAllDay);
 
-  void changeRelatedProjectID(String id) => state.copyWith(
+  void changeRelatedProjectID(String id) => state = state.copyWith(
         relatedProjectID: id,
       );
-  void changeRelatedCalendarID(String id) => state.copyWith(
+  void changeRelatedCalendarID(String id) => state = state.copyWith(
         relatedCalendarID: id,
       );
   void changeBackgroundColor(String color) =>
-      state.copyWith(backgroundColor: color);
+      state = state.copyWith(backgroundColor: color);
   void changeForegroundColor(String color) =>
-      state.copyWith(foregroundColor: color);
+      state = state.copyWith(foregroundColor: color);
   void changeRecurrenceRule(List<RecurrenceRule> rules) =>
-      state.copyWith(recurrenceRule: rules);
+      state = state.copyWith(recurrenceRule: rules);
 
   Future<void> submit() async {
     if (state.type == CreateItemType.task) {
