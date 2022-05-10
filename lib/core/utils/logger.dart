@@ -6,11 +6,16 @@ import 'package:logger/logger.dart';
 final logger = (Type type) => Logger(
       printer: PrefixPrinter(
         PrettyPrinter(
-          colors: true,
+          colors: false,
           methodCount: 0,
           lineLength: 80,
         ),
         location: "[${type.toString()}] ",
+        debug: 'DEBUG - ',
+        info: 'INFO - ',
+        warning: 'WARN - ',
+        error: 'ERROR - ',
+        verbose: 'VERBOSE - ',
       ),
       output: ConsoleOutput(),
       // level: Level.debug,
@@ -32,13 +37,13 @@ class PrefixPrinter extends LogPrinter {
     String? nothing,
   }) : super() {
     _prefixMap = {
-      Level.debug: debug ?? "$location ",
-      Level.verbose: verbose ?? "$location ",
-      Level.wtf: wtf ?? "$location ",
-      Level.info: info ?? "$location ",
-      Level.warning: warning ?? "$location ",
-      Level.error: error ?? "$location ",
-      Level.nothing: nothing ?? "$location ",
+      Level.debug: "${debug ?? ''}$location ",
+      Level.verbose: "${verbose ?? ''}$location ",
+      Level.wtf: "${wtf ?? ''}$location ",
+      Level.info: "${info ?? ''}$location ",
+      Level.warning: "${warning ?? ''}$location ",
+      Level.error: "${error ?? ''}$location ",
+      Level.nothing: "${nothing ?? ''}$location ",
     };
   }
 
