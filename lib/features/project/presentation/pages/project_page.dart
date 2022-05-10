@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glance/core/glance_core.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({Key? key}) : super(key: key);
@@ -40,7 +39,7 @@ class _ProjectPageState extends State<ProjectPage>
                     child: Column(
                       children: const [
                         AppText.title1('Test Title'),
-                        AppText.paragraph1('subtile')
+                        AppText.paragraph1('subtitle')
                       ],
                     ),
                   );
