@@ -2,20 +2,23 @@ import 'dart:developer';
 
 import 'package:logger/logger.dart';
 
+// Change this const params to true when using vscode
+const showBuiltInColor = false;
+
 // ignore: prefer_function_declarations_over_variables
 final logger = (Type type) => Logger(
       printer: PrefixPrinter(
         PrettyPrinter(
-          colors: false,
+          colors: showBuiltInColor,
           methodCount: 0,
           lineLength: 80,
         ),
         location: "[${type.toString()}] ",
-        debug: 'DEBUG - ',
-        info: 'INFO - ',
-        warning: 'WARN - ',
-        error: 'ERROR - ',
-        verbose: 'VERBOSE - ',
+        debug: showBuiltInColor ? null : 'DEBUG - ',
+        info: showBuiltInColor ? null : 'INFO - ',
+        warning: showBuiltInColor ? null : 'WARN - ',
+        error: showBuiltInColor ? null : 'ERROR - ',
+        verbose: showBuiltInColor ? null : 'VERBOSE - ',
       ),
       output: ConsoleOutput(),
       // level: Level.debug,
