@@ -3,10 +3,10 @@ import 'package:glance/core/glance_core.dart';
 
 abstract class StorageDatasource {
   Stream<dynamic> watchDataChanges();
-  Future<void> createData();
-  Future<void> getData();
-  Future<void> deleteData();
-  Future<void> updateData();
+  Future<void> createData(Map<String, dynamic> data);
+  Future<List<Map<String, dynamic>>> getData();
+  Future<void> deleteData(String id);
+  Future<void> updateData(Map<String, dynamic> data);
 }
 
 class CloudStorageDatasource implements StorageDatasource {
@@ -16,25 +16,19 @@ class CloudStorageDatasource implements StorageDatasource {
   CloudStorageDatasource(this.firebaseStorage);
 
   @override
-  Future<void> createData() {
+  Future<void> createData(Map<String, dynamic> data) {
     // TODO: implement createData
     throw UnimplementedError();
   }
 
   @override
-  Future<void> deleteData() {
+  Future<void> deleteData(String id) {
     // TODO: implement deleteData
     throw UnimplementedError();
   }
 
   @override
-  Future<void> getData() {
-    // TODO: implement getData
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> updateData() {
+  Future<void> updateData(Map<String, dynamic> data) {
     // TODO: implement updateData
     throw UnimplementedError();
   }
@@ -42,6 +36,12 @@ class CloudStorageDatasource implements StorageDatasource {
   @override
   Stream watchDataChanges() {
     // TODO: implement watchDataChanges
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getData() {
+    // TODO: implement getData
     throw UnimplementedError();
   }
 }
